@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_133903) do
   create_table "fmeas", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "type"
+    t.string "fmea_type"
     t.bigint "risk_matrix_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
