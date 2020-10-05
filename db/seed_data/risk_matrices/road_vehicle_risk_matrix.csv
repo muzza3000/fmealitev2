@@ -1,0 +1,12 @@
+﻿Road Vehicle Example,,
+Rank,Severity,Occurrence
+1,No discernible effect,Failure is eliminated through preventative control
+2,"Appearance or audible noise, vehicle operable, item does not conform and noticed by discriminating customers (<25%)","≤ 0.001 per thousand (1 in 1,000,000)"
+3,"Appearance or audible noise, vehicle operable, item does not conform and noticed by many  customers (50%)","0.01 per thousand (1 in 100,000)"
+4,"Appearance or audible noise, vehicle operable, item does not conform and noticed by most  customers (75%)","0.1 per thousand (1 in 10,000)"
+5,"Degradation of secondary function (vehicle operable, but comfort/convenience functions inoperable)",0.5 per thousand (1 in 2000)
+6,"Loss of secondary function (vehicle operable, but comfort/convenience functions inoperable)",2 per thousand (1 in 500)
+7,"Degradation of primary function (vehicle operable, but at reduced level of performance)",10 per thousand (1 in 100)
+8,"Degradation of primary function (vehicle operable, does not affect safe vehicle operation)",20 per thousand (1 in 50)
+9,Potential failure mode affects safe vehicle operation and/or involves noncompliance with government regulation with warning.,50 per thousand (1 in 20)
+10,Potential failure mode affects safe vehicle operation and/or involves noncompliance with government regulation without warning.,≥ 100 per thousand (≥ 1 in 10)

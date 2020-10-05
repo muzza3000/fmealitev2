@@ -1,0 +1,12 @@
+﻿General Example,,
+Rank,Severity,Occurrence
+1,None: No effect noticed by the customer. The failure will not have any perceptible effect on the customer.,"Remote: Failure is unlikely (< 1 in 1,500,000)"
+2,"Very Minor: Very minor effect, noticed by the discriminating customers. The failure will have little perceptible effect on the discriminating customers.","Low: Relatively few failures (1 in 150,000)"
+3,"Minor: Minor effect, noticed by average customers. The failure will have minor perceptible effect on average customers. ","Low: Relatively few failures (1 in 15,000)"
+4,"Very Low: Very low effect, noticed by most customers. The failure will have some small perceptible effect on most customers.",Moderate: Occasional failures (1 in 2000)
+5,"Low: Primary product function is operational, but at a reduced level of performance. Customer is somewhat dissatisfied.",Moderate: Occasional failures (1 in 400)
+6,"Moderate: Primary product function is operational, but secondary functions are inoperable. Customer is moderately dissatisfied.",Moderate: Occasional failures (1 in 80)
+7,High: Failure mode greatly affects product operation. Product or portion of the product is inoperable. Customer is very dissatisfied. ,High: Repeated failures (1 in 20)
+8,Very High: Primary product function is nonoperational but safe. Customer is very dissatisfied. ,High: Repeated failures (1 in 8)
+9,Hazard with warning: Failure mode affects safe product operation and/or involves nonconformance with government regulation with warning. ,Very High: Failure is almost inevitable (1 in 3)
+10,Hazard with no warning: Failure mode affects safe product operation and/or involves nonconformance with government regulation without wanring. ,Very High: Failure is almost inevitable (> 1 in 2)
