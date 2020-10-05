@@ -6,4 +6,6 @@ class Fmea < ApplicationRecord
   has_many :effects, through: :failure_modes
   has_many :causes, through: :failure_modes
   has_many :actions, through: :causes
+
+  validates :title, presence: true, uniqueness: { case_sensitive: false }
 end
