@@ -1,0 +1,2 @@
+class RiskMatrix < ApplicationRecord
+end
