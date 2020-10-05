@@ -1,0 +1,2 @@
+class FmeasController < ApplicationController
+end
