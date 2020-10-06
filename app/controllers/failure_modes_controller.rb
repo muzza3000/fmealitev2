@@ -1,0 +1,2 @@
+class FailureModesController < ApplicationController
+end
