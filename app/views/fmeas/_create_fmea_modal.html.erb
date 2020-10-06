@@ -1,0 +1,24 @@
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h3 class="modal-title">Create New FMEA</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= simple_form_for(Fmea.new, remote: true) do |f| %>
+          <%= f.input :title, as: :string %>
+          <button type="button" data-dismiss="modal">
+            <%= f.button :submit, class: "btn btn-success btn-clear" %>
+          </button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
