@@ -1,0 +1,34 @@
+<% fmeas = elements %>
+
+<!-- To start with, we have the little title bar on top with all the descriptions -->
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+        <div></div> <!-- This is where the avatar would go for all the FMEAs. -->
+    </div>
+    <div class="col-2">
+      <h6 class="text-secondary">Title</h6>
+    </div>
+    <div class="col-2">
+      <h6 class="text-secondary">Risk Matrix</h6>
+    </div>
+    <div class="col-2">
+      <h6 class="text-secondary">Last Updated Date</h6>
+    </div>
+    <div class="col-3">
+      <h6 class="text-secondary">Summary</h6>
+    </div>
+    <div class="col-2">
+      <h6 class="text-secondary">Actions</h6>
+    </div>
+  </div>
+
+  <!-- Now, we insert all the individual fmeas -->
+  <br>
+
+  <% fmeas.each do |fmea| %>
+    <div class="my-auto dashboard-list-item">
+      <%= render "shared/dashboard_list_item", fmea: fmea %>
+    </div>
+  <% end %>
+</div>
