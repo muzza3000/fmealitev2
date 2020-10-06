@@ -1,0 +1,36 @@
+<% fmea = @fmea %>
+<div class="row">
+  <div class="col-1">
+    <div class="fmea-circle bg-<%= "#{%w(danger warning info success primary).sample}"  %>"></div>
+  </div>
+
+  <div class="col-2 my-auto">
+    <h6><%= fmea.title %></h6>
+  </div>
+
+  <div class="col-2 my-auto">
+    <h6><%= fmea.risk_matrix.name %></h6>
+  </div>
+
+  <div class="col-2 my-auto">
+    <h6><%= fmea.created_at.class %></h6>
+  </div>
+
+  <div class="col-3 my-auto">
+    <h6> <%= image_tag("function.svg") %>  <%= "#{fmea.functions.count}  " %> &#160;
+      <%= image_tag("failure_mode.svg") %>
+      <%= "#{fmea.failure_modes.count}" %> &#160;
+      <%= image_tag("cause.svg") %>
+      <%= "#{fmea.causes.count}  " %> &#160;
+      <%= image_tag("effect.svg") %>
+      <%=  "#{fmea.effects.count}" %>
+    </h6>
+  </div>
+
+  <div class="col-2 my-auto">
+    <i class="fas fa-share-alt icon"></i>
+    <i class="fas fa-cloud-download-alt icon"></i>
+    <i class="fas fa-trash icon"></i>
+  </div>
+</div>
+
