@@ -1,0 +1,25 @@
+﻿FMEA Name,Folding Bike,,,,
+FMEA Description,"X400 is due to go into production in April-2021.
+The bike is aimed at mid-salary urban commuters, working in large cities like London and Paris. Reliability has a strong focus and is appreciated by our customer base.",,,,
+FMEA _Type,Design,,,,
+Risk Matrix ,General Example,,,,
+Type,Description,Rating,deadline,status,followup
+function,Must be comfortable for the rider,,,,
+failure_mode,Handlebar to seat spacing causes pain to the riders,,,,
+cause,Insufficient seat adjustment distance (currently 10cm),2,,,
+effect,"Customers unsatidfied, receive bad reviews leading to loss in sales",3,,,
+cause,Lack of customer ergonomic data,3,,,
+action,Please can you follow up on this by organising a focus group,,06/11/2020,completed,I have organised this for the 06-Oct-20
+failure_mode,Insufficient dampening from road bumps,,,,
+cause,No suspension installed on front fork,5,,,
+cause,Tyres are too narrow (currently 25mm) and don't provide enough cusioning to rider,5,,,
+action,Please can you organise a review of the tyre selection choice and report back on Monday,,01/11/2020,pending,
+effect,Minor discomfort is felt by the rider when cycling on roads other than tarmac,1,,,
+function,Must be able to spport weight of 160kg rider,,,,
+failure_mode,Seat clamp cannot provide enough friction to maintain seat height,,,,
+cause,Seat clamp component is new and untested,3,,,
+effect,Rider continually has to readjust the seat post,2,,,
+failure_mode,Frame fatigues over time eventually leading to a mechanical failure,,,,
+effect,Bike requires new frame afterafter >2 years of service,4,,,
+cause,New alloy selection is known to have embrittlement risks when subjected to cyclical loading,2,,,
+action,Please can you speak to the material engineer and decide if we need to conduct some lab testing,,05/11/2020,in progress,I have organised a meeting for the 29/10/2020
