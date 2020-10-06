@@ -11,15 +11,15 @@
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email" }%>
+                    input_html: { autocomplete: "email", placeholder: "julius.cesar@consul.spqr.rome" }%>
         <%= f.input :first_name,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "first-name" }%>
+                    input_html: { autocomplete: "first-name", placeholder: "Julius" }%>
         <%= f.input :last_name,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "family-name" }%>
+                    input_html: { autocomplete: "family-name", placeholder: "Cesar" }%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
