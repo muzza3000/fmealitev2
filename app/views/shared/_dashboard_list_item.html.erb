@@ -1,4 +1,3 @@
-<% fmea = @fmea %>
 <div class="row">
   <div class="col-1">
     <div class="fmea-circle bg-<%= "#{%w(danger warning info success primary).sample}"  %>"></div>
@@ -13,7 +12,7 @@
   </div>
 
   <div class="col-2 my-auto">
-    <h6><%= fmea.created_at.class %></h6>
+    <h6><%= fmea.updated_at.day %>/<%= fmea.updated_at.month %>/<%= fmea.updated_at.year %></h6>
   </div>
 
   <div class="col-3 my-auto">
