@@ -12,9 +12,8 @@
       <div class="modal-body">
         <%= simple_form_for(@fmea, remote: true) do |f| %>
           <%= f.input :title, as: :string %>
-          <div>
-            <%= f.button :submit, class: "btn-clean" %>
-          </div>
+          <%= f.button :submit, class: "btn-clean" %>
+
 
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <% end %>
