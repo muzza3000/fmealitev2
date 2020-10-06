@@ -6,7 +6,9 @@ class FmeasController < ApplicationController
   end
 
   def create
-    Fmea.create(fmea_params)
+    @fmea = Fmea.new(fmea_params)
+    @fmea.risk_matrix_id = RiskMatrix.create(scale: 10).id
+    @fmea.save
   end
 
   private

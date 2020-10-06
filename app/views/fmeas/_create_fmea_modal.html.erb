@@ -10,11 +10,11 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= simple_form_for(@fmea, remote: true) do |f| %>
+        <%= simple_form_for @fmea, url: url_for(controller: 'fmeas', action: 'create'), method: 'post' do |f| %>
           <%= f.input :title, as: :string %>
-          <%= f.button :submit, class: "btn-clean" %>
-
-
+          <div class="btn btn-success">
+            <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
+          </div>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <% end %>
       </div>
