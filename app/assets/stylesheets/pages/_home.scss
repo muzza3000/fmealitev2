@@ -1,1 +1,79 @@
 // Specific CSS for your home-page
+.header-container {
+  height: 500px;
+  overflow:hidden;
+}
+
+.header-blue {
+  background-color: $blue;
+  color: white;
+  position: relative;
+  z-index: 1;
+
+  .blue-wave {
+    height: 125%;
+    width: 150%;
+    background-color: $blue;
+    border-radius: 75%;
+    opacity: 100%;
+    position: absolute;
+    top: 0;
+    left: -35%;
+    z-index: -1;
+    clip-path: inset(0 10% 0 0);
+  }
+
+  h2 {
+    padding: 100px 0 20px 0;
+    font-size: 24px;
+  }
+}
+
+.customer-logos {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  height: 50px;
+  margin: 5px 0 0 0;
+}
+.customer-logo-image {
+  height: 100%;
+  max-width: 125px;
+  padding: 0 10px;
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 3px 3px 10px rgba(black, 0.2);
+}
+
+.join-us{
+  margin: 80px 0;
+  padding: 40px 0;
+  text-align: center;
+  background-color: #c3c3c3;
+  color: white;
+}
+
+.landing-footer {
+  text-align: center;
+  border-top: 1px solid rgba(black, 0.2);
+  padding: 5px 0px;
+
+  .common-links>ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+
+  .footer-image{
+    margin: 20px 0px;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+  }
+}
