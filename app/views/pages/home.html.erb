@@ -1,21 +1,21 @@
-<div style="height:70px; background:white; border: 1px solid gray">
-</div>
-<div class="header-blue">
-  <div class="container">
-    <div class="row py-5">
-      <div class="col-6">
-        <h2>FMEA.Lite is a tool that helps forsee future design problems using collective past experience</h2>
-        <%= link_to(new_user_registration_path) do %>
-          <button class="btn btn-success">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
-          </button>
-        <% end %>
+<div class="header-container">
+  <div class="header-blue">
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-6">
+          <h2>FMEA.Lite is a tool that helps forsee future design problems using collective past experience</h2>
+          <%= link_to(new_user_registration_path) do %>
+            <button class="btn btn-success">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
+            </button>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="blue-wave">
+    <div class="blue-wave">
+    </div>
   </div>
 </div>
-<div class="container">
+<div class="container-xl">
   <div class="customer-logos">
     <%= image_tag("landing_page/customer_logo1.svg", class: 'customer-logo-image') %>
     <%= image_tag("landing_page/customer_logo2.svg", class: 'customer-logo-image') %>
@@ -25,7 +25,7 @@
 </div>
 <div class="product-overview">
   <div class="container">
-    <div class="row mt-5">
+    <div class="row my-5">
       <div class="col-6">
         <%= image_tag("landing_page/animated_video_placeholder1.svg", class: 'product-image') %>
       </div>
@@ -57,9 +57,19 @@
   </div>
 </div>
 <div class="landing-footer">
-<div class="common-links">
-
-</div>
-<%= image_tag("logo/FMEAlite_logo_with_text.svg", class: 'footer-image') %>
-<p>All rights reserved.</p>
+  <div class="container">
+    <div class="common-links">
+      <ul id="landing-common-links">
+        <li><a href="">About Us</a></li>
+        <li><a href="">Careers</a></li>
+        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Contact Us</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Pricing</a></li>
+      </ul>
+    </div>
+    <%= image_tag("logo/FMEAlite_logo_with_text.svg", class: 'footer-image') %>
+    <p>All rights reserved.</p>
+    <p>32, Bjørn Vei, 0256, Oslo</p>
+  </div>
 </div>

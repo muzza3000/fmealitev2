@@ -1,4 +1,9 @@
 // Specific CSS for your home-page
+.header-container {
+  height: 500px;
+  overflow:hidden;
+}
+
 .header-blue {
   background-color: $blue;
   color: white;
@@ -16,6 +21,7 @@
     top: 0;
     left: -35%;
     z-index: -1;
+    clip-path: inset(0 10% 0 0);
   }
 
   h2 {
@@ -29,7 +35,7 @@
   justify-content: space-between;
   padding: 0;
   height: 50px;
-  margin: 120px 0 0 0;
+  margin: 5px 0 0 0;
 }
 .customer-logo-image {
   height: 100%;
@@ -51,4 +57,22 @@
 
 .landing-footer {
   text-align: center;
+  border-top: 1px solid rgba(black, 0.2);
+  padding: 5px 0px;
+
+  .common-links>ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+
+  .footer-image{
+    margin: 20px 0px;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-size: small;
+  }
 }
