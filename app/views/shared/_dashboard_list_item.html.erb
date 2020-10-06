@@ -1,4 +1,5 @@
-<div class="row">
+<div class="row position-relative" style="z-index: 0;">
+  <%= link_to "", edit_fmea_path(fmea), class: "stretched-link" %>
   <div class="col-1">
     <div class="fmea-circle bg-<%= "#{%w(danger warning info success primary).sample}"  %>"></div>
   </div>
@@ -26,10 +27,19 @@
     </h6>
   </div>
 
-  <div class="col-2 my-auto">
-    <i class="fas fa-share-alt icon"></i>
-    <i class="fas fa-cloud-download-alt icon"></i>
-    <i class="fas fa-trash icon"></i>
+  <div class="col-2 my-auto" style="z-index: 1;">
+    <div class="buttons">
+    <%= button_to("#", method: :get, class: "btn-clean") do %>
+      <i class='fas fa-share-alt icon'></i>
+    <% end %>
+    <%= button_to("#", method: :get, class: "btn-clean") do %>
+      <i class="fas fa-cloud-download-alt icon"></i>
+    <% end %>
+    <%= button_to("#", method: :get, class: "btn-clean") do %>
+      <i class="fas fa-trash icon"></i>
+    <% end %>
+    </div>
   </div>
 </div>
+
 
