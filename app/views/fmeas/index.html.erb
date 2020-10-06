@@ -1,7 +1,5 @@
-<% fmeas = elements %>
-
 <!-- To start with, we have the little title bar on top with all the descriptions -->
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <div class="col-1">
         <div></div> <!-- This is where the avatar would go for all the FMEAs. -->
@@ -26,7 +24,7 @@
   <!-- Now, we insert all the individual fmeas -->
   <br>
 
-  <% fmeas.each do |fmea| %>
+  <% @fmeas.each do |fmea| %>
     <div class="my-auto dashboard-list-item">
       <%= render "shared/dashboard_list_item", fmea: fmea %>
     </div>
