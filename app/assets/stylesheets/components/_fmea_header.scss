@@ -1,0 +1,52 @@
+$header_height: 200px;
+
+.fmea-header {
+  width: 100%;
+  height: $header_height;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgba(black, 0.2);
+
+  .fmea-product-image {
+    width: $header_height;
+    height: 100%;
+    background-color: gray;
+    color: #c3c3c3;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.fmea-details {
+  width: 60%;
+  padding: 10px;
+
+  h2 {
+    color: $blue;
+  }
+  p {
+    color: $blue;
+    padding: 0;
+    margin: 0 0 5px 0;
+  }
+}
+
+.light-blue{
+  color: $light_blue;
+}
+.fmea-stats {
+  padding: 10px 10px 0 0;
+  align-self: flex-start;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .fmea-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+  }
+}
