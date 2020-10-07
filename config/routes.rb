@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/playground', to: 'pages#playground'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :fmeas, only: %i[index edit create update]
+  resources :fmeas, only: %i[index edit create update destroy]
 end
