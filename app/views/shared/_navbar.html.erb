@@ -51,11 +51,16 @@
         <%= link_to "/", class: "navbar-brand nav-link" do %>
             <%= image_tag("logo/FMEAlite_logo.svg") %>
         <% end %>
-        <h5 class="text-body my-auto">FMEA.lite</h5>
+        <h4 class="text-body my-auto">FMEA.lite</h4>
       </div>
 
-      <div class="d-flex" style="justify-content: flex-start; width: 280px;">
-        <%= link_to "Get Started!", new_user_registration_path, class: "text-white btn btn-success my-auto mr-5 px-2" %>
+      <div class="d-flex" style="justify-content: flex-start; width: 300px;">
+
+
+        <%= link_to(new_user_registration_path, class: "my-auto mr-4") do %>
+            <button class="btn btn-success ">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
+            </button>
+          <% end %>
         <%= link_to "Login", new_user_session_path, class: "text-white btn btn-primary my-auto px-4" %>
       </div>
 
