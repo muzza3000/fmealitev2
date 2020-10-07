@@ -1,0 +1,6 @@
+<div class="container">
+  <% fmea = Fmea.first %>
+  <% fmea.failure_modes.each do |function| %>
+    <%= render "fmeas/edit_fmea/card_structure", element: function%>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+.card-structure-top {
+  height: 50px;
+  width: 100%;
+  border-left: 8px solid $gray-600;
+}
+
+.card-structure-bottom {
+  display: flex;
+  justify-content: flex-start;
+
+
+  .left {
+    display: flex;
+    flex-direction: column;
+
+    .left-top {
+      width: 25px;
+      height: 25px;
+      border-left: 8px solid $gray-600;
+      border-bottom: 8px solid $gray-600;
+    }
+
+    .left-bottom {
+      flex: 1;
+      width: 25px;
+      border-left: 8px solid $gray-600;
+    }
+  }
+
+  .right {
+    min-height: 50px;
+  }
+}
+
+.card-structure-main:last-child {
+  .card-structure-bottom {
+    .left {
+      .left-bottom {
+        border: none;
+      }
+    }
+  }
+}
