@@ -1,5 +1,6 @@
 class FmeasController < ApplicationController
-  before_action :set_fmea, only: (:edit)
+  before_action :set_fmea, only: [:edit, :update]
+
   def index
     @fmeas = Fmea.all
     @fmea = Fmea.new
@@ -10,6 +11,11 @@ class FmeasController < ApplicationController
     @fmea.risk_matrix = RiskMatrix.first
     @fmea.save
     redirect_to(edit_fmea_path(@fmea))
+  end
+
+  def update
+    @fmea.update(fmea_params)
+    redirect_to edit_fmea_path(@fmea)
   end
 
   private

@@ -8,4 +8,5 @@ class Fmea < ApplicationRecord
   has_many :actions, through: :causes
 
   validates :title, presence: true, uniqueness: { case_sensitive: false }
+  validates :fmea_type, inclusion: { in: %w(Design System Process), message: "%{value} is not 'Design', 'System' or 'Process'" }
 end

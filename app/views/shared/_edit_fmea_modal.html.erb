@@ -1,17 +1,19 @@
-<div class="modal fade" id="createFmeaModal">
+<div class="modal fade" id="editFmeaDetails">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h3 class="modal-title">Create New FMEA</h3>
+        <h3 class="modal-title">Edit FMEA</h3>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= simple_form_for @fmea, url: url_for(controller: 'fmeas', action: 'create'), method: 'post' do |f| %>
+        <%= simple_form_for fmea do |f| %>
           <%= f.input :title, as: :string %>
+          <%= f.input :description, as: :text %>
+          <div class="float-right"></div>
           <div class="btn btn-success">
             <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>

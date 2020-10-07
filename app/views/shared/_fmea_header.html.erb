@@ -1,0 +1,33 @@
+<div class="fmea-header">
+  <div class="fmea-product-image">
+    <i class="fas fa-file-upload"></i>
+  </div>
+  <div class="fmea-details">
+    <div class="fmea-details-edit">
+      <a data-toggle="modal" data-target="#editFmeaDetails" href="#"><i class="fas fa-pen"></i></a>
+    </div>
+    <h2><span class="light-blue"><%= fmea_type_icon(fmea) %></span> <%= fmea.title %></h2>
+    <p><small><span class="light-blue"><i class="fas fa-th"></i></span>  <%= fmea.risk_matrix.name %></small></p>
+    <p><%= simple_format(fmea.description) %></p>
+  </div>
+  <div class="fmea-stats">
+    <div class="fmea-stat">
+      <%= image_tag("function.svg", class: "pr-1") %>
+      <span class="stat-number"><%= fmea.functions.count %></span>
+    </div>
+    <div class="fmea-stat">
+      <%= image_tag("failure_mode.svg", class: "pr-1") %>
+      <%= fmea.failure_modes.count %>
+    </div>
+    <div class="fmea-stat">
+      <%= image_tag("cause.svg", class: "pr-1") %>
+      <%= fmea.causes.count %>
+    </div>
+    <div class="fmea-stat">
+      <%= image_tag("effect.svg", class: "pr-1") %>
+      <%= fmea.effects.count %>
+    </div>
+  </div>
+</div>
+<!-- The Modal -->
+<%= render "shared/edit_fmea_modal", fmea: fmea %>
