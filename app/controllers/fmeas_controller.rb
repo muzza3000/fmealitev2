@@ -6,10 +6,15 @@ class FmeasController < ApplicationController
     @fmea = Fmea.new
   end
 
+  def edit
+  end
+
   def create
     @fmea = Fmea.new(fmea_params)
     @fmea.risk_matrix = RiskMatrix.first
+    @fmea.fmea_type = "Design"
     @fmea.save
+    raise
     redirect_to(edit_fmea_path(@fmea))
   end
 
