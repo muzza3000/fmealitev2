@@ -11,7 +11,11 @@
     <%= element.description %>
   </div>
   <div class="edit-card">
-      <a data-toggle="modal" data-target="#editFmeaDetails" href="#"><i class="fas fa-pen"></i></a>
+      <a data-toggle="modal" data-target=<%="#edit#{element.class.to_s}#{element.id}Description"%> href="#"><i class="fas fa-pen"></i></a>
       <a href="#" data-target="clipboard.copybutton" data-action="clipboard#copy" class="copy-button-hide"><i class="fas fa-copy"></i></a>
   </div>
 </div>
+
+<!-- Edit Description Modal -->
+
+<%= render "fmeas/edit_fmea/edit_description_modal", element: element %>
