@@ -57,10 +57,17 @@
 <div class="join-us">
   <div class="container">
     <h3>Join more than 300 customers in delivering reliable design</h3>
-    <%= link_to(new_user_registration_path) do %>
-      <button class="btn btn-success mt-3">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
-      </button>
-    <% end %>
+    <% if user_signed_in? %>
+            <%= link_to(fmeas_path) do %>
+            <button class="btn btn-success">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
+            </button>
+            <% end %>
+          <% else %>
+            <%= link_to(new_user_registration_path) do %>
+            <button class="btn btn-success">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
+            </button>
+            <% end %>
+          <% end %>
   </div>
 </div>
 <div class="landing-footer">
