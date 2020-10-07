@@ -1,35 +1,76 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
+<% if user_signed_in? %>
+  <!-- Thats the navbar when the user is signed in -->
+  <div class="navbar bg-primary navbar-expand-sm navbar-light navbar-lewagon">
+    <%= link_to fmeas_path, class: "navbar-brand nav-link" do %>
+      <%= image_tag("logo/FMEAlite_logo.svg") %>
       <% end %>
-    </ul>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+
+
+          <div class="dropdown d-flex" style="width: 200px; justify-content: flex-end;">
+            <div class="nav-item active my-auto mr-3 nav-link">
+            <%= link_to(destroy_user_session_path, method: :delete, class: "btn-clean") do %>
+              <i class="fas fa-sign-out-alt text-white"></i>
+            <% end %>
+          </div>
+            <span class="btn-clean dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%=  avatar(current_user) %>
+            </span>
+            <div class="dropdown-menu" >
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+
+        <% else %>
+          <div class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
+          </div>
+          <div class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link text-white" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- Thats the navbar on the front page -->
+<% else %>
+  <div class="navbar bg-white navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="d-flex" style="justify-content: space-around; width: 100%;">
+      <div class="d-flex" style="justify-content: space-around;">
+        <%= link_to "/", class: "navbar-brand nav-link" do %>
+            <%= image_tag("logo/FMEAlite_logo.svg") %>
+        <% end %>
+        <h4 class="text-body my-auto">FMEA.lite</h4>
+      </div>
+
+      <div class="d-flex" style="justify-content: flex-start; width: 300px;">
+
+
+        <%= link_to(new_user_registration_path, class: "my-auto mr-4") do %>
+            <button class="btn btn-success ">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
+            </button>
+          <% end %>
+        <%= link_to "Login", new_user_session_path, class: "text-white btn btn-primary my-auto px-4" %>
+      </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
+
+  </div>
+<% end %>
+
+

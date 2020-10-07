@@ -10,3 +10,12 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.nav-link {
+  transition: all .2s ease-in-out;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  transform: scale(1.07);
+}
