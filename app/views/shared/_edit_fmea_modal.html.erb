@@ -12,6 +12,7 @@
       <div class="modal-body">
         <%= simple_form_for fmea do |f| %>
           <%= f.input :title, as: :string %>
+          <%= f.input :description, as: :text %>
           <div class="btn btn-success">
             <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>
