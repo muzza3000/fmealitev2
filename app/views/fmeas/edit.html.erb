@@ -1,1 +1,16 @@
 <%= render 'fmeas/edit_fmea/fmea_header', fmea: @fmea %>
+<div class="container">
+  <% @fmea.functions.each do |function| %>
+    <div class="one-function">
+      <div class="one-function-top">
+        <%= render "fmeas/edit_fmea/card_structure", element: function %>
+      </div>
+    <div class="failure-modes-structure">
+      <div class="fm-left"></div>
+      <% function.failure_modes.each do |failure_mode| %>
+      <%= render "fmeas/edit_fmea/failure_modes_structure", failure_mode: failure_mode %>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
