@@ -3,14 +3,15 @@
 <% element_icon_path = element.class.to_s.downcase %>
 
 <!-- Card HTML -->
-<div class="card-background">
+<div class="card-background" data-controller="clipboard">
   <div class="card-icon-box <%= element_class %>">
     <%= image_tag( "icons/#{element_icon_path}", class: "card-icon") %>
   </div>
-  <div class="element-description">
+  <div class="element-text" data-target="clipboard.source">
     <%= element.description %>
   </div>
   <div class="edit-card">
       <a data-toggle="modal" data-target="#editFmeaDetails" href="#"><i class="fas fa-pen"></i></a>
+      <a href="#" data-target="clipboard.copybutton" data-action="clipboard#copy" class="copy-button-hide"><i class="fas fa-copy"></i></a>
   </div>
 </div>
