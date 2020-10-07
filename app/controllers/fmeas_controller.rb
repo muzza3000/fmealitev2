@@ -18,6 +18,12 @@ class FmeasController < ApplicationController
     redirect_to edit_fmea_path(@fmea)
   end
 
+  def destroy
+    @fmea = Fmea.find(params["id"])
+    @fmea.destroy
+    redirect_to(fmeas_path)
+  end
+
   private
 
   def set_fmea
