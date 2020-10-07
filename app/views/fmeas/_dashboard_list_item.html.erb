@@ -32,10 +32,10 @@
     <%= button_to("#", method: :get, class: "btn-clean") do %>
       <i class='fas fa-share-alt icon'></i>
     <% end %>
-    <%= button_to("#", method: :get, class: "btn-clean") do %>
+    <%= button_to("#", method: :get, class: "btn-clean", data: {confirm: "Are you sure you want to delete the #{fmea.title}–FMEA?"} ) do %>
       <i class="fas fa-cloud-download-alt icon"></i>
     <% end %>
-    <%= button_to("#", method: :get, class: "btn-clean") do %>
+    <%= button_to(fmea_path(fmea), method: :delete, class: "btn-clean") do %>
       <i class="fas fa-trash icon"></i>
     <% end %>
     </div>
