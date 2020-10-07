@@ -1,25 +1,41 @@
-<!-- To start with, we have the little title bar on top with all the descriptions -->
+
+<!-- The Modal -->
+<%= render "create_fmea_modal" %>
+
+<!-- The 'body' the page -->
 <div class="container mt-4">
-  <div class="row">
-    <div class="col-1">
-        <div></div> <!-- This is where the avatar would go for all the FMEAs. -->
-    </div>
+     <!-- Here comes the 'Create New FMEA' - button which will open the modal-component -->
+  <div class="row mb-3">
+    <div class="col-9"></div>
     <div class="col-2">
-      <h6 class="text-secondary">Title</h6>
-    </div>
-    <div class="col-2">
-      <h6 class="text-secondary">Risk Matrix</h6>
-    </div>
-    <div class="col-2">
-      <h6 class="text-secondary">Last Updated Date</h6>
-    </div>
-    <div class="col-3">
-      <h6 class="text-secondary">Summary</h6>
-    </div>
-    <div class="col-2">
-      <h6 class="text-secondary">Actions</h6>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+        Create FMEA
+      </button>
     </div>
   </div>
+   <!-- To start with, we have the little title bar on top with all the descriptions -->
+   <% unless @fmeas.empty? %>
+    <div class="row">
+      <div class="col-1">
+          <div></div> <!-- This is where the avatar would go for all the FMEAs. -->
+      </div>
+      <div class="col-2">
+        <h6 class="text-secondary">Title</h6>
+      </div>
+      <div class="col-2">
+        <h6 class="text-secondary">Risk Matrix</h6>
+      </div>
+      <div class="col-2">
+        <h6 class="text-secondary">Last Updated Date</h6>
+      </div>
+      <div class="col-3">
+        <h6 class="text-secondary">Summary</h6>
+      </div>
+      <div class="col-2">
+        <h6 class="text-secondary">Actions</h6>
+      </div>
+    </div>
+  <% end %>
 
   <!-- Now, we insert all the individual fmeas -->
   <br>
@@ -29,3 +45,5 @@
   </div>
   <% end %>
 </div>
+
+
