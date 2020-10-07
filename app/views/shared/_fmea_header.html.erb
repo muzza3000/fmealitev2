@@ -8,7 +8,7 @@
     </div>
     <h2><span class="light-blue"><%= fmea_type_icon(fmea) %></span> <%= fmea.title %></h2>
     <p><small><span class="light-blue"><i class="fas fa-th"></i></span>  <%= fmea.risk_matrix.name %></small></p>
-    <p><%= fmea.description %></p>
+    <p><%= simple_format(fmea.description) %></p>
   </div>
   <div class="fmea-stats">
     <div class="fmea-stat">
