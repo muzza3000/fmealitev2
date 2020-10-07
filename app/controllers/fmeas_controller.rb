@@ -13,9 +13,12 @@ class FmeasController < ApplicationController
     @fmea = Fmea.new(fmea_params)
     @fmea.risk_matrix = RiskMatrix.first
     @fmea.fmea_type = "Design"
-    @fmea.save
-    raise
-    redirect_to(edit_fmea_path(@fmea))
+    if @fmea.save
+      redirect_to(edit_fmea_path(@fmea))
+    else
+      @fmeas = Fmea.all
+      render action: :index
+    end
   end
 
   def update
