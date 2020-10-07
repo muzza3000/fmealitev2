@@ -18,9 +18,13 @@ $header_height: 200px;
     align-items: center;
   }
 }
+.fmea-details-edit{
+  display: none;
+}
 .fmea-details {
   width: 60%;
   padding: 10px;
+  position: relative;
 
   h2 {
     color: $blue;
@@ -29,6 +33,17 @@ $header_height: 200px;
     color: $blue;
     padding: 0;
     margin: 0 0 5px 0;
+  }
+  &:hover > .fmea-details-edit{
+    position: absolute;
+    display: block;
+    padding: 10px;
+    right: 0;
+    top: 0;
+    opacity: 0.7;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 200;
   }
 }
 
