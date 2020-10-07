@@ -9,6 +9,7 @@ class FmeasController < ApplicationController
     @fmea = Fmea.new(fmea_params)
     @fmea.risk_matrix_id = RiskMatrix.create(scale: 10).id
     @fmea.save
+    redirect_to(edit_fmea_path(@fmea))
   end
 
   private
