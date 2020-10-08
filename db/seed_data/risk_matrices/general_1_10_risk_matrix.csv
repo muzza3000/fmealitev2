@@ -1,4 +1,4 @@
-﻿Name,General Example,
+﻿Name,Standard Risk Matrix (1-10),
 Rank,Severity,Occurrence
 1,None: No effect noticed by the customer. The failure will not have any perceptible effect on the customer.,"Remote: Failure is unlikely (< 1 in 1,500,000)"
 2,"Very Minor: Very minor effect, noticed by the discriminating customers. The failure will have little perceptible effect on the discriminating customers.","Low: Relatively few failures (1 in 150,000)"

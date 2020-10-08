@@ -50,16 +50,42 @@
   font-size: 12px;
 }
 
+.so-rating{
+  min-width: 46px;
+  height: 46px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: larger;
+  font-weight: 700;
+  background-color: rgba(black,0.05);
+}
+
+.rating-yellow {
+  color: $orange;
+}
+.rating-red {
+  color: $red;
+}
+.rating-green {
+  color: $green;
+}
+
 .function {
+  color: $blue;
   background-color: rgba($blue,0.1);
 }
 .failuremode {
+  color: $orange;
   background-color: rgba($orange,0.1);
 }
 .cause {
+  color: $red;
   background-color: rgba($red,0.1);
 }
 .effect {
+  color: $green;
   background-color: rgba($green,0.1);
 }
 
