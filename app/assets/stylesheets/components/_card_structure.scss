@@ -1,7 +1,8 @@
+
+
 .card-structure-top {
   height: 50px;
-  width: 100%;
-  border-left: 8px solid $gray-600;
+  border-left: 2px solid $line-color;
 }
 
 .card-structure-bottom {
@@ -9,35 +10,27 @@
   justify-content: flex-start;
 
 
-  .left {
+  .card-structure-bottom-left {
     display: flex;
     flex-direction: column;
 
     .left-top {
       width: 25px;
       height: 25px;
-      border-left: 8px solid $gray-600;
-      border-bottom: 8px solid $gray-600;
+      border-left: 2px solid $line-color;
+      border-bottom: 2px solid $line-color;
     }
 
     .left-bottom {
       flex: 1;
       width: 25px;
-      border-left: 8px solid $gray-600;
+      border-left: 2px solid $line-color;
     }
   }
 
-  .right {
+  .card-structure-bottom-right {
     min-height: 50px;
+    width: 100%;
   }
 }
 
-.card-structure-main:last-child {
-  .card-structure-bottom {
-    .left {
-      .left-bottom {
-        border: none;
-      }
-    }
-  }
-}
