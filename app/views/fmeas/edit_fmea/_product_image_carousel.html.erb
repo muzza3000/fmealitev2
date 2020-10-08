@@ -1,0 +1,31 @@
+<div id="carouselFMEA" class="carousel slide" data-ride="carousel" data-interval="false">
+  <!-- Carousel Indicators -->
+  <ol class="carousel-indicators">
+    <% fmea.images.each_with_index do |image, i| %>
+      <% css_class = i == 0 ? "active" : ""  %>
+      <li data-target="#carouselFMEA" data-slide-to="<%= i %>" class="<%= css_class %>"></li>
+    <% end %>
+  </ol>
+  <!-- Carousel Images -->
+  <div class="carousel-inner">
+    <% fmea.images.each_with_index do |image, i| %>
+      <% css_class = i == 0 ? "carousel-item active" : "carousel-item"  %>
+      <div class="<%= css_class %>">
+        <img class="d-block w-100" data-toggle="modal" data-target="#imageModal<%= i %>" src="<%= cl_image_path(image.key, width: 300, height: 300, crop: :fill) %>">
+      </div>
+    <% end %>
+  </div>
+  <!-- Bootstrap controls -->
+  <a class="carousel-control-prev" href="#carouselFMEA" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselFMEA" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- Render Image Modal Zoom -->
+<% fmea.images.each_with_index do |image, img_num| %>
+  <%= render "fmeas/edit_fmea/image_modal", fmea: fmea, img_num: img_num %>
+<% end %>

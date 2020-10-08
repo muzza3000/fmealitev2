@@ -11,5 +11,6 @@
   <%= render 'fmeas/edit_fmea/card_content', element: Effect.first %>
 </div>
 </div>
-
-<%= render ("fmeas/edit_fmea/add_cards") %>
+<div style="width:300px; height: 300px">
+  <%= render "fmeas/edit_fmea/product_image_carousel", fmea: Fmea.first %>
+</div>

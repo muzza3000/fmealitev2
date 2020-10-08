@@ -9,4 +9,8 @@ module FmeaHelper
       ('<i class="fas fa-drafting-compass"></i>').html_safe
     end
   end
+
+  def product_images?(fmea)
+    fmea.images.length == 0 ? false : true
+  end
 end
