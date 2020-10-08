@@ -1,3 +1,5 @@
+
+
 .card-structure-top {
   height: 50px;
   border-left: 2px solid $line-color;
@@ -8,7 +10,7 @@
   justify-content: flex-start;
 
 
-  .left {
+  .card-structure-bottom-left {
     display: flex;
     flex-direction: column;
 
@@ -26,9 +28,9 @@
     }
   }
 
-  .right {
+  .card-structure-bottom-right {
     min-height: 50px;
+    width: 100%;
   }
 }
-
 
