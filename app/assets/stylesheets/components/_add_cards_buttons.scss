@@ -1,0 +1,14 @@
+.all-add-cards-buttons {
+  width: 80px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+.add-card-button {
+  transition: all .2s ease-in-out;
+}
+
+.add-card-button:hover {
+  transform: scale(1.07);
+}

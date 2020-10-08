@@ -9,7 +9,7 @@ class FailureModesController < ApplicationController
 
   def create
     @failure_mode = FailureMode.create(failure_mode_params)
-    @function = Function.find(params["failure_mode"]["function_id"])
+    @function = Function.find(params["failure_mode"]["function_id"]) # Why so complicated? Because this was passed with the simple form using the hidden-value. It does not return the object straight up.
     @failure_mode.function = @function
     @fmea = @function.fmea
 

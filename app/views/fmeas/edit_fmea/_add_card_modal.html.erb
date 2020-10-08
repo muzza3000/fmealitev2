@@ -14,7 +14,7 @@
           <%= f.input :description, as: :text %>
           <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id } %>
           <div class="btn btn-success">
-            <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
+            <%= f.button :submit, remote: true, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <% end %>
