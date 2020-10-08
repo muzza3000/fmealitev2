@@ -1,6 +1,34 @@
 <div class="one-failure-mode">
+  <div class="one-failure-mode-left">
   <div class="fm-left"></div>
   <div class="fm-right">
-    <%= render "fmeas/edit_fmea/card_structure", element: failure_mode %>
+    <div class="fm-element">
+      <%= render "fmeas/edit_fmea/card_structure", element: failure_mode %>
+    </div>
+    <div class="causes-structure">
+      <div class="cause-left"></div>
+      <div class="cause-right">
+        <% failure_mode.causes.each do |cause| %>
+          <div class="one-cause">
+            <%= render "fmeas/edit_fmea/card_structure", element: cause %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="one-failure-mode-right">
+    <div class="effects-top"></div>
+    <div class="effects-bottom">
+      <div class="effects-bottom-left">
+        <div class="effects-bottom-left-top"></div>
+        <div class="effects-bottom-left-bottom"></div>
+      </div>
+      <div class="effects-bottom-right">
+        <% failure_mode.effects.each do |effect| %>
+          <%= render "fmeas/edit_fmea/card_content", element: effect %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

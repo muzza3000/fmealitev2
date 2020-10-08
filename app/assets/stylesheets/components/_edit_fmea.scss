@@ -16,6 +16,17 @@
   border: none;
 }
 
+.one-function-top {
+  width: 600px;
+}
+
+// ----------- Here comes the scss for the failure modes --------------
+
+.one-failure-mode {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .failure-modes-structure {
   .fm-left {
     width: 50px;
@@ -23,14 +34,75 @@
   }
 }
 
-.one-failure-mode {
+.fm-left {
+  min-width: 50px;
+}
+
+.fm-right {
+  flex-grow: 1;
+}
+
+.one-failure-mode-left {
+  display: flex;
+  justify-content: flex-start;
+  width: 600px;
+}
+
+
+.one-failure-mode:last-child {
+  .one-failure-mode-left {
+    .fm-right {
+      .fm-element {
+        .left-bottom {
+            border: none;
+        }
+      }
+    }
+  }
+}
+
+
+// ------------ Here is the scss for the causes -------------
+
+.causes-structure {
   display: flex;
   justify-content: flex-start;
 
 }
 
-.one-failure-mode:last-child .left-bottom {
+.cause-right {
+  flex-grow: 1;
+}
+
+.cause-left {
+  min-width: 50px;
+  border-left: 2px solid $line-color;
+}
+
+.one-failure-mode:last-child .cause-left {
   border: none;
+}
+
+
+.one-cause:last-child .left-bottom {
+  border: none;
+}
+
+// -------------- Here is the scss for the effects -----------------
+
+.effects-top {
+  min-height: 50px;
+}
+
+.effects-bottom {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.effects-bottom-left-top {
+  width: 50px;
+  height: 25px;
+  border-bottom: 2px solid $line-color;
 }
 
 

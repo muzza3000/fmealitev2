@@ -3,6 +3,7 @@
 }
 .card-background {
   min-height: 50px;
+  width: 100%;
   border-radius: 4px;
   box-shadow: 3px 3px 10px rgba(black, 0.2);
   background-color: white;
@@ -59,4 +60,8 @@
 }
 .effect {
   background-color: rgba($green,0.1);
+}
+
+.right {
+  width: 100%;
 }
