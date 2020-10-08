@@ -8,6 +8,18 @@ class FunctionsController < ApplicationController
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@function))
   end
 
+  def create
+    @function = Function.new(function_params)
+    @fmea = Fmea.first
+    @function.fmea = @fmea
+    if @function.save
+      redirect_to(edit_fmea_path(@fmea))
+    else
+      @fmea = Fmea.first
+      render action: :index
+    end
+  end
+
   private
 
   def set_function
@@ -15,6 +27,6 @@ class FunctionsController < ApplicationController
   end
 
   def function_params
-    params.require(:function).permit(:description)
+    params.require(:function).permit(:description, :fmea)
   end
 end

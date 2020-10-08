@@ -17,7 +17,8 @@
     </div>
   </div>
   </div>
-  <% unless failure_mode.effects.count <= 0 %>
+
+  <% unless failure_mode.effects.count == 0 %>
     <div class="one-failure-mode-right">
       <div class="effects-top"></div>
       <div class="effects-bottom">

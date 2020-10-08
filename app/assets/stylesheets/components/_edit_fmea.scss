@@ -1,5 +1,12 @@
+// This is the div which aligns the add-cards-buttons with the fmea-tree
 
-//----------- Here comes the scss for the functions --------------
+.all-editing-page-elements {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+// ---------------- Here comes the sccs for the functions ----------
 
 .one-function:last-child {
   .one-function-top {
