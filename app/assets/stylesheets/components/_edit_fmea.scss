@@ -1,3 +1,6 @@
+
+//----------- Here comes the scss for the functions --------------
+
 .one-function:last-child {
   .one-function-top {
     .card-structure-main {
@@ -17,7 +20,8 @@
 }
 
 .one-function-top {
-  width: 400px;
+  max-width: 500px;
+  min-width: 500px;
 }
 
 // ----------- Here comes the scss for the failure modes --------------
@@ -45,8 +49,8 @@
 .one-failure-mode-left {
   display: flex;
   justify-content: flex-start;
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 500px;
+  max-width: 500px;
 }
 
 
@@ -115,7 +119,82 @@
 }
 
 
+// ---------- Here come the media queries for the responsiveness of the site -------
 
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+   .one-function-top {
+    max-width: 150px;
+    min-width: 150px;
+  }
+
+  .one-failure-mode-left {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 150px;
+    max-width: 150px;
+  }
+
+  .effects-bottom-right {
+    display: none;
+  }
+}
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+   .one-function-top {
+    max-width: 340px;
+    min-width: 340px;
+  }
+
+  .one-failure-mode-left {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 340px;
+    max-width: 340px;
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .one-function-top {
+    max-width: 450px;
+    min-width: 450px;
+  }
+
+  .one-failure-mode-left {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 450px;
+    max-width: 450px;
+  }
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .one-function-top {
+    max-width: 550px;
+    min-width: 550px;
+  }
+
+  .one-failure-mode-left {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 550px;
+    max-width: 550px;
+  }
+}
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .one-function-top {
+    max-width: 650px;
+    min-width: 650px;
+  }
+
+  .one-failure-mode-left {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 650px;
+    max-width: 650px;
+  }
+}
 
 
 
