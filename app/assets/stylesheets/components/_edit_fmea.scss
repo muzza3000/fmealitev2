@@ -20,8 +20,7 @@
 }
 
 .one-function-top {
-  max-width: 500px;
-  min-width: 500px;
+  width: 500px;
 }
 
 // ----------- Here comes the scss for the failure modes --------------
@@ -43,14 +42,13 @@
 }
 
 .fm-right {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .one-failure-mode-left {
   display: flex;
   justify-content: flex-start;
-  min-width: 500px;
-  max-width: 500px;
+  width: 500px;
 }
 
 
@@ -76,7 +74,7 @@
 }
 
 .cause-right {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .cause-left {
@@ -96,7 +94,7 @@
 // -------------- Here is the scss for the effects -----------------
 
 .one-failure-mode-right {
-  flex-grow: 1;
+  width: 500px;
 }
 
 .effects-top {
@@ -109,7 +107,7 @@
 }
 
 .effects-bottom-right {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .effects-bottom-left-top {
@@ -121,78 +119,59 @@
 
 // ---------- Here come the media queries for the responsiveness of the site -------
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-   .one-function-top {
-    max-width: 150px;
-    min-width: 150px;
+// // Smallest device
+@media (min-width: 100px) and (max-width: 768px) {
+  $width: 150px;
+  .one-function-top {
+    width: 100%;
   }
-
   .one-failure-mode-left {
-    display: flex;
-    justify-content: flex-start;
-    min-width: 150px;
-    max-width: 150px;
+    min-width: 100%;
   }
-
+  .one-failure-mode-right {
+    display: none;
+  }
   .effects-bottom-right {
     display: none;
   }
 }
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-   .one-function-top {
-    max-width: 340px;
-    min-width: 340px;
-  }
-
-  .one-failure-mode-left {
-    display: flex;
-    justify-content: flex-start;
-    min-width: 340px;
-    max-width: 340px;
-  }
-}
-// Medium devices (tablets, 768px and up)
+// // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
+  $width: 360px;
   .one-function-top {
-    max-width: 450px;
-    min-width: 450px;
+    width: $width;
   }
-
   .one-failure-mode-left {
-    display: flex;
-    justify-content: flex-start;
-    min-width: 450px;
-    max-width: 450px;
+    width: $width;
+  }
+  .one-failure-mode-right {
+    width: $width - 25px;
   }
 }
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
+  $width: 480px;
   .one-function-top {
-    max-width: 550px;
-    min-width: 550px;
+    width: $width;
   }
-
   .one-failure-mode-left {
-    display: flex;
-    justify-content: flex-start;
-    min-width: 550px;
-    max-width: 550px;
+    width: $width;
+  }
+  .one-failure-mode-right {
+    width: $width - 25px;
   }
 }
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+  $width: 550px;
   .one-function-top {
-    max-width: 650px;
-    min-width: 650px;
+    width: $width;
   }
-
   .one-failure-mode-left {
-    display: flex;
-    justify-content: flex-start;
-    min-width: 650px;
-    max-width: 650px;
+    width: $width;
+  }
+  .one-failure-mode-right {
+    width: $width - 25px;
   }
 }
 
