@@ -1,0 +1,7 @@
+﻿Name,Standard Risk Matrix (1-5),
+Rank,Severity,Occurrence
+1,"Very Minor: Very minor effect, noticed by the discriminating customers. The failure will have little perceptible effect on the discriminating customers.","Low: Relatively few failures (1 in 150,000)"
+2,"Very Low: Very low effect, noticed by most customers. The failure will have some small perceptible effect on most customers.",Moderate: Occasional failures (1 in 2000)
+3,"Moderate: Primary product function is operational, but secondary functions are inoperable. Customer is moderately dissatisfied.",Moderate: Occasional failures (1 in 80)
+4,Very High: Primary product function is nonoperational but safe. Customer is very dissatisfied. ,High: Repeated failures (1 in 8)
+5,Hazard with no warning: Failure mode affects safe product operation and/or involves nonconformance with government regulation without warning. ,Very High: Failure is almost inevitable (> 1 in 2)

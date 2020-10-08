@@ -3,14 +3,24 @@
 <% element_icon_path = element.class.to_s.downcase %>
 
 <!-- Card HTML -->
-<div class="card-background">
+<div class="card-background" data-controller="clipboard">
   <div class="card-icon-box <%= element_class %>">
     <%= image_tag( "icons/#{element_icon_path}", class: "card-icon") %>
   </div>
-  <div class="element-description">
+  <div class="element-text" data-target="clipboard.source">
     <%= element.description %>
   </div>
+  <!-- If card is cause or effect show sev/occ rating -->
+
+  <div class="<%= "so-rating #{rating_color(element)}" if show_rating(element) %>">
+    <%= rating(element) %>
+  </div>
+  <!-- /rating -->
   <div class="edit-card">
-      <a data-toggle="modal" data-target="#editFmeaDetails" href="#"><i class="fas fa-pen"></i></a>
+      <a data-toggle="modal" data-target=<%="#edit#{element.class.to_s}#{element.id}Description"%> href="#"><i class="fas fa-pen"></i></a>
+      <a href="#" data-target="clipboard.copybutton" data-action="clipboard#copy" class="copy-button-hide"><i class="fas fa-copy"></i></a>
   </div>
 </div>
+
+<!-- Edit Modal -->
+<%= render "fmeas/edit_fmea/edit_description_modal", element: element %>
