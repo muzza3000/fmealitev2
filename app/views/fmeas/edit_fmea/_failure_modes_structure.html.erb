@@ -17,18 +17,20 @@
     </div>
   </div>
   </div>
-  <div class="one-failure-mode-right">
-    <div class="effects-top"></div>
-    <div class="effects-bottom">
-      <div class="effects-bottom-left">
-        <div class="effects-bottom-left-top"></div>
-        <div class="effects-bottom-left-bottom"></div>
-      </div>
-      <div class="effects-bottom-right">
-        <% failure_mode.effects.each do |effect| %>
-          <%= render "fmeas/edit_fmea/card_content", element: effect %>
-        <% end %>
+  <% unless failure_mode.effects.count == 0 %>
+    <div class="one-failure-mode-right">
+      <div class="effects-top"></div>
+      <div class="effects-bottom">
+        <div class="effects-bottom-left">
+          <div class="effects-bottom-left-top"></div>
+          <div class="effects-bottom-left-bottom"></div>
+        </div>
+        <div class="effects-bottom-right">
+          <% failure_mode.effects.each do |effect| %>
+            <%= render "fmeas/edit_fmea/card_content", element: effect %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
