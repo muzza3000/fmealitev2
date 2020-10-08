@@ -17,9 +17,9 @@ module CardContentHelper
   end
 
   def rating_color(element)
-    if rating(element) < (0.35 * range(element))
+    if rating(element) <= (0.4 * range(element))
       "rating-green"
-    elsif rating(element) < (0.75 * range(element))
+    elsif rating(element) <= (0.8 * range(element))
       "rating-yellow"
     else
       "rating-red"
