@@ -7,6 +7,13 @@ class FunctionsController < ApplicationController
     redirect_to edit_fmea_path(@fmea)
   end
 
+  def create
+    @function = Function.new(function_params)
+    @function.fmea = Fmea.first
+    if @function.save
+      render
+  end
+
   private
 
   def set_function
@@ -14,6 +21,6 @@ class FunctionsController < ApplicationController
   end
 
   def function_params
-    params.require(:function).permit(:description)
+    params.require(:function).permit(:description, :fmea)
   end
 end
