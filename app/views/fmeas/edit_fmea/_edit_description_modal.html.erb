@@ -12,7 +12,7 @@
       <!-- Modal body -->
       <div class="modal-body">
 
-        <%= simple_form_for element do |f| %>
+        <%= simple_form_for(element, remote: true) do |f| %>
 
           <%= f.input :description, as: :text %>
 
