@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module Fmealite
   class Application < Rails::Application
+    # Means forms work with JavaScript enabled or disabled.
+    # Copied from lectures.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+
     config.generators do |generate|
       generate.assets false
       generate.helper false

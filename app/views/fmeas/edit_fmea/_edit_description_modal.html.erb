@@ -12,15 +12,15 @@
       <!-- Modal body -->
       <div class="modal-body">
 
-        <%= simple_form_for element do |f| %>
+        <%= simple_form_for(element, remote: true) do |f| %>
 
           <%= f.input :description, as: :text %>
 
           <% if element.class.to_s.downcase == "effect" %>
-            <%= f.input :severity, as: :integer %>
+            <%= f.input :severity, {collection: (1..rating_scale(element)).to_a} %>
           <% end %>
           <% if element.class.to_s.downcase == "cause" %>
-            <%= f.input :occurrence, as: :integer %>
+            <%= f.input :occurrence, {collection: (1..rating_scale(element)).to_a} %>
           <% end %>
 
           <div class="btn btn-success">

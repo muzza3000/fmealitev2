@@ -29,4 +29,8 @@ module CardContentHelper
   def rating_scale(element)
     element.failure_mode.function.fmea.risk_matrix.scale
   end
+
+  def card_id(element)
+    "#{element.class.to_s.downcase}-#{element.id}"
+  end
 end
