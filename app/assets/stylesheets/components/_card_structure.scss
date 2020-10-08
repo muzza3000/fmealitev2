@@ -1,7 +1,7 @@
 .card-structure-top {
   height: 50px;
   width: 100%;
-  border-left: 8px solid $gray-600;
+  border-left: 2px solid $line-color;
 }
 
 .card-structure-bottom {
@@ -16,14 +16,14 @@
     .left-top {
       width: 25px;
       height: 25px;
-      border-left: 8px solid $gray-600;
-      border-bottom: 8px solid $gray-600;
+      border-left: 2px solid $line-color;
+      border-bottom: 2px solid $line-color;
     }
 
     .left-bottom {
       flex: 1;
       width: 25px;
-      border-left: 8px solid $gray-600;
+      border-left: 2px solid $line-color;
     }
   }
 
