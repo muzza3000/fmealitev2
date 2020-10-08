@@ -14,8 +14,10 @@ puts "--> Successfully removed all old data"
 
 def create_users
   file = File.join(Rails.root, 'db', 'seed_data','users', '/users.csv')
+  i = 0
   CSV.foreach(file) do |row|
-    User.create(first_name: row[0], last_name: row[1], email: row[2], password: row[3], color: row[4])
+    User.create(first_name: row[0], last_name: row[1], email: row[2], password: row[3], color: row[4]) unless i == 0
+    i += 1
   end
 end
 
