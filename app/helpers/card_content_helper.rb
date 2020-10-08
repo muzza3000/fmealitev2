@@ -17,16 +17,16 @@ module CardContentHelper
   end
 
   def rating_color(element)
-    if rating(element) <= (0.4 * range(element))
+    if rating(element) <= (0.4 * rating_scale(element))
       "rating-green"
-    elsif rating(element) <= (0.8 * range(element))
+    elsif rating(element) <= (0.8 * rating_scale(element))
       "rating-yellow"
     else
       "rating-red"
     end
   end
 
-  def range(element)
+  def rating_scale(element)
     element.failure_mode.function.fmea.risk_matrix.scale
   end
 end
