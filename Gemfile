@@ -30,6 +30,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+# Allows forms to render errors when sending and receiving with ajax
+gem 'turbolinks_render'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
