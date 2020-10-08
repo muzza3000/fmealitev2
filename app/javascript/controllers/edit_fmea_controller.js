@@ -12,11 +12,18 @@ export default class extends Controller {
 
 
   select() {
+    console.log("the funtion is called")
+    let fmeaFunction = event.currentTarget
+    if (!(fmeaFunction.classList.contains("selected-function"))) {
+      fmeaFunction.classList.add("selected-function");
+    } else {
+      fmeaFunction.classList.remove("selected-function");
+    };
     const FmeaFunctions = this.functionTargets
     FmeaFunctions.forEach ((f) => {
+      if (f !== fmeaFunction) {
       f.classList.remove("selected-function");
+      };
     });
-    let fmeaFunction = event.currentTarget
-    fmeaFunction.classList.toggle("selected-function")
-  }
-}
+  };
+};
