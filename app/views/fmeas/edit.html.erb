@@ -6,7 +6,7 @@
     </div>
     <div>
       <% @fmea.functions.each do |function| %>
-        <div class="one-function">
+        <div class="one-function" data-target="one-function">
           <div class="one-function-top">
             <%= render "fmeas/edit_fmea/card_structure", element: function %>
           </div>

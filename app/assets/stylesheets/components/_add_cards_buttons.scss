@@ -12,3 +12,10 @@
 .add-card-button:hover {
   transform: scale(1.07);
 }
+
+// -------- Here come the select-classes for the cards(function, fm, cause, effect)
+
+.selected-function {
+  border: 4px solid $blue;
+  border-radius: 2px;
+}
