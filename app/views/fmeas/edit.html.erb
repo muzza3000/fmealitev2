@@ -1,4 +1,5 @@
 <%= render 'fmeas/edit_fmea/fmea_header', fmea: @fmea %>
+<%= render 'fmeas/edit_fmea/add_cards', fmea: @fmea  %>
 <div class="container">
   <% @fmea.functions.each do |function| %>
     <div class="one-function">

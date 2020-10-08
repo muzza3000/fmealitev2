@@ -7,6 +7,20 @@ class FailureModesController < ApplicationController
     redirect_to edit_fmea_path(@fmea)
   end
 
+  def create
+    @failure_mode = FailureMode.create(failure_mode_params)
+    @function = Function.find(params["failure_mode"]["function_id"])
+    @failure_mode.function = @function
+    @fmea = @function.fmea
+
+    if @failure_mode.save
+      redirect_to(edit_fmea_path(@fmea))
+    else
+      @fmeas = Fmea.all
+      render action: :index
+    end
+  end
+
   private
 
   def set_failure_mode
@@ -14,6 +28,6 @@ class FailureModesController < ApplicationController
   end
 
   def failure_mode_params
-    params.require(:failure_mode).permit(:description)
+    params.require(:failure_mode).permit(:description, :function_id)
   end
 end

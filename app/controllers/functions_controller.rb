@@ -9,9 +9,14 @@ class FunctionsController < ApplicationController
 
   def create
     @function = Function.new(function_params)
-    @function.fmea = Fmea.first
+    @fmea = Fmea.first
+    @function.fmea = @fmea
     if @function.save
-      render
+      redirect_to(edit_fmea_path(@fmea))
+    else
+      @fmea = Fmea.first
+      render action: :index
+    end
   end
 
   private

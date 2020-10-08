@@ -1,17 +1,18 @@
-<div class="modal fade" id="addFunction">
+<div class="modal fade" id=<%= "add#{element.class.name}"%>>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h3 class="modal-title">Add a function</h3>
+        <h3 class="modal-title">Add a <%= element.class.name %></h3>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= simple_form_for function do |f| %>
+        <%= simple_form_for element do |f| %>
           <%= f.input :description, as: :text %>
+          <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id } %>
           <div class="btn btn-success">
             <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>
