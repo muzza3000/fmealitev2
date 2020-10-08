@@ -1,10 +1,11 @@
 class FailureModesController < ApplicationController
+  include CardContentHelper
   before_action :set_failure_mode, only: [:update]
 
   def update
     @failure_mode.update(failure_mode_params)
     @fmea = @failure_mode.function.fmea
-    redirect_to edit_fmea_path(@fmea)
+    redirect_to edit_fmea_path(@fmea, anchor: card_id(@failure_mode))
   end
 
   def create

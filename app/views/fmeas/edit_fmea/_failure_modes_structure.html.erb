@@ -17,6 +17,7 @@
     </div>
   </div>
   </div>
+
   <% unless failure_mode.effects.count == 0 %>
     <div class="one-failure-mode-right">
       <div class="effects-top"></div>
@@ -26,7 +27,12 @@
           <div class="effects-bottom-left-bottom"></div>
         </div>
         <div class="effects-bottom-right">
+          <% counter = 0 %>
           <% failure_mode.effects.each do |effect| %>
+            <% counter += 1 %>
+            <% if counter > 1 %>
+              <div style="height: 10px;"></div>
+            <% end %>
             <%= render "fmeas/edit_fmea/card_content", element: effect %>
           <% end %>
         </div>

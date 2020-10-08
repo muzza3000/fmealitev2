@@ -27,7 +27,7 @@
 }
 
 .one-function-top {
-  width: 400px;
+  width: 500px;
 }
 
 // ----------- Here comes the scss for the failure modes --------------
@@ -49,14 +49,13 @@
 }
 
 .fm-right {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .one-failure-mode-left {
   display: flex;
   justify-content: flex-start;
-  min-width: 400px;
-  max-width: 400px;
+  width: 500px;
 }
 
 
@@ -82,7 +81,7 @@
 }
 
 .cause-right {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .cause-left {
@@ -102,7 +101,7 @@
 // -------------- Here is the scss for the effects -----------------
 
 .one-failure-mode-right {
-  flex-grow: 1;
+  width: 500px;
 }
 
 .effects-top {
@@ -115,7 +114,7 @@
 }
 
 .effects-bottom-right {
-  flex-grow: 1;
+  width: 100%;
 }
 
 .effects-bottom-left-top {
@@ -125,7 +124,63 @@
 }
 
 
+// ---------- Here come the media queries for the responsiveness of the site -------
 
+// // Smallest device
+@media (min-width: 100px) and (max-width: 768px) {
+  $width: 150px;
+  .one-function-top {
+    width: 100%;
+  }
+  .one-failure-mode-left {
+    min-width: 100%;
+  }
+  .one-failure-mode-right {
+    display: none;
+  }
+  .effects-bottom-right {
+    display: none;
+  }
+}
+// // Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  $width: 360px;
+  .one-function-top {
+    width: $width;
+  }
+  .one-failure-mode-left {
+    width: $width;
+  }
+  .one-failure-mode-right {
+    width: $width - 25px;
+  }
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  $width: 480px;
+  .one-function-top {
+    width: $width;
+  }
+  .one-failure-mode-left {
+    width: $width;
+  }
+  .one-failure-mode-right {
+    width: $width - 25px;
+  }
+}
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  $width: 550px;
+  .one-function-top {
+    width: $width;
+  }
+  .one-failure-mode-left {
+    width: $width;
+  }
+  .one-failure-mode-right {
+    width: $width - 25px;
+  }
+}
 
 
 
