@@ -7,13 +7,16 @@
   <div class="add-card-button" >
     <a  data-toggle="modal" data-target="#addFunction" href="#"><%= image_tag("icons/add_function") %></a>
   </div>
-  <div class="add-card-button" >
+  <div class="add-card-button hidden-button" id="add-failure-mode" >
     <a data-toggle="modal" data-target="#addFailureMode" href="#"><%= image_tag("icons/add_failure_mode") %></a>
   </div>
 </div>
-<!-- <div>
-  <a data-toggle="modal" data-target="#addCause" href="#"><%=  image_tag("icons/add_cause") %></a>
+<div class="add-card-button hidden-button" id="add-cause">
+  <a data-target="#addCause" href="#"><%=  image_tag("icons/add_cause") %></a>
 </div>
+<!-- Make sure to remember to insert the data-toggle="modal" again on the cause-element above! -->
+
+<!--
 <div>
   <a data-toggle="modal" data-target="#addEffect" href="#"><%= image_tag("icons/add_effect") %></a>
 </div> -->
