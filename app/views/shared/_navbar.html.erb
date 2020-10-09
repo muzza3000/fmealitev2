@@ -25,9 +25,10 @@
               <%=  avatar(current_user) %>
             </span>
             <div class="dropdown-menu" >
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="/">Home</a>
+              <!-- <a class="dropdown-item" href="#">Dashboard</a> -->
+              <%= link_to("Dashboard", fmeas_path, class: "dropdown-item") %>
+              <a class="dropdown-item" href="#">Account Settings</a>
             </div>
           </div>
 
