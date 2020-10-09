@@ -16,7 +16,7 @@ def create_users
   file = File.join(Rails.root, 'db', 'seed_data','users', '/users.csv')
   i = 0
   CSV.foreach(file) do |row|
-    User.create(first_name: row[0], last_name: row[1], email: row[2], password: row[3], color: row[4]) unless i == 0
+    User.create!(first_name: row[0], last_name: row[1], email: row[2], password: row[3], color: row[4]) unless i == 0
     i += 1
   end
 end
@@ -45,7 +45,7 @@ def read_risk_matrix
       risk_matrix.scale = i
       i += 1
     end
-    risk_matrix.save
+    risk_matrix.save!
   end
 end
 
@@ -69,12 +69,25 @@ def read_fmea
       end
 
       # read the following from the csv files
-      function = Function.create(description: row[1], fmea: fmea) if row[0] == "function"
-      failure_mode = FailureMode.create(description: row[1], function: Function.last) if row[0] == "failure_mode"
-      effect = Effect.create(description: row[1], severity: row[2], failure_mode: FailureMode.last) if row[0] == "effect"
-      cause = Cause.create(description: row[1], occurrence: row[2], failure_mode: FailureMode.last) if row[0] == "cause"
-      action = Action.create(description: row[1], deadline: Date::strptime(row[3], "%d/%m/%y"), status: row[4], followup: row[5], cause: Cause.last, user: User.first) if row[0] == "action"
+      function = Function.create!(description: row[1], fmea: fmea) if row[0] == "function"
+      failure_mode = FailureMode.create!(description: row[1], function: Function.last) if row[0] == "failure_mode"
+      effect = Effect.create!(description: row[1], severity: row[2], failure_mode: FailureMode.last) if row[0] == "effect"
+      cause = Cause.create!(description: row[1], occurrence: row[2], failure_mode: FailureMode.last) if row[0] == "cause"
+      action = Action.create!(description: row[1], deadline: Date::strptime(row[3], "%d/%m/%y"), status: row[4], followup: row[5], cause: Cause.last, user: User.first) if row[0] == "action"
     end
+
+    # Add images to the newly created fmea
+    folder_name = fmea.title.downcase.gsub(/\W/, '_') + "_fmea"
+    images = File.join(Rails.root, 'db', 'seed_data', 'images', folder_name, '/*')
+
+    image_array = Dir.glob(images).sort_by { |img| img[/(\d)\./] }
+
+    image_array.each_with_index do |image, i|
+      image_file = File.open(image)
+      fmea.images.attach(io: image_file, filename: i.to_s)
+      puts "--> Image #{image} attached for #{fmea.title}!"
+    end
+
   end
 end
 
