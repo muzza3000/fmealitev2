@@ -1,20 +1,12 @@
-const sameType = (elements, element) => {
-  let sameTypeAll = []
-  elements.forEach((compareElement) => {
-    if (element.dataset.cardType === compareElement.dataset.cardType) {
-      sameTypeAll.push(compareElement);
-    };
-  });
-  return sameTypeAll;
-}
-
 const toggleClass = (elements, element, cardType) => {
   element.classList.toggle(`selected-${cardType}`);
+  console.log(element.dataset.cardIndex);
   elements.forEach((e) => {
-    if(e.dataset.id !== element.dataset.id) {
-      e.classList.remove(`selected-${cardType}`);
+    if(e.dataset.cardIndex !== element.dataset.cardIndex) {
+      console.log("i work");
+      e.classList.remove(`selected-${e.dataset.cardType}`);
     };
   });
 }
 
-export { toggleClass, sameType }
+export { toggleClass }

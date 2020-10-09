@@ -12,8 +12,7 @@
       <div class="cause-right">
         <% failure_mode.causes.each do |cause| %>
           <div class="one-cause">
-            <% index += 1 %>
-            <%= render "fmeas/edit_fmea/card_structure", element: cause, index: index %>
+            <%= render "fmeas/edit_fmea/card_structure", element: cause, index: $index %>
           </div>
         <% end %>
       </div>
