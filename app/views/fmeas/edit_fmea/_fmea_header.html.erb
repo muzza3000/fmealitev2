@@ -1,6 +1,10 @@
 <div class="fmea-header">
-  <div class="fmea-product-image" data-target="clipboard.fold">
-    <i class="fas fa-file-upload"></i>
+  <div class="fmea-product-image">
+    <% if product_images?(fmea) %>
+      <%= render "fmeas/edit_fmea/product_image_carousel", fmea: fmea %>
+    <% else %>
+      <i class="fas fa-file-upload"></i>
+    <% end  %>
   </div>
   <div class="fmea-details">
     <div class="fmea-details-edit">

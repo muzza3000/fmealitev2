@@ -1,0 +1,17 @@
+<!-- Image Modal must contain image id -->
+<div class="modal fade" id="imageModal<%= img_num %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Body-->
+      <div class="modal-body mb-0 p-0">
+        <img style="border-radius: 10px 10px 0 0; width: 100%" src="<%= cl_image_path(fmea.images[img_num].key) %>">
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

@@ -7,6 +7,9 @@ class Fmea < ApplicationRecord
   has_many :causes, through: :failure_modes
   has_many :actions, through: :causes
 
+  # Fmea  will have many attached images
+  has_many_attached :images
+
   validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :fmea_type, inclusion: { in: %w(Design System Process), message: "%{value} is not 'Design', 'System' or 'Process'" }
 end

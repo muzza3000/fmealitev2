@@ -39,6 +39,6 @@ class FmeasController < ApplicationController
   end
 
   def fmea_params
-    params.require(:fmea).permit(:title, :risk_matrix, :description)
+    params.require(:fmea).permit(:title, :risk_matrix, :description, images: [])
   end
 end
