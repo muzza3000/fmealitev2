@@ -1,0 +1,15 @@
+﻿FMEA Name,Road Bike,,,,
+FMEA Description,"The speedway 3000x is due to go into production in July-2021. 
+The bike is aimed at high-salary city bankers who ride approximately once per week, but want the latest and lightest equipment to show off to their friends",,,,
+FMEA _Type,Design,,,,
+Risk Matrix ,Standard Risk Matrix (1-10),,,,
+Type,Description,Rating,deadline,status,followup
+function,Must be very lightweight < 7Kg,,,,
+failure_mode,Total weight of the bike exceeds the target by more than 10%,,,,
+effect,Minor detriment to the success of the product,3,,,
+cause,Carbon fibre frame from Xcarbs exceeds predicted weight in their mfg spec (they have let us down in the past),4,,,
+cause,New hydraulic brakes are heavier than those used on the 2000x,4,,,
+failure_mode,Total weight of the bike is 30% more than the target,,,,
+effect,Major detriment to the success of the product,8,,,
+cause,Carbon fibre frame from Xcarbs exceeds predicted weight in their mfg spec (they have let us down in the past),1,,,
+cause,New hydraulic brakes are heavier than those used on the 2000x,1,,,
