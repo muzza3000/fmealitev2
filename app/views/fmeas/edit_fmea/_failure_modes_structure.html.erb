@@ -1,16 +1,19 @@
+<%= puts "fm is here" %>
+<%= puts index %>
 <div class="one-failure-mode">
   <div class="one-failure-mode-left">
   <div class="fm-left"></div>
   <div class="fm-right">
     <div class="fm-element">
-      <%= render "fmeas/edit_fmea/card_structure", element: failure_mode %>
+      <%= render "fmeas/edit_fmea/card_structure", element: failure_mode, index: index %>
     </div>
     <div class="causes-structure">
       <div class="cause-left"></div>
       <div class="cause-right">
         <% failure_mode.causes.each do |cause| %>
           <div class="one-cause">
-            <%= render "fmeas/edit_fmea/card_structure", element: cause %>
+            <% index += 1 %>
+            <%= render "fmeas/edit_fmea/card_structure", element: cause, index: index %>
           </div>
         <% end %>
       </div>

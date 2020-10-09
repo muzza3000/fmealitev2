@@ -1,18 +1,19 @@
 <%= render 'fmeas/edit_fmea/fmea_header', fmea: @fmea %>
-<div class="container" data-controller="edit-fmea">
+<div class="container" data-controller="edit-fmea" data-controller-index="">
   <div class="all-editing-page-elements">
     <div>
       <%= render 'fmeas/edit_fmea/add_cards', fmea: @fmea %>
     </div>
     <div>
+      <% $index = 0 %>
       <% @fmea.functions.each do |function| %>
         <div class="one-function" data-target="one-function">
           <div class="one-function-top">
-            <%= render "fmeas/edit_fmea/card_structure", element: function %>
+            <%= render "fmeas/edit_fmea/card_structure", element: function, index: $index %>
           </div>
         <div class="failure-modes-structure">
           <% function.failure_modes.each do |failure_mode| %>
-          <%= render "fmeas/edit_fmea/failure_modes_structure", failure_mode: failure_mode %>
+          <%= render "fmeas/edit_fmea/failure_modes_structure", failure_mode: failure_mode, index: $index %>
         <% end %>
         </div>
       </div>
