@@ -12,3 +12,24 @@
 .add-card-button:hover {
   transform: scale(1.07);
 }
+
+// -------- Here come the select-classes for the cards(function, fm, cause, effect)
+
+.selected-function {
+  border: 2px solid $blue;
+  border-radius: 2px;
+}
+
+.selected-failuremode {
+  border: 2px solid $orange;
+  border-radius: 2px;
+}
+
+.selected-cause {
+  border: 2px solid $red;
+  border-radius: 2px;
+}
+
+.hidden-button {
+  display: none;
+}
