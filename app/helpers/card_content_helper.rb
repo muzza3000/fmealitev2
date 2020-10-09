@@ -33,4 +33,12 @@ module CardContentHelper
   def card_id(element)
     "#{element.class.to_s.downcase}-#{element.id}"
   end
+
+  def placeholder_text(element, belong)
+    if element.class.to_s.downcase == "function"
+      "Think what is #{belong.fmea_type.downcase} meant to do..."
+    else
+      ""
+    end
+  end
 end
