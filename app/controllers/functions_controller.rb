@@ -13,7 +13,7 @@ class FunctionsController < ApplicationController
     @fmea = Fmea.find(params["function"]["fmea_id"])
     @function.fmea = @fmea
     if @function.save
-      redirect_to(edit_fmea_path(@fmea))
+      redirect_to edit_fmea_path(@fmea, anchor: card_id(@function))
     else
       @fmea = Fmea.first
       render action: :index
