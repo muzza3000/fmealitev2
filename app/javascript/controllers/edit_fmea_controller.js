@@ -11,9 +11,9 @@ export default class extends Controller {
 
   select() {
     const element = event.currentTarget;
-    console.log(element.dataset.cardIndex)
     const allElements = this.cardTargets;
     const cardType = element.dataset.cardType;
-    toggleClass(allElements, element, cardType)
+    const childrenCount = element.dataset.childrenCount
+    toggleClass(allElements, element, cardType, childrenCount)
   };
 };
