@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { toggleClass } from "helpers/index"
 
 export default class extends Controller {
-  static targets = ["card", "failuremode", "cause"]
+  static targets = ["card", "failuremodeForm", "causeForm", "effectForm"]
 
   initialize() {
     const selectedItemType = this.data.get("selected-item-type")
@@ -10,23 +10,22 @@ export default class extends Controller {
   }
 
   connect() {
-    // if statement to only display copy button if browser
-    // support the action
+    console.log("--> edit fmea controller connected")
    }
 
    createFailureMode () {
-    // need to set the right id as the value in the modal form
-    this.failuremodeTarget.value = this.selectedItemId;
+    // need to overwrite the id of the parent element in the modal form with the correct value
+    this.failuremodeFormTarget.value = this.selectedItemId;
   }
 
    createCause () {
-    // need to set the right id as the value in the modal form
-    this.causeTarget.value = this.selectedItemId;
+    // need to overwrite the id of the parent element in the modal form with the correct value
+    this.causeFormTarget.value = this.selectedItemId;
   }
 
    createEffect () {
-    // need to set the right id as the value in the modal form
-    this.effectTarget.value = this.selectedItemId;
+    // need to overwrite the id of the parent element in the modal form with the correct value
+    this.effectFormTarget.value = this.selectedItemId;
   }
 
   select() {

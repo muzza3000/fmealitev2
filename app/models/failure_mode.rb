@@ -4,6 +4,10 @@ class FailureMode < ApplicationRecord
   has_many :causes, dependent: :destroy
   validates :description, presence: true
 
+  def parent
+    self.function
+  end
+
   # This method for the selection-highlighting in the edit_fmea-page
   def amount_of_children
     all_causes = Cause.where("failure_mode_id = #{self.id}")

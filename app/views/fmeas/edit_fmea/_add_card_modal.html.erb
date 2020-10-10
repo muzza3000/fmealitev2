@@ -10,25 +10,15 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= simple_form_for element do |f| %>
-          <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element, belong) } %>
-          <%# hidden form field to communicate to controller what the parent fmea is %>
-          <%= f.input "failure_mode_id", as: :hidden, :input_html => { value: belong.id, :data => {:target => "edit-fmea.#{element.class.to_s.downcase}"} } %>
+        <%= simple_form_for(element, remote: true) do |f| %>
+          <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element) } %>
 
-<!--
-<div class="form-group hidden function_fmea_id">
-<input class="form-control hidden" value="21" data-target="edit-fmea.function" type="hidden" name="function[fmea_id]" id="function_fmea_id">
-</div>
-<div class="form-group hidden failure_mode_function_id">
-<input class="form-control hidden" value="58" data-target="edit-fmea.failuremode" type="hidden" name="failure_mode[function_id]" id="failure_mode_function_id">
-</div>
-<div class="form-group hidden failure_mode_function_id">
-<input class="form-control hidden" value="{parent_id}" data-target="edit-fmea.failuremode" type="hidden" name="undefined" id="failure_mode_function_id">
-</div>
--->
+          <%# hidden form field to communicate to controller what the parent fmea/function/failure_mode/cause is %>
+          <%# edit_fmea js controller will overwrite the value for the function/failure_mode/cause %>
+          <%= f.input "#{element.parent.model_name.param_key}_id", as: :hidden, :input_html => { value: element.parent.id, :data => {:target => "edit-fmea.#{element.class.to_s.downcase}Form"} } %>
 
           <div class="btn btn-success">
-            <%= f.button :submit, remote: true, class: "btn-clean", data: {dismiss: :dismiss} %>
+            <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <% end %>
