@@ -6,4 +6,8 @@ class Cause < ApplicationRecord
   def amount_of_children
     return 0
   end
+
+  def id_of_parent
+    self.failure_mode_id
+  end
 end
