@@ -7,8 +7,8 @@
   <div class="add-card-button" >
     <a  data-toggle="modal" data-target="#addFunction" href="#"><%= image_tag("icons/add_function.svg") %></a>
   </div>
-  <div class="add-card-button hidden-button" id="add-failure-mode" >
-    <a data-toggle="modal" data-target="#addFailureMode" href="#"><%= image_tag("icons/add_failure_mode.svg") %></a>
+  <div class="add-card-button" id="add-failure-mode" >
+    <a data-toggle="modal" data-target="#addFailureMode" data-action="click->edit-fmea#createFailureMode" href="#"><%= image_tag("icons/add_failure_mode.svg") %></a>
   </div>
 </div>
 <div class="add-card-button hidden-button" id="add-cause">

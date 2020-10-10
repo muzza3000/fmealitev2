@@ -1,7 +1,7 @@
 const toggleClass = (elements, element, cardType, childrenCount) => {
   // Here, we put the border-property on the selected element
   element.classList.toggle(`selected-${cardType}`);
-  console.log(element.dataset.cardIndex);
+  // console.log(element.dataset.cardIndex);
   elements.forEach((e) => {
     if(e.dataset.cardIndex !== element.dataset.cardIndex) {
       e.classList.remove(`selected-${e.dataset.cardType}`);
@@ -29,7 +29,7 @@ const toggleClass = (elements, element, cardType, childrenCount) => {
   } else {
       elements.forEach((e) => {
         e.classList.remove("disselected");
-        console.log(e)
+        // console.log(e)
         if(!(childrenIndeces.includes(parseInt(e.dataset.cardIndex, 10)))) {
           e.classList.add("disselected");
         };

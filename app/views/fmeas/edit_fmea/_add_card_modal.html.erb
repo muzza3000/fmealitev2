@@ -12,9 +12,20 @@
       <div class="modal-body">
         <%= simple_form_for element do |f| %>
           <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element, belong) } %>
-
           <%# hidden form field to communicate to controller what the parent fmea is %>
-          <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id } %>
+          <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id, :data => {:target => "edit-fmea.#{element.class.to_s.downcase}"} } %>
+
+<!--
+<div class="form-group hidden function_fmea_id">
+<input class="form-control hidden" value="21" data-target="edit-fmea.function" type="hidden" name="function[fmea_id]" id="function_fmea_id">
+</div>
+<div class="form-group hidden failure_mode_function_id">
+<input class="form-control hidden" value="58" data-target="edit-fmea.failuremode" type="hidden" name="failure_mode[function_id]" id="failure_mode_function_id">
+</div>
+<div class="form-group hidden failure_mode_function_id">
+<input class="form-control hidden" value="{parent_id}" data-target="edit-fmea.failuremode" type="hidden" name="undefined" id="failure_mode_function_id">
+</div>
+-->
 
           <div class="btn btn-success">
             <%= f.button :submit, remote: true, class: "btn-clean", data: {dismiss: :dismiss} %>
