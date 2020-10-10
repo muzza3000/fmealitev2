@@ -5,7 +5,8 @@ class FailureModesController < ApplicationController
   def update
     @failure_mode.update(failure_mode_params)
     @fmea = @failure_mode.function.fmea
-    redirect_to edit_fmea_path(@fmea, anchor: card_id(@failure_mode))
+    # redirect to where the failure mode was added
+    redirect_to edit_fmea_path(@fmea, anchor: card_id(@failure_mode.function))
   end
 
   def create

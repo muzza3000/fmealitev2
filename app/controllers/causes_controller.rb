@@ -5,7 +5,21 @@ class CausesController < ApplicationController
   def update
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
-    redirect_to edit_fmea_path(@fmea, anchor: card_id(@cause))
+    # redirect to the function where the cause was added
+    redirect_to edit_fmea_path(@fmea, anchor: card_id(@cause.failure_mode.function))
+  end
+
+  def create
+    @cause = Cause.new(cause_params)
+
+    if @cause.save
+      # redirect to the function where the cause was added
+      redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
+    else
+      # redirect to fmea and show errors as a flash alert
+      flash[:alert] = @cause.errors.full_messages
+      redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
+    end
   end
 
   private
@@ -15,6 +29,6 @@ class CausesController < ApplicationController
   end
 
   def cause_params
-    params.require(:cause).permit(:description, :occurrence)
+    params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id)
   end
 end

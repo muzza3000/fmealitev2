@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import { toggleClass } from "helpers/index"
 
 export default class extends Controller {
-  static targets = ["card", "failuremode"]
+  static targets = ["card", "failuremode", "cause"]
 
   initialize() {
     const selectedItemType = this.data.get("selected-item-type")
@@ -17,7 +17,16 @@ export default class extends Controller {
    createFailureMode () {
     // need to set the right id as the value in the modal form
     this.failuremodeTarget.value = this.selectedItemId;
-    console.log(this.failuremodeTarget);
+  }
+
+   createCause () {
+    // need to set the right id as the value in the modal form
+    this.causeTarget.value = this.selectedItemId;
+  }
+
+   createEffect () {
+    // need to set the right id as the value in the modal form
+    this.effectTarget.value = this.selectedItemId;
   }
 
   select() {

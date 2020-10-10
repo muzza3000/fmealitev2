@@ -13,7 +13,7 @@
         <%= simple_form_for element do |f| %>
           <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element, belong) } %>
           <%# hidden form field to communicate to controller what the parent fmea is %>
-          <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id, :data => {:target => "edit-fmea.#{element.class.to_s.downcase}"} } %>
+          <%= f.input "failure_mode_id", as: :hidden, :input_html => { value: belong.id, :data => {:target => "edit-fmea.#{element.class.to_s.downcase}"} } %>
 
 <!--
 <div class="form-group hidden function_fmea_id">

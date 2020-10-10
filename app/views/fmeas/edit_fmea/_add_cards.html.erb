@@ -1,7 +1,8 @@
 <%= render "fmeas/edit_fmea/add_card_modal", element: Function.new, belong: fmea %>
 <%= render "fmeas/edit_fmea/add_card_modal", element: FailureMode.new, belong: Function.new %>
-<!--  render "fmeas/edit_fmea/add_card_modal", element: Cause.new, belong: failure_mode
- render "fmeas/edit_fmea/add_card_modal", element: Effect.new, belong: failure_mode  -->
+<%= render "fmeas/edit_fmea/add_card_modal", element: Cause.new, belong: FailureMode.new %>
+<%= render "fmeas/edit_fmea/add_card_modal", element: Effect.new, belong: FailureMode.new %>
+
 
 <div class="all-add-cards-buttons pt-4">
   <div class="add-card-button" >
@@ -12,6 +13,9 @@
   </div>
   <div class="add-card-button" id="add-cause" >
     <a data-toggle="modal" data-target="#addCause" data-action="click->edit-fmea#createCause" href="#"><%= image_tag("icons/add_cause.svg") %></a>
+  </div>
+  <div class="add-card-button" id="add-effect" >
+    <a data-toggle="modal" data-target="#addEffect" data-action="click->edit-fmea#createEffect" href="#"><%= image_tag("icons/add_effect.svg") %></a>
   </div>
 </div>
 
