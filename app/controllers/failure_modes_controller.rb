@@ -9,16 +9,15 @@ class FailureModesController < ApplicationController
   end
 
   def create
-    @failure_mode = FailureMode.create(failure_mode_params)
-    @function = Function.find(params["failure_mode"]["function_id"]) # Why so complicated? Because this was passed with the simple form using the hidden-value. It does not return the object straight up.
-    @failure_mode.function = @function
-    @fmea = @function.fmea
+    @failure_mode = FailureMode.new(failure_mode_params)
 
     if @failure_mode.save
-      redirect_to(edit_fmea_path(@fmea))
+      # redirect to the function where the failure mode was added
+      redirect_to edit_fmea_path(@failure_mode.function.fmea, anchor: card_id(@failure_mode.function))
     else
-      @fmeas = Fmea.all
-      render action: :index
+      # redirect to fmea and show errors as a flash alert
+      flash[:alert] = @failure_mode.errors.full_messages
+      redirect_to edit_fmea_path(@failure_mode.function.fmea, anchor: card_id(@failure_mode.function))
     end
   end
 
@@ -29,6 +28,6 @@ class FailureModesController < ApplicationController
   end
 
   def failure_mode_params
-    params.require(:failure_mode).permit(:description, :function_id)
+    params.require(:failure_mode).permit(:description, :function, :function_id)
   end
 end

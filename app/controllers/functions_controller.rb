@@ -13,8 +13,9 @@ class FunctionsController < ApplicationController
     if @function.save
       redirect_to edit_fmea_path(@function.fmea, anchor: card_id(@function))
     else
-      @fmea = Fmea.first
-      render action: :index
+      # redirect to fmea and show errors as a flash alert
+      flash[:alert] = @function.errors.full_messages
+      redirect_to edit_fmea_path(@function.fmea, anchor: card_id(@function))
     end
   end
 
