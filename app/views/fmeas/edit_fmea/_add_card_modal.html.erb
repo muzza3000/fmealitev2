@@ -12,7 +12,10 @@
       <div class="modal-body">
         <%= simple_form_for element do |f| %>
           <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element, belong) } %>
+
+          <%# hidden form field to communicate to controller what the parent fmea is %>
           <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id } %>
+
           <div class="btn btn-success">
             <%= f.button :submit, remote: true, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>

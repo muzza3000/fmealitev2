@@ -10,10 +10,8 @@ class FunctionsController < ApplicationController
 
   def create
     @function = Function.new(function_params)
-    @fmea = Fmea.find(params["function"]["fmea_id"])
-    @function.fmea = @fmea
     if @function.save
-      redirect_to edit_fmea_path(@fmea, anchor: card_id(@function))
+      redirect_to edit_fmea_path(@function.fmea, anchor: card_id(@function))
     else
       @fmea = Fmea.first
       render action: :index
@@ -27,6 +25,6 @@ class FunctionsController < ApplicationController
   end
 
   def function_params
-    params.require(:function).permit(:description, :fmea)
+    params.require(:function).permit(:description, :fmea, :fmea_id)
   end
 end
