@@ -1,18 +1,16 @@
-<%= puts "fm is here" %>
-<%= puts index %>
 <div class="one-failure-mode">
   <div class="one-failure-mode-left">
   <div class="fm-left"></div>
   <div class="fm-right">
     <div class="fm-element">
-      <%= render "fmeas/edit_fmea/card_structure", element: failure_mode, index: index %>
+      <%= render "fmeas/edit_fmea/card_structure", element: failure_mode %>
     </div>
     <div class="causes-structure">
       <div class="cause-left"></div>
       <div class="cause-right">
         <% failure_mode.causes.each do |cause| %>
           <div class="one-cause">
-            <%= render "fmeas/edit_fmea/card_structure", element: cause, index: $index %>
+            <%= render "fmeas/edit_fmea/card_structure", element: cause %>
           </div>
         <% end %>
       </div>
@@ -35,7 +33,10 @@
             <% if counter > 1 %>
               <div style="height: 10px;"></div>
             <% end %>
-            <%= render "fmeas/edit_fmea/card_content", element: effect %>
+              <% element = effect %>
+              <div class="card-structure-bottom-right" data-target="edit-fmea.card" data-action="click->edit-fmea#select" data-card-type="<%= element.class.name.downcase %>" data-id="<%= element.id %>" data-parent-id="<%= element.id_of_parent %>">
+                <%= render "fmeas/edit_fmea/card_content", element: effect  %>
+              </div>
           <% end %>
         </div>
       </div>

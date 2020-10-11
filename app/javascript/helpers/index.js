@@ -1,41 +1,83 @@
-const toggleClass = (elements, element, cardType, childrenCount) => {
-  // Here, we put the border-property on the selected element
-  element.classList.toggle(`selected-${cardType}`);
-  // console.log(element.dataset.cardIndex);
+// This method 'isChild' returns true/fals depending on whetever an element is the child of another.
+
+const isChild = (element, compared_e ) => {
+  const classChild = compared_e.dataset.cardType;
+  const classParent = element.dataset.cardType;
+  if ((classChild === "failuremode")&&(classParent==="function")) {
+    return ( element.dataset.id === compared_e.dataset.parentId );
+  } else if ((classChild === "cause")&&(classParent==="failuremode")) {
+    return ( element.dataset.id === compared_e.dataset.parentId );
+  } else if ((classChild === "effect")&&(classParent==="failuremode")) {
+    return ( element.dataset.id === compared_e.dataset.parentId );
+  } else {
+    return false;
+  };
+};
+
+// This method 'parentFind' returns the instance of the parent of an element.
+
+const parentFind = (element, elements) => {
+  const classChild = element.dataset.cardType;
+  let classParent = null;
+  let parent = null;
+
+
+  if ((classChild === "effect")||(classChild === "cause")) {
+    classParent = "failuremode";
+  } else if (classChild === "failuremode") {
+    classParent = "function";
+  };
+
   elements.forEach((e) => {
-    if(e.dataset.cardIndex !== element.dataset.cardIndex) {
+    if ((element.dataset.parentId === e.dataset.id) && (e.dataset.cardType === classParent)) {
+      parent = e;
+    };
+  });
+
+  return parent
+};
+
+
+// This method 'toggleClass' does correctly toggle the classes 'disselected' & 'selected'.
+
+const toggleClass = (element, elements) => {
+  // 1. We put the border-property on the selected element
+  element.classList.toggle(`selected-${element.dataset.cardType}`);
+  // 2. Then we remove the selected property of all other elements
+  elements.forEach((e) => {
+    if (e !== element) {
       e.classList.remove(`selected-${e.dataset.cardType}`);
     };
   });
 
-  // Here, we put the opacity–property upon all elements which are not children of the selected element.
-  // We start off by definig some counts.
-  let childrenIndeces = [parseInt(element.dataset.cardIndex, 10)];
-  let count = 1;
-  const childrenCountInt = parseInt(childrenCount, 10);
-  let childrenCardIndex = 0
-  // Now, we add all indeces of the children of the element to an array.
-  while (childrenIndeces.length <= childrenCountInt) {
-    childrenCardIndex = parseInt(element.dataset.cardIndex, 10) + count;
-    childrenIndeces.push(childrenCardIndex);
-    count += 1;
-  };
-  // Now, we add the 'disselected'-property to all elements which are not children/or the selected one.
-  // The if statements serve to correctly toggle for every edge-case, e.g. that you should be able to disselect(unblur) all elements again by clicking on the selected one etc.
-  if(!(element.classList.contains(`selected-${cardType}`))) {
+  // 3. Then we add the 'disselected' class to all elements which are not direct children of the element.
+  if(!(element.classList.contains(`selected-${element.dataset.cardType}`))) {
       elements.forEach((e) => {
         e.classList.remove("disselected");
       });
   } else {
       elements.forEach((e) => {
         e.classList.remove("disselected");
-        // console.log(e)
-        if(!(childrenIndeces.includes(parseInt(e.dataset.cardIndex, 10)))) {
+        if ((!(isChild(element, e)))&&(element != e)) {
           e.classList.add("disselected");
+        };
+      });
+
+    // 4. Then we go ahead and whitelist the grandchildren of the element as well.
+      elements.forEach((e) => {
+        const parent = parentFind(e, elements);
+        if (!(parent === null)) {
+          const grandparent = parentFind(parent, elements);
+          if (!(grandparent === null)) {
+            if (grandparent.classList.contains(`selected-${element.dataset.cardType}`)) {
+              e.classList.remove("disselected");
+            };
+          };
         };
       });
   };
 };
+
 
 const itemPath = (itemType) => {
   if (itemType === "failuremode") {

@@ -39,6 +39,11 @@
   border-radius: 4px;
 }
 
+.selected-effect {
+  border: 2px solid $green;
+  border-radius: 4px;
+}
+
 .hidden-button {
   display: none;
 }

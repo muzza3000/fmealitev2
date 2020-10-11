@@ -41,9 +41,7 @@ export default class extends Controller {
 
     const element = event.currentTarget;
     const allElements = this.cardTargets;
-    const cardType = element.dataset.cardType;
-    const childrenCount = element.dataset.childrenCount
-    toggleClass(allElements, element, cardType, childrenCount)
+    toggleClass(element, allElements)
   };
 
   // Getters and setters

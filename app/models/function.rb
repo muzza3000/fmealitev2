@@ -13,8 +13,13 @@ class Function < ApplicationRecord
     children_count += all_fms.count
     all_fms.each do |fm|
       all_causes = Cause.where("failure_mode_id = #{fm.id}")
-      children_count += all_causes.count
+      all_effects = Effect.where("failure_mode_id = #{fm.id}")
+      children_count += (all_causes.count + all_effects.count)
     end
     return children_count
+  end
+
+  def id_of_parent
+    return self.fmea_id
   end
 end
