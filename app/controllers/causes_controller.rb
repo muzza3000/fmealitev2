@@ -22,6 +22,13 @@ class CausesController < ApplicationController
     end
   end
 
+  def destroy
+    @cause = Cause.find(params['id'])
+    @failure_mode = @cause.failure_mode
+    @cause.destroy
+    redirect_to edit_fmea_path(@failure_mode.function.fmea, anchor: card_id(@failure_mode.function))
+  end
+
   private
 
   def set_cause

@@ -22,6 +22,13 @@ class EffectsController < ApplicationController
     end
   end
 
+  def destroy
+    @effect = Effect.find(params['id'])
+    @failure_mode = @effect.failure_mode
+    @effect.destroy
+    redirect_to edit_fmea_path(@failure_mode.function.fmea, anchor: card_id(@failure_mode.function))
+  end
+
   private
 
   def set_effect

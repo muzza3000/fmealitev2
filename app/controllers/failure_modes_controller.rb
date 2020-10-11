@@ -22,6 +22,13 @@ class FailureModesController < ApplicationController
     end
   end
 
+  def destroy
+    @failure_mode = FailureMode.find(params['id'])
+    @function = @failure_mode.function
+    @failure_mode.destroy
+    redirect_to edit_fmea_path(@function.fmea, anchor: card_id(@function))
+  end
+
   private
 
   def set_failure_mode

@@ -37,4 +37,12 @@ const toggleClass = (elements, element, cardType, childrenCount) => {
   };
 };
 
-export { toggleClass }
+const itemPath = (itemType) => {
+  if (itemType === "failuremode") {
+    return "failure_mode";
+  } else {
+    return itemType;
+  };
+};
+
+export { toggleClass, itemPath }

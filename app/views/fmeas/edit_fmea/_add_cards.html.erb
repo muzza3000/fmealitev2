@@ -7,16 +7,24 @@
 
 <div class="all-add-cards-buttons pt-4">
   <div class="add-card-button" >
-    <a  data-toggle="modal" data-target="#addFunction" href="#"><%= image_tag("icons/add_function.svg") %></a>
+    <a  data-toggle="modal" data-target="#addFunction" href="#"><%= image_tag("actions/add_function.svg") %></a>
+    <p>add function</p>
   </div>
   <div class="add-card-button" id="add-failure-mode" >
-    <a data-toggle="modal" data-target="#addFailureMode" data-action="click->edit-fmea#createFailureMode" href="#"><%= image_tag("icons/add_failure_mode.svg") %></a>
+    <a data-toggle="modal" data-target="#addFailureMode" data-action="click->edit-fmea#createFailureMode" href="#"><%= image_tag("actions/add_failure_mode.svg") %></a>
+    <p>add failure mode</p>
   </div>
   <div class="add-card-button" id="add-cause" >
-    <a data-toggle="modal" data-target="#addCause" data-action="click->edit-fmea#createCause" href="#"><%= image_tag("icons/add_cause.svg") %></a>
+    <a data-toggle="modal" data-target="#addCause" data-action="click->edit-fmea#createCause" href="#"><%= image_tag("actions/add_cause.svg") %></a>
+    <p>add cause</p>
   </div>
   <div class="add-card-button" id="add-effect" >
-    <a data-toggle="modal" data-target="#addEffect" data-action="click->edit-fmea#createEffect" href="#"><%= image_tag("icons/add_effect.svg") %></a>
+    <a data-toggle="modal" data-target="#addEffect" data-action="click->edit-fmea#createEffect" href="#"><%= image_tag("actions/add_effect.svg") %></a>
+    <p>add effect</p>
+  </div>
+  <div class="add-card-button" id="delete" >
+    <a data-action="click->edit-fmea#delete" data-method="delete" data-target="edit-fmea.delete" rel="nofollow" data-confirm="Are you sure you want to delete the selected item?" href="/type/id"><%= image_tag("actions/delete.svg") %></a>
+    <p>delete <span data-target="edit-fmea.delete"></span></p>
   </div>
 </div>
 
