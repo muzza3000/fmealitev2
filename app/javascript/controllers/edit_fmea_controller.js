@@ -1,8 +1,9 @@
 import { Controller } from "stimulus"
-import { toggleClass, itemPath } from "helpers/index"
+import { toggleClass, itemPath, clearSelection } from "helpers/index"
+import { updateActionMenu } from "helpers/action_menu"
 
 export default class extends Controller {
-  static targets = ["card", "failuremodeForm", "causeForm", "effectForm", "delete"]
+  static targets = ["card", "failuremodeForm", "causeForm", "effectForm", "delete", "actionMenu"]
 
   initialize() {
     const selectedItemType = this.data.get("selected-item-type")
@@ -34,14 +35,19 @@ export default class extends Controller {
   }
 
   select() {
-    // write the current selection type to the DOM this means any method
-    //  can read the current 'this.selectedItemType' and 'this.selectedItemId'
+    // Write the current selection to the DOM
     this.selectedItemType = event.currentTarget.dataset.cardType;
     this.selectedItemId = event.currentTarget.dataset.id;
 
-    const element = event.currentTarget;
-    const allElements = this.cardTargets;
-    toggleClass(element, allElements)
+    // Update the action menu
+    updateActionMenu(this.selectedItemType, this.actionMenuTarget);
+
+    if (this.selectedItemType === "") {
+      clearSelection(this.cardTargets);
+    } else {
+      // Apply the focus logic
+      toggleClass(event.currentTarget, this.cardTargets);
+    }
   };
 
   // Getters and setters

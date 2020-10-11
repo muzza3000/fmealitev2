@@ -5,28 +5,29 @@
 <%= render "fmeas/edit_fmea/add_card_modal", element: Effect.new(failure_mode: FailureMode.new(function: Function.new(fmea: fmea))) %>
 
 
-<div class="all-add-cards-buttons pt-4">
-  <div class="add-card-button" >
+<div class="all-add-cards-buttons pt-4" data-target="edit-fmea.actionMenu">
+  <div class="add-card-button" id="add-function-button">
     <a  data-toggle="modal" data-target="#addFunction" href="#"><%= image_tag("actions/add_function.svg") %></a>
     <p>add function</p>
   </div>
-  <div class="add-card-button" id="add-failure-mode" >
+  <div class="add-card-button hidden-button" id="add-failure-mode-button" >
     <a data-toggle="modal" data-target="#addFailureMode" data-action="click->edit-fmea#createFailureMode" href="#"><%= image_tag("actions/add_failure_mode.svg") %></a>
     <p>add failure mode</p>
   </div>
-  <div class="add-card-button" id="add-cause" >
+  <div class="add-card-button hidden-button" id="add-cause-button" >
     <a data-toggle="modal" data-target="#addCause" data-action="click->edit-fmea#createCause" href="#"><%= image_tag("actions/add_cause.svg") %></a>
     <p>add cause</p>
   </div>
-  <div class="add-card-button" id="add-effect" >
+  <div class="add-card-button hidden-button" id="add-effect-button" >
     <a data-toggle="modal" data-target="#addEffect" data-action="click->edit-fmea#createEffect" href="#"><%= image_tag("actions/add_effect.svg") %></a>
     <p>add effect</p>
   </div>
-  <div class="add-card-button" id="delete" >
-    <a data-action="click->edit-fmea#delete" data-method="delete" data-target="edit-fmea.delete" rel="nofollow" data-confirm="Are you sure you want to delete the selected item?" href="/type/id"><%= image_tag("actions/delete.svg") %></a>
+  <div class="add-card-button hidden-button" id="delete-button" >
+    <a data-action="click->edit-fmea#delete" data-method="delete" data-target="edit-fmea.delete" rel="nofollow" data-confirm="Are you sure you want to delete the selected item?" href="/type/id"><%= image_tag("actions/delete_alt.svg") %></a>
     <p>delete <span data-target="edit-fmea.delete"></span></p>
   </div>
+  <div class="add-card-button hidden-button" id="clear-selection-button">
+    <span data-action="click->edit-fmea#select" data-card-type="" data-id="" href=""><%= image_tag("actions/clear_selection.svg") %></span>
+    <p>clear selection <span data-target="edit-fmea.delete"></span></p>
+  </div>
 </div>
-
-<!-- Make sure to remember to insert the data-toggle="modal" again on the cause-element above! -->
-
