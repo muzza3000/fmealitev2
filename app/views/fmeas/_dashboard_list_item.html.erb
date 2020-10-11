@@ -1,7 +1,11 @@
 <div class="row position-relative" style="z-index: 0;">
   <%= link_to "", edit_fmea_path(fmea), class: "stretched-link" %>
   <div class="col-1">
-    <div class="fmea-circle bg-<%= "#{%w(danger warning info success primary).sample}"  %>"></div>
+  <% if product_images?(fmea) %>
+    <img class="fmea-circle border border-<%= "#{%w(danger warning info success primary).sample}" %>" src="<%= cl_image_path(fmea.images[0].key, width: 100, height: 100, crop: :fill) %>">
+  <% else %>
+    <div class="fmea-circle bg-<%= "#{%w(danger warning info success primary).sample}" %>"></div>
+  <% end %>
   </div>
 
   <div class="col-2 my-auto">
@@ -17,12 +21,12 @@
   </div>
 
   <div class="col-3 my-auto">
-    <h6> <%= image_tag("function.svg") %>  <%= "#{fmea.functions.count}  " %> &#160;
-      <%= image_tag("failure_mode.svg") %>
+    <h6> <%= image_tag("statistic_icons/function.svg") %>  <%= "#{fmea.functions.count}  " %> &#160;
+      <%= image_tag("statistic_icons/failure_mode.svg") %>
       <%= "#{fmea.failure_modes.count}" %> &#160;
-      <%= image_tag("cause.svg") %>
+      <%= image_tag("statistic_icons/cause.svg") %>
       <%= "#{fmea.causes.count}  " %> &#160;
-      <%= image_tag("effect.svg") %>
+      <%= image_tag("statistic_icons/effect.svg") %>
       <%=  "#{fmea.effects.count}" %>
     </h6>
   </div>

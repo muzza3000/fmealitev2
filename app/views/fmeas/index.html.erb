@@ -4,19 +4,35 @@
 
 <!-- The 'body' the page -->
 <div class="container mt-4">
+
+
      <!-- Here comes the 'Create New FMEA' - button which will open the modal-component -->
-  <div class="row mb-3">
-    <div class="col-10"></div>
-    <div class="col-2">
+  <div class="row mb-4 d-flex align-items-center">
+    <div class="col-9 p-0">
+      <%= simple_form_for :search, url: fmeas_path, method: :get do |f| %>
+        <div class="search-form-control form-group m-0">
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" value="<%= @query if @query.present? %>" placeholder="Search FMEA title or risk matrix..."/>
+          <button name="button" type="submit" class="btn btn-flat">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-1 p-0 text-center">
+      <%= link_to('clear', fmeas_path, class: "btn btn-ghost") %>
+      </a>
+    </div>
+    <div class="col-2 p-0">
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createFmeaModal">
         Create FMEA
       </button>
     </div>
   </div>
+
    <!-- To start with, we have the little title bar on top with all the descriptions -->
    <% unless @fmeas.empty? %>
     <div class="row">
-      <div class="col-1">
+      <div class="col-1 p-0">
           <div></div> <!-- This is where the avatar would go for all the FMEAs. -->
       </div>
       <div class="col-2">

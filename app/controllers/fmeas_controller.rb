@@ -2,7 +2,19 @@ class FmeasController < ApplicationController
   before_action :set_fmea, only: [:edit, :update]
 
   def index
-    @fmeas = Fmea.all
+    @query = params[:search][:query] if params[:search].present?
+
+    if @query.present?
+      sql_query = " \
+      fmeas.title ILIKE :query \
+      OR risk_matrices.name ILIKE :query \
+      "
+      @fmeas = Fmea.joins(:risk_matrix).where(sql_query, query: "%#{@query}%")
+      # @fmeas = Fmea.where("title ILIKE ?", "%#{@query}%")
+    else
+      @fmeas = Fmea.all
+    end
+
     @fmea = Fmea.new
   end
 
