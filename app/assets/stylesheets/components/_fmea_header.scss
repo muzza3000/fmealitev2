@@ -7,6 +7,10 @@ $header_height: 200px;
   overflow: hidden;
   box-shadow: 3px 3px 10px rgba(black, 0.2);
 
+  &.collapsed {
+    height: 60px;
+  }
+
   .fmea-product-image {
     width: $header_height;
     height: 100%;
@@ -16,6 +20,10 @@ $header_height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.collapsed {
+      width: 60px;
+    }
   }
 }
 .fmea-details-edit{
