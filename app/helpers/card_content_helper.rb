@@ -17,6 +17,8 @@ module CardContentHelper
   end
 
   def rating_color(element)
+    return "rating-green" if rating(element).nil?
+
     if rating(element) <= (0.4 * rating_scale(element))
       "rating-green"
     elsif rating(element) <= (0.8 * rating_scale(element))
@@ -34,9 +36,15 @@ module CardContentHelper
     "#{element.class.to_s.downcase}-#{element.id}"
   end
 
-  def placeholder_text(element, belong)
+  def placeholder_text(element)
     if element.class.to_s.downcase == "function"
-      "Think what is #{belong.fmea_type.downcase} meant to do..."
+      "Think what is #{element.fmea.fmea_type.downcase} meant to do..."
+    elsif element.class.to_s.downcase == "cause"
+      "Think what could cause this failure mode to occur..."
+    elsif element.class.to_s.downcase == "effect"
+      "Think what effect would this have on the #{element.failure_mode.function.fmea.fmea_type.downcase}..."
+    elsif element.class.to_s.downcase == "failuremode"
+      "Think how might this function fail..."
     else
       ""
     end

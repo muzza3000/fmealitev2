@@ -1,22 +1,24 @@
-<%= render "fmeas/edit_fmea/add_card_modal", element: Function.new, belong: fmea %>
-<%= render "fmeas/edit_fmea/add_card_modal", element: FailureMode.new, belong: Function.first %>
-<!--  render "fmeas/edit_fmea/add_card_modal", element: Cause.new, belong: failure_mode
- render "fmeas/edit_fmea/add_card_modal", element: Effect.new, belong: failure_mode  -->
+<!-- Created 4 times, once per card type. The parent id value will be overwritten using the js controller -->
+<%= render "fmeas/edit_fmea/add_card_modal", element: Function.new(fmea: fmea) %>
+<%= render "fmeas/edit_fmea/add_card_modal", element: FailureMode.new(function: Function.new(fmea: fmea)) %>
+<%= render "fmeas/edit_fmea/add_card_modal", element: Cause.new(failure_mode: FailureMode.new(function: Function.new(fmea: fmea))) %>
+<%= render "fmeas/edit_fmea/add_card_modal", element: Effect.new(failure_mode: FailureMode.new(function: Function.new(fmea: fmea))) %>
+
 
 <div class="all-add-cards-buttons pt-4">
   <div class="add-card-button" >
     <a  data-toggle="modal" data-target="#addFunction" href="#"><%= image_tag("icons/add_function.svg") %></a>
   </div>
-  <div class="add-card-button hidden-button" id="add-failure-mode" >
-    <a data-toggle="modal" data-target="#addFailureMode" href="#"><%= image_tag("icons/add_failure_mode.svg") %></a>
+  <div class="add-card-button" id="add-failure-mode" >
+    <a data-toggle="modal" data-target="#addFailureMode" data-action="click->edit-fmea#createFailureMode" href="#"><%= image_tag("icons/add_failure_mode.svg") %></a>
+  </div>
+  <div class="add-card-button" id="add-cause" >
+    <a data-toggle="modal" data-target="#addCause" data-action="click->edit-fmea#createCause" href="#"><%= image_tag("icons/add_cause.svg") %></a>
+  </div>
+  <div class="add-card-button" id="add-effect" >
+    <a data-toggle="modal" data-target="#addEffect" data-action="click->edit-fmea#createEffect" href="#"><%= image_tag("icons/add_effect.svg") %></a>
   </div>
 </div>
-<div class="add-card-button hidden-button" id="add-cause">
-  <a data-target="#addCause" href="#"><%=  image_tag("icons/add_cause.svg") %></a>
-</div>
+
 <!-- Make sure to remember to insert the data-toggle="modal" again on the cause-element above! -->
 
-<!--
-<div>
-  <a data-toggle="modal" data-target="#addEffect" href="#"><%= image_tag("icons/add_effect.svg") %></a>
-</div> -->

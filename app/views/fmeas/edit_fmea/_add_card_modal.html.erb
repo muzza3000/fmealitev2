@@ -10,14 +10,15 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= simple_form_for element do |f| %>
-          <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element, belong) } %>
+        <%= simple_form_for(element, remote: true) do |f| %>
+          <%= f.input :description, as: :text, :input_html => { placeholder: placeholder_text(element) } %>
 
-          <%# hidden form field to communicate to controller what the parent fmea is %>
-          <%= f.input "#{belong.class.name.downcase}_id", as: :hidden, :input_html => { value: belong.id } %>
+          <%# hidden form field to communicate to controller what the parent fmea/function/failure_mode/cause is %>
+          <%# edit_fmea js controller will overwrite the value for the function/failure_mode/cause %>
+          <%= f.input "#{element.parent.model_name.param_key}_id", as: :hidden, :input_html => { value: element.parent.id, :data => {:target => "edit-fmea.#{element.class.to_s.downcase}Form"} } %>
 
           <div class="btn btn-success">
-            <%= f.button :submit, remote: true, class: "btn-clean", data: {dismiss: :dismiss} %>
+            <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         <% end %>

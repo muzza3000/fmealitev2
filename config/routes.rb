@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :fmeas, only: %i[index edit create update destroy]
   resources :functions, only: %i[update create]
   resources :failure_modes, only: %i[update create]
-  resources :effects, only: %i[update]
-  resources :causes, only: %i[update]
+  resources :effects, only: %i[update create]
+  resources :causes, only: %i[update create]
 end
