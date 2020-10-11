@@ -12,7 +12,46 @@ const isChild = (element, compared_e ) => {
   };
 };
 
+const isTheSame = (element, compared_e) => {
+    const classE = element.dataset.cardType;
+    const classC = compared_e.dataset.cardType;
+
+    if ((classE === "function")&&(classC === "function")) {
+    return ( element.dataset.id === compared_e.dataset.id );
+  } else if ((classE === "failuremode")&&(classC === "failuremode")) {
+    return ( element.dataset.id === compared_e.dataset.id );
+  } else if ((classE === "cause")&&(classC === "cause")) {
+    return ( element.dataset.id === compared_e.dataset.id );
+  } else if ((classE === "effect")&&(classC === "effect")) {
+    return ( element.dataset.id === compared_e.dataset.id );
+  } else {
+    return false;
+  };
+};
+
+const parentFind = (element, elements) => {
+  const classChild = element.dataset.cardType;
+  let classParent = null;
+  let parent = null;
+
+
+  if ((classChild === "effect")||(classChild === "cause")) {
+    classParent = "failuremode";
+  } else if (classChild === "failuremode") {
+    classParent = "function";
+  };
+
+  elements.forEach((e) => {
+    if ((element.dataset.parentId === e.dataset.id) && (e.dataset.cardType === classParent)) {
+      parent = e;
+    };
+  });
+
+  return parent
+};
+
 const toggleClass = (elements, element) => {
+  parentFind(element, elements);
   // Here, we put the border-property on the selected element
   element.classList.toggle(`selected-${element.dataset.cardType}`);
   elements.forEach((e) => {
@@ -29,24 +68,24 @@ const toggleClass = (elements, element) => {
         e.classList.remove("disselected");
       });
   } else {
-      let whitelist = [element.dataset.parentId];
       elements.forEach((e) => {
         e.classList.remove("disselected");
-        if (isChild(element, e)) {
-          whitelist.push(e.dataset.id);
-        };
-        if (!(isChild(element, e))) {
+        if ((!(isChild(element, e)))&&(!(isTheSame(element, e)))) {
           e.classList.add("disselected");
         };
       });
 
       elements.forEach((e) => {
-        console.log(whitelist.includes(e.dataset.parentId))
-        if (whitelist.includes(e.dataset.parentId)) {
-          e.classList.remove("disselected");
+        const parent = parentFind(e, elements);
+        if (!(parent === null)) {
+          const grandparent = parentFind(parent, elements);
+          if (!(grandparent === null)) {
+            if (grandparent.classList.contains(`selected-${element.dataset.cardType}`)) {
+              e.classList.remove("disselected");
+            };
+          };
         };
       });
-      console.log(whitelist);
   };
 };
 

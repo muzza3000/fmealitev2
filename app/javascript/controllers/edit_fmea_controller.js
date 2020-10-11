@@ -12,8 +12,8 @@ export default class extends Controller {
   select() {
     const element = event.currentTarget;
     const allElements = this.cardTargets;
-    console.log(`id: ${element.dataset.id}`)
-    console.log(`parent id: ${element.dataset.parentId}`)
+    //console.log(`id: ${element.dataset.id}`)
+    //console.log(`parent id: ${element.dataset.parentId}`)
     toggleClass(allElements, element)
   };
 };
