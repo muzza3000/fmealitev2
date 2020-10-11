@@ -29,13 +29,13 @@ const toggleClass = (elements, element) => {
         e.classList.remove("disselected");
       });
   } else {
-      let whitelist = []
+      let whitelist = [element.dataset.parentId];
       elements.forEach((e) => {
         e.classList.remove("disselected");
         if (isChild(element, e)) {
           whitelist.push(e.dataset.id);
         };
-        if (!(isChild(element, e)) && (e.dataset.id !== element.dataset.id)) {
+        if (!(isChild(element, e))) {
           e.classList.add("disselected");
         };
       });
