@@ -1,3 +1,5 @@
+// This method 'isChild' returns true/fals depending on whetever an element is the child of another.
+
 const isChild = (element, compared_e ) => {
   const classChild = compared_e.dataset.cardType;
   const classParent = element.dataset.cardType;
@@ -12,22 +14,7 @@ const isChild = (element, compared_e ) => {
   };
 };
 
-const isTheSame = (element, compared_e) => {
-    const classE = element.dataset.cardType;
-    const classC = compared_e.dataset.cardType;
-
-    if ((classE === "function")&&(classC === "function")) {
-    return ( element.dataset.id === compared_e.dataset.id );
-  } else if ((classE === "failuremode")&&(classC === "failuremode")) {
-    return ( element.dataset.id === compared_e.dataset.id );
-  } else if ((classE === "cause")&&(classC === "cause")) {
-    return ( element.dataset.id === compared_e.dataset.id );
-  } else if ((classE === "effect")&&(classC === "effect")) {
-    return ( element.dataset.id === compared_e.dataset.id );
-  } else {
-    return false;
-  };
-};
+// This method 'parentFind' returns the instance of the parent of an element.
 
 const parentFind = (element, elements) => {
   const classChild = element.dataset.cardType;
@@ -50,19 +37,20 @@ const parentFind = (element, elements) => {
   return parent
 };
 
-const toggleClass = (elements, element) => {
-  parentFind(element, elements);
-  // Here, we put the border-property on the selected element
+
+// This method 'toggleClass' does correctly toggle the classes 'disselected' & 'selected'.
+
+const toggleClass = (element, elements) => {
+  // 1. We put the border-property on the selected element
   element.classList.toggle(`selected-${element.dataset.cardType}`);
+  // 2. Then we remove the selected property of all other elements
   elements.forEach((e) => {
-    if(e.dataset.cardIndex !== element.dataset.cardIndex) {
+    if (e !== element) {
       e.classList.remove(`selected-${e.dataset.cardType}`);
     };
   });
-  // Here, we put the opacity–property upon all elements which are not children of the selected element.
-  // We start off by definig some counts.
-  // Now, we add the 'disselected'-property to all elements which are not children/or the selected one.
-  // The if statements serve to correctly toggle for every edge-case, e.g. that you should be able to disselect(unblur) all elements again by clicking on the selected one etc.
+
+  // 3. Then we add the 'disselected' class to all elements which are not direct children of the element.
   if(!(element.classList.contains(`selected-${element.dataset.cardType}`))) {
       elements.forEach((e) => {
         e.classList.remove("disselected");
@@ -70,11 +58,12 @@ const toggleClass = (elements, element) => {
   } else {
       elements.forEach((e) => {
         e.classList.remove("disselected");
-        if ((!(isChild(element, e)))&&(!(isTheSame(element, e)))) {
+        if ((!(isChild(element, e)))&&(element != e)) {
           e.classList.add("disselected");
         };
       });
 
+    // 4. Then we go ahead and whitelist the grandchildren of the element as well.
       elements.forEach((e) => {
         const parent = parentFind(e, elements);
         if (!(parent === null)) {
