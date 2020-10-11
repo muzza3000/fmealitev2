@@ -1,11 +1,16 @@
 $header_height: 200px;
 
 .fmea-header {
+  background-color: white;
   width: 100%;
   height: $header_height;
   display: flex;
   overflow: hidden;
   box-shadow: 3px 3px 10px rgba(black, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  transition: all .2s ease-in-out;
 
   &.collapsed {
     height: 60px;
@@ -20,6 +25,7 @@ $header_height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all .2s ease-in-out;
 
     &.collapsed {
       width: 60px;
@@ -51,7 +57,7 @@ $header_height: 200px;
     opacity: 0.7;
     display: flex;
     justify-content: flex-end;
-    z-index: 200;
+    z-index: 2;
   }
 }
 
@@ -59,7 +65,7 @@ $header_height: 200px;
   color: $light_blue;
 }
 .fmea-stats {
-  padding: 10px 10px 0 0;
+  padding: 15px 10px 0 0;
   align-self: flex-start;
   margin-left: auto;
   display: flex;

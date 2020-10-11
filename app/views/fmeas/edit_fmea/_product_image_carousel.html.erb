@@ -11,6 +11,7 @@
     <% fmea.images.each_with_index do |image, i| %>
       <% css_class = i == 0 ? "carousel-item active" : "carousel-item"  %>
       <div class="<%= css_class %>">
+        <%# data-toggle and data-target attr are used to target the correct model %>
         <img class="d-block w-100" data-toggle="modal" data-target="#imageModal<%= i %>" src="<%= cl_image_path(image.key, width: 300, height: 300, crop: :fill) %>">
       </div>
     <% end %>
@@ -25,7 +26,3 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<!-- Render Image Modal Zoom -->
-<% fmea.images.each_with_index do |image, img_num| %>
-  <%= render "fmeas/edit_fmea/image_modal", fmea: fmea, img_num: img_num %>
-<% end %>

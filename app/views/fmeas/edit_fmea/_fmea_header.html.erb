@@ -1,5 +1,5 @@
-<div class="fmea-header collapsed">
-  <div class="fmea-product-image collapsed">
+<div class="fmea-header" data-controller="product-header" data-action="scroll@window->product-header#scroll" data-target="product-header.header">
+  <div class="fmea-product-image" data-target="product-header.productImage">
     <% if product_images?(fmea) %>
       <%= render "fmeas/edit_fmea/product_image_carousel", fmea: fmea %>
     <% else %>
@@ -33,5 +33,13 @@
     </div>
   </div>
 </div>
-<!-- The Modal -->
+
+<!-- The Edit FMEA Modal -->
 <%= render "fmeas/edit_fmea/edit_fmea_modal", fmea: fmea %>
+
+<!-- Render Image Zoom Modal if product has images -->
+<% if product_images?(fmea) %>
+  <% fmea.images.each_with_index do |image, img_num| %>
+    <%= render "fmeas/edit_fmea/image_modal", fmea: fmea, img_num: img_num %>
+  <% end %>
+<% end  %>
