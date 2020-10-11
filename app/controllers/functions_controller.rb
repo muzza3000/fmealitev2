@@ -19,6 +19,13 @@ class FunctionsController < ApplicationController
     end
   end
 
+  def destroy
+    @function = Function.find(params['id'])
+    @fmea = @function.fmea
+    @function.destroy
+    redirect_to edit_fmea_path(@fmea)
+  end
+
   private
 
   def set_function

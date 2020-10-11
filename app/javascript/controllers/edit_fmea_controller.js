@@ -1,8 +1,8 @@
 import { Controller } from "stimulus"
-import { toggleClass } from "helpers/index"
+import { toggleClass, itemPath } from "helpers/index"
 
 export default class extends Controller {
-  static targets = ["card", "failuremodeForm", "causeForm", "effectForm"]
+  static targets = ["card", "failuremodeForm", "causeForm", "effectForm", "delete"]
 
   initialize() {
     const selectedItemType = this.data.get("selected-item-type")
@@ -26,6 +26,11 @@ export default class extends Controller {
    createEffect () {
     // need to overwrite the id of the parent element in the modal form with the correct value
     this.effectFormTarget.value = this.selectedItemId;
+  }
+
+   delete () {
+    // need to write the delete path for the selected item
+    this.deleteTarget.attributes.href.value = `/${itemPath(this.selectedItemType)}s/${this.selectedItemId}`
   }
 
   select() {
