@@ -1,7 +1,11 @@
 class Function < ApplicationRecord
   belongs_to :fmea
   has_many :failure_modes, dependent: :destroy
+  validates :description, presence: true
 
+  def parent
+    self.fmea
+  end
   # This method for the selection-highlighting in the edit_fmea-page
   def amount_of_children
     children_count = 0

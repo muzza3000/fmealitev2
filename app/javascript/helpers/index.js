@@ -79,5 +79,12 @@ const toggleClass = (element, elements) => {
 };
 
 
+const itemPath = (itemType) => {
+  if (itemType === "failuremode") {
+    return "failure_mode";
+  } else {
+    return itemType;
+  };
+};
 
-export { toggleClass }
+export { toggleClass, itemPath }

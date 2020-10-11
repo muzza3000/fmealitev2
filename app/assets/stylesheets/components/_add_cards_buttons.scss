@@ -1,12 +1,21 @@
 .all-add-cards-buttons {
-  width: 80px;
+  width: 100px;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .add-card-button {
+  text-align: center;
   transition: all .2s ease-in-out;
+  padding: 5px 10px;
+  p {
+    padding: 0;
+    margin: 0 0 0 0;
+    font-size: 12px;
+  }
 }
 
 .add-card-button:hover {
@@ -39,6 +48,3 @@
   display: none;
 }
 
-.disselected {
-  opacity: 0.5;
-}
