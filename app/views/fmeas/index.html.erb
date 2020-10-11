@@ -8,7 +8,7 @@
 
      <!-- Here comes the 'Create New FMEA' - button which will open the modal-component -->
   <div class="row mb-4 d-flex align-items-center">
-    <div class="col-9 p-0">
+    <div class="col-6 col-lg-9 p-0">
       <%= simple_form_for :search, url: fmeas_path, method: :get do |f| %>
         <div class="search-form-control form-group m-0">
           <input class="form-control string required" type="text" name="search[query]" id="search_query" value="<%= @query if @query.present? %>" placeholder="Search FMEA title or risk matrix..."/>
@@ -18,11 +18,11 @@
         </div>
       <% end %>
     </div>
-    <div class="col-1 p-0 text-center">
+    <div class="col-2 col-lg-1 p-0 text-center">
       <%= link_to('clear', fmeas_path, class: "btn btn-ghost") %>
       </a>
     </div>
-    <div class="col-2 p-0">
+    <div class="col-2 col-lg-2 p-0">
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createFmeaModal">
         Create FMEA
       </button>

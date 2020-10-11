@@ -21,27 +21,43 @@
   </div>
 
   <div class="col-3 my-auto">
-    <h6> <%= image_tag("statistic_icons/function.svg") %>  <%= "#{fmea.functions.count}  " %> &#160;
-      <%= image_tag("statistic_icons/failure_mode.svg") %>
-      <%= "#{fmea.failure_modes.count}" %> &#160;
-      <%= image_tag("statistic_icons/cause.svg") %>
-      <%= "#{fmea.causes.count}  " %> &#160;
-      <%= image_tag("statistic_icons/effect.svg") %>
-      <%=  "#{fmea.effects.count}" %>
-    </h6>
+    <div class="fmea-stats-dashboard">
+      <div class="fmea-stat-dashboard">
+        <%= image_tag("statistic_icons/function.svg", class: "pr-1") %>
+        <span class="stat-number"><%= fmea.functions.count %></span>
+      </div>
+      <div class="fmea-stat-dashboard">
+        <%= image_tag("statistic_icons/failure_mode.svg", class: "pr-1") %>
+        <%= fmea.failure_modes.count %>
+      </div>
+      <div class="fmea-stat-dashboard">
+        <%= image_tag("statistic_icons/cause.svg", class: "pr-1") %>
+        <%= fmea.causes.count %>
+      </div>
+      <div class="fmea-stat-dashboard">
+        <%= image_tag("statistic_icons/effect.svg", class: "pr-1") %>
+        <%= fmea.effects.count %>
+      </div>
+    </div>
   </div>
 
   <div class="col-2 my-auto" style="z-index: 1;">
-    <div class="buttons">
-    <a href="#">
-      <i class='fas fa-share-alt icon'></i>
-    </a>
-    <a href="#">
-      <i class="fas fa-cloud-download-alt icon"></i>
-    </a>
-    <%= link_to fmea, method: :delete, data: {confirm: "Are you sure you want to delete the #{fmea.title}–FMEA?"} do %>
-      <i class="fas fa-trash icon"></i>
-    <% end %>
+    <div class="buttons-dashboard">
+      <div class="button-dashboard">
+        <a href="#">
+          <i class='fas fa-share-alt icon'></i>
+        </a>
+      </div>
+      <div class="button-dashboard">
+          <a href="#">
+            <i class="fas fa-cloud-download-alt icon"></i>
+          </a>
+      </div>
+      <div class="button-dashboard">
+          <%= link_to fmea, method: :delete, data: {confirm: "Are you sure you want to delete the #{fmea.title}–FMEA?"} do %>
+            <i class="fas fa-trash icon"></i>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
