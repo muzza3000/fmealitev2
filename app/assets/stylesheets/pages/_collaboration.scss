@@ -1,6 +1,6 @@
 .selector-container {
   width: 400px;
-  min-height: 200px;
+  min-height: 150px;
   // background-color: $gray-300;
   display: flex;
   flex-direction: column;
@@ -26,6 +26,13 @@
     display: flex;
     justify-content: flex-end;
   }
+}
+
+.hidden {
+  display: none;
+}
+.active {
+  display: block;
 }
 
 .f-fm-container{
