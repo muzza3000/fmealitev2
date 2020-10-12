@@ -1,0 +1,79 @@
+<!-- Top row containing the function-failure mode selector -->
+<div class="row d-flex justify-content-center my-4">
+  <div class="selector-container">
+    <div class="function-selector">
+      <div class="chevron left">
+        <i class="fas fa-chevron-circle-left"></i>
+      </div>
+      <div class="f-fm-container">
+        <%= render "fmeas/edit_fmea/card_content", element: Function.first %>
+      </div>
+      <div class="chevron right">
+        <i class="fas fa-chevron-circle-right"></i>
+      </div>
+    </div>
+    <div class="fmf-connector">
+    </div>
+    <div class="failure-mode-selector">
+      <div class="chevron left">
+        <i class="fas fa-chevron-circle-left"></i>
+      </div>
+      <div class="f-fm-container">
+        <%= render "fmeas/edit_fmea/card_content", element: FailureMode.first %>
+      </div>
+      <div class="chevron right">
+        <i class="fas fa-chevron-circle-right"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Second row containing the cause and effect columns -->
+<div class="row d-flex justify-content-center my-5">
+  <div class="col-5 bg-white mx-2 rounded-15 p-3">
+    <div class="cause-effect-title">
+      <h2>Causes</h2>
+    </div>
+    <div class="cause-effect-grid">
+      <div class="cause-card">
+        dummy_content
+      </div>
+      <div class="cause-card">
+        dummy_content
+      </div>
+      <div class="cause-card">
+        dummy_content
+      </div>
+      <div class="cause-card">
+        dummy_content
+      </div>
+      <div class="add-new cause-card">
+        add_new_dummy_content
+      </div>
+    </div>
+  </div>
+  <div class="col-5 bg-white mx-2 rounded-15 p-3">
+    <div class="cause-effect-title">
+      <h2>Effects</h2>
+    </div>
+    <div class="cause-effect-grid">
+      <div class="effect-card">
+        dummy_content
+      </div>
+      <div class="effect-card">
+        dummy_content
+      </div>
+      <div class="effect-card">
+        dummy_content
+      </div>
+      <div class="effect-card">
+        dummy_content
+      </div>
+      <div class="effect-card">
+        dummy_content
+      </div>
+      <div class="add-new effect-card">
+        add_new_dummy_content
+      </div>
+    </div>
+  </div>
+</div>
