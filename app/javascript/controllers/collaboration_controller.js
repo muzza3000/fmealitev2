@@ -4,13 +4,11 @@ import {
   showFunction,
   createTree,
   calcNextIdsFromFunction,
-  calcPreviousIdsFromFunction
+  calcPreviousIdsFromFunction,
+  calcNextIdsFromFailureMode,
+  calcPreviousIdsFromFailureMode,
+  createMap
 } from "helpers/collaboration"
-
-
-const x = () => {
-  return "test"
-};
 
 
 export default class extends Controller {
@@ -19,14 +17,12 @@ export default class extends Controller {
   initialize() {
   };
 
-
-
   connect() {
-    console.log("--> collaboration controller connected");
+    console.log("--> collaboration controller connected")
   };
 
   nextFunction() {
-    // build the tree of objects
+    // build the tree of objects from the DOM elements
     const tree = createTree(this.functionTargets, this.failure_modeTargets);
 
     // calc id's of next objects
@@ -36,14 +32,13 @@ export default class extends Controller {
     showFunction(ids.functionId, this.functionTargets);
     showFailureMode(ids.failureModeId, this.failure_modeTargets)
 
-    // set the current ids in the Dom
+    // // set the current ids in the Dom
     this.functionId = ids.functionId
     this.failureModeId = ids.failureModeId
   };
 
   previousFunction() {
-    console.log("previous function clicked")
-    // build the tree of objects
+    // build the tree of objects from the DOM elements
     const tree = createTree(this.functionTargets, this.failure_modeTargets);
 
     // calc id's of next objects
@@ -59,10 +54,39 @@ export default class extends Controller {
   };
 
   nextFailureMode() {
-    console.log("next failure mode clicked")
+    // build the tree of objects from the DOM elements
+    const tree = createTree(this.functionTargets, this.failure_modeTargets);
+    // build the map of the objects for convenient lookup
+    const map = createMap(tree);
+
+    // calc the id of the next function
+    const ids =  calcNextIdsFromFailureMode(this.functionId, this.failureModeId, map);
+
+    // show next objects
+    showFunction(ids.functionId, this.functionTargets);
+    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+
+    // set the current ids in the Dom
+    this.functionId = ids.functionId
+    this.failureModeId = ids.failureModeId
   };
+
   previousFailureMode() {
-    console.log("previous failure mode clicked")
+    // build the tree of objects from the DOM elements
+    const tree = createTree(this.functionTargets, this.failure_modeTargets);
+    // build the map of the objects for convenient lookup
+    const map = createMap(tree);
+
+    // calc the id of the next function
+    const ids =  calcPreviousIdsFromFailureMode(this.functionId, this.failureModeId, map);
+
+    // show next objects
+    showFunction(ids.functionId, this.functionTargets);
+    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+
+    // set the current ids in the Dom
+    this.functionId = ids.functionId
+    this.failureModeId = ids.failureModeId
   };
 
 
