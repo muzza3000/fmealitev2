@@ -1,5 +1,17 @@
 import { Controller } from "stimulus";
-import { showHideFunctionNext } from "helpers/collaboration"
+import {
+  showFailureMode,
+  showFunction,
+  createTree,
+  calcNextIdsFromFunction,
+  calcPreviousIdsFromFunction
+} from "helpers/collaboration"
+
+
+const x = () => {
+  return "test"
+};
+
 
 export default class extends Controller {
   static targets = ["function", "failure_mode"]
@@ -7,22 +19,43 @@ export default class extends Controller {
   initialize() {
   };
 
+
+
   connect() {
     console.log("--> collaboration controller connected");
-    console.log(this.functionTargets);
-    console.log(this.failure_modeTargets);
-    console.log(this.failureModeId);
-    console.log(this.functionId);
   };
 
   nextFunction() {
-    console.log("next function clicked");
-    
-    showHideFunctionNext(this.functionId, this.functionTargets);
+    // build the tree of objects
+    const tree = createTree(this.functionTargets, this.failure_modeTargets);
+
+    // calc id's of next objects
+    const ids = calcNextIdsFromFunction(this.functionId, this.failureModeId, tree);
+
+    // show next objects
+    showFunction(ids.functionId, this.functionTargets);
+    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+
+    // set the current ids in the Dom
+    this.functionId = ids.functionId
+    this.failureModeId = ids.failureModeId
   };
 
   previousFunction() {
     console.log("previous function clicked")
+    // build the tree of objects
+    const tree = createTree(this.functionTargets, this.failure_modeTargets);
+
+    // calc id's of next objects
+    const ids = calcPreviousIdsFromFunction(this.functionId, this.failureModeId, tree);
+
+    // show next objects
+    showFunction(ids.functionId, this.functionTargets);
+    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+
+    // set the current ids in the Dom
+    this.functionId = ids.functionId
+    this.failureModeId = ids.failureModeId
   };
 
   nextFailureMode() {
@@ -31,6 +64,7 @@ export default class extends Controller {
   previousFailureMode() {
     console.log("previous failure mode clicked")
   };
+
 
   // Getters and setters
   get failureModeId() {
