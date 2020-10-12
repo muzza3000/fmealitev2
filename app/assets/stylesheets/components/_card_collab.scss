@@ -1,0 +1,172 @@
+// Here you'll find the classes for the card in the collaboration mode
+
+.card-collab {
+  box-shadow: 3px 3px 10px rgba(black, 0.2);
+  border-radius: 3px;
+  min-height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.colored-stripe-cause {
+  background-color: $red;
+  width: 12px;
+}
+
+.colored-stripe-effect {
+  background-color: $green;
+  width: 12px;
+}
+
+
+
+
+
+// Here comes all the hacky scss to force the simple form into displaying correctly.
+
+.card-collab-form {
+  margin: 7px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.expand-to-100 {
+  min-width: 100%;
+  min-height: 100% !important;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 5px;
+  resize: none;
+  flex: 1;
+  background-color: none;
+}
+
+.cause_description {
+  min-width: 100%;
+  min-height: 100%;
+  resize: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.effect_description {
+  min-width: 100%;
+  min-height: 100%;
+  resize: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.was-validated .form-control:valid, .form-control.is-valid {
+  border-color: none;
+  background-image: none;
+  border: none !important;
+}
+
+.card-collab-description {
+  color: $body-color;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.card-collab-form {
+  width: 100%;
+}
+
+.card-collab-description-parent {
+  flex-grow: 1;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+}
+
+.card-collab-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-control {
+  font-size: 0.7rem;
+}
+
+.cause_occurence .expand-to-100 {
+  padding-right: 20px !important;
+  padding-left: 20px !important;
+}
+
+.form-group {
+  .was-validated .form-control:valid, .form-control.is-valid .expand-to-100 {
+    padding-right: none !important;
+  }
+}
+
+#cause_occurence {
+  padding-right: none !important;
+}
+
+
+
+// Here we have the 3 different colors for the dropdown depending on the rating.
+
+// 1. Green
+
+.card-collab-number-dropdown-rating-green .form-group {
+    margin: 0 !important;
+}
+
+.card-collab-number-dropdown-rating-green .expand-to-100 {
+  padding-left: 20px !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  color: $gray;
+  background-color: #ECF2EB !important;
+  max-height: 40px;
+  max-width: 60px;
+}
+
+// 2. Yellow
+
+// .card-collab-number-dropdown-rating-yellow .form-group {
+//     margin: 0 !important;
+// }
+
+// .card-collab-number-dropdown-rating-yellow .expand-to-100 {
+//   padding-left: 20px;
+//   font-size: 1.1rem;
+//   font-weight: bold;
+//   text-align: center;
+//   background-color: #e0e0e0 !important;
+//   max-height: 40px;
+//   max-width: 60px;
+// }
+
+// // 3. Red
+
+// .card-collab-number-dropdown-rating-red .form-group {
+//     margin: 0 !important;
+// }
+
+// .card-collab-number-dropdown-rating-red .expand-to-100 {
+//   padding-left: 20px;
+//   font-size: 1.1rem;
+//   font-weight: bold;
+//   text-align: center;
+//   background-color: #FACDCD !important;
+//   max-height: 40px;
+//   max-width: 60px;
+// }
+
+
+
+// Here the styling for the checkbox applies
+
+.form-check-input .is-valid .boolean .optional .expand-to-100 {
+  background-color: black !important;
+}
+
+
+
+

@@ -1,0 +1,32 @@
+<!-- This partial takes in either an effect or a failure mode and returns the card in the collaboration mode for it. -->
+<!-- The syntax to call this partial is: -->
+<!-- render "fmeas/collab_fmea", element: effect  -->
+  <div class="card-collab">
+    <div class="colored-stripe-<%= element.class.name.downcase %>"></div>
+
+  <!--   Here comes the fun form-part -->
+
+      <%= simple_form_for element,  method: 'post',  html: { class: 'card-collab-form' }, remote: true, defaults: { input_html: { class: 'expand-to-100' } } do |f| %>
+      <div class="card-collab-description-parent mr-3">
+        <%= f.input :description, as: :text, value: element.description, label: false, class: "card-collab-description" %>
+      </div>
+      <div class="card-collab-actions">
+        <div>
+         <!--  Here comes the checkbox -->
+         <%= f.input :confirmed, as: :boolean, value: element.confirmed, label: false %>
+        </div>
+
+        <div class="card-collab-number-dropdown-<%= rating_color(element) %>">
+          <% if element.class.to_s.downcase == "effect" %>
+              <%= f.input :severity, {collection: (1..rating_scale(element)).to_a, label: false} %>
+            <% end %>
+            <% if element.class.to_s.downcase == "cause" %>
+              <%= f.input :occurrence, {collection: (1..rating_scale(element)).to_a, label: false} %>
+            <% end %>
+        </div>
+      </div>
+
+      <% end %>
+
+  </div>
+
