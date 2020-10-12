@@ -1,5 +1,5 @@
 class FmeasController < ApplicationController
-  before_action :set_fmea, only: [:edit, :update]
+  before_action :set_fmea, only: [:edit, :update, :collaboration]
 
   def index
     @query = params[:search][:query] if params[:search].present?
@@ -42,6 +42,9 @@ class FmeasController < ApplicationController
     @fmea = Fmea.find(params["id"])
     @fmea.destroy
     redirect_to(fmeas_path)
+  end
+
+  def collaboration
   end
 
   private
