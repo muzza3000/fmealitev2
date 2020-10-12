@@ -37,12 +37,13 @@
   flex-grow: 1;
   margin-right: 15px;
   min-height: 100%;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   resize: none;
   border: 1px solid #c3c3c3;
   padding: 10px;
   border-radius: 3px;
   color: $gray;
+  overflow: auto;
 }
 
 .card-collab-actions {

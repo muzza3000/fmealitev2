@@ -1,8 +1,9 @@
 class CausesController < ApplicationController
   include CardContentHelper
-  before_action :set_cause, only: [:update]
+  before_action :set_cause, only: [:update, :collab_update]
 
   def update
+    raise
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
     # redirect to the function where the cause was added
@@ -10,6 +11,8 @@ class CausesController < ApplicationController
   end
 
   def create
+    collab_update if params["query"] == "collab"
+
     @cause = Cause.new(cause_params)
 
     if @cause.save
@@ -36,6 +39,13 @@ class CausesController < ApplicationController
   end
 
   def cause_params
-    params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id)
+    params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id, :query, :authenticity_token )
+  end
+
+  def collab_update
+    @cause = Cause.find(params["id"])
+    collab_params = { description: params["description"], occurrence: params["occurrence"].to_i, confirmed: params["confirmed"]}
+    @cause.update(collab_params)
+    redirect_to "/playground"
   end
 end
