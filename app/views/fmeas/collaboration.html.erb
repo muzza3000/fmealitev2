@@ -3,7 +3,7 @@
   <div class="row d-flex justify-content-center my-4">
     <div class="selector-container">
       <div class="function-selector">
-        <div class="chevron left">
+        <div class="chevron left" data-action="click->collaboration#previousFunction">
           <i class="fas fa-chevron-circle-left"></i>
         </div>
         <div class="f-fm-container">
@@ -15,14 +15,14 @@
           <% end %>
           <!-- / finish failure_mode rendering -->
         </div>
-        <div class="chevron right">
+        <div class="chevron right" data-action="click->collaboration#nextFunction">
           <i class="fas fa-chevron-circle-right"></i>
         </div>
       </div>
       <div class="fmf-connector">
       </div>
       <div class="failure-mode-selector">
-        <div class="chevron left">
+        <div class="chevron left" data-action="click->collaboration#previousFailureMode">
           <i class="fas fa-chevron-circle-left"></i>
         </div>
         <div class="f-fm-container">
@@ -34,7 +34,7 @@
           <% end %>
           <!-- / finish failure_mode rendering -->
         </div>
-        <div class="chevron right">
+        <div class="chevron right" data-action="click->collaboration#nextFailureMode">
           <i class="fas fa-chevron-circle-right"></i>
         </div>
       </div>

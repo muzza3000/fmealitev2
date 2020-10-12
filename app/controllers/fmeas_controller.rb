@@ -49,24 +49,18 @@ class FmeasController < ApplicationController
 
     # Check if the failure_mode sort exists
     if FailureMode.exists?(@query.to_i)
-
       # if yes: assign to failure_mode
       failure_mode = FailureMode.find(@query.to_i)
-
       # now check if failure_mode belongs to fmea
       if @fmea == failure_mode.function.fmea
-
         # if yes: assign show_instances so view renders in correct location
         @show_failure_mode = failure_mode
         @show_function = @show_failure_mode.function
-
       else
-
         # else: render the first function and failure mode
         @show_function = @fmea.functions[0]
         @show_failure_mode = @show_function.failure_modes[0]
       end
-
     else
       # render the first function and failure mode
       @show_function = @fmea.functions[0]

@@ -3,7 +3,7 @@
 <% element_icon_path = element.class.to_s.downcase %>
 
 <!-- Card HTML -->
-<div class="card-background" data-target="edit-fmea.card" data-action="click->edit-fmea#select" data-card-type="<%= element.class.name.downcase  %>" data-id="<%= element.id %>"  data-parent-id="<%= element.parent.id %>" id="<%= card_id(element) %>" data-controller="clipboard">
+<div class="card-background" data-target="edit-fmea.card, collaboration.<%= element.model_name.param_key%>" data-action="click->edit-fmea#select" data-card-type="<%= element.class.name.downcase  %>" data-id="<%= element.id %>"  data-parent-id="<%= element.parent.id %>" id="<%= card_id(element) %>" data-controller="clipboard" >
   <div class="card-icon-box <%= element_class %>">
     <%= image_tag( "icons/#{element_icon_path}.svg", class: "card-icon") %>
   </div>

@@ -19,9 +19,7 @@
   width: 30px;
   display: flex;
   align-items: center;
-  &.left {
-
-  }
+  cursor: pointer;
   &.right {
     display: flex;
     justify-content: flex-end;
