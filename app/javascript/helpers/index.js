@@ -78,6 +78,13 @@ const toggleClass = (element, elements) => {
   };
 };
 
+const clearSelection = (cards) => {
+  cards.forEach((card) => {
+    card.classList.remove("disselected");
+    card.classList.remove(`selected-${card.dataset.cardType}`);
+  })
+};
+
 
 const itemPath = (itemType) => {
   if (itemType === "failuremode") {
@@ -87,4 +94,4 @@ const itemPath = (itemType) => {
   };
 };
 
-export { toggleClass, itemPath }
+export { toggleClass, itemPath, clearSelection }
