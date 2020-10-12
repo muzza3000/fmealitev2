@@ -63,15 +63,8 @@
 <div class="card-collab" data-controller="collab">
   <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
       <%= form_for(element, options = { html: { data: { target: "collab.form" }, class: "card-collab-form"  } , method: "put", remote: true})  do |f| %>
-
-
-    <!-- Here are the hidden fields -->
-       <!-- f.input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden" -->
-      <!-- <input name="id" value="<%= element.id %>" type="hidden"> -->
-
-
       <!-- Here comes the basic description of the cause/effect -->
-      <%=  f.text_field :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "effect" } %>
+      <%=  f.text_field :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "#{element.class.name.downcase}", id: "#{element.id}" } %>
       <!--  Here come the right-hand-side actions -->
       <div class="card-collab-actions">
         <div class="custom-control custom-checkbox">
@@ -80,8 +73,8 @@
             <span class="card-collab-custom-checkbox"><i class="fas fa-check"></i></span>
           </label>
         </div>
-        <% occurrences = (1..rating_scale(element)).to_a %>
-        <%= f.select :occurrence, options_for_select(occurrences) %>
+          <% occurrences = (1..rating_scale(element)).to_a %>
+          <%= f.select :occurrence, options_for_select(occurrences), {}, class: "card-collab-select-#{rating_color(element)}" %> <!-- The empty hash needs to stay there! -->
       </div>
       <% end %>
 </div>

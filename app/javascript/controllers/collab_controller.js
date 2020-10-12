@@ -4,10 +4,12 @@ export default class extends Controller {
   static targets = ["source", "form"]
 
   connect() {
+    console.log("--> collab controller connected");
 
   }
 
   submit() {
+    console.log("#submit was executed");
     const forms = this.formTargets;
     const type = event.currentTarget.dataset.type;
     console.log(forms);
