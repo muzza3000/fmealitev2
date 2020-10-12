@@ -3,7 +3,6 @@ class CausesController < ApplicationController
   before_action :set_cause, only: [:update, :collab_update]
 
   def update
-    raise
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
     # redirect to the function where the cause was added
@@ -39,7 +38,7 @@ class CausesController < ApplicationController
   end
 
   def cause_params
-    params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id, :query, :authenticity_token )
+      params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id, :query, :authenticity_token )
   end
 
   def collab_update
