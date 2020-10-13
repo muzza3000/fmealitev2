@@ -3,16 +3,24 @@ class CausesController < ApplicationController
   before_action :set_cause, only: [:update]
 
   def update
+    adjust_confirmed_params
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
+    if params["live"] == "true"
+      redirect_to "/playground"
+      return
+    end
     # redirect to the function where the cause was added
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@cause.failure_mode.function))
   end
 
   def create
     @cause = Cause.new(cause_params)
+<<<<<<< HEAD
     @fmea = @cause.failure_mode.function.fmea
 
+=======
+>>>>>>> master
     if @cause.save
       FmeaCollaborationChannel.broadcast_to(
       @fmea,
@@ -41,6 +49,14 @@ class CausesController < ApplicationController
   end
 
   def cause_params
-    params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id)
+      params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id, :confirmed)
+  end
+
+  def adjust_confirmed_params
+    if params["cause"]["confirmed"] == "0"
+      params["cause"]["confirmed"] = false
+    elsif params["cause"]["confirmed"] == "1"
+      params["cause"]["confirmed"] = true
+    end
   end
 end

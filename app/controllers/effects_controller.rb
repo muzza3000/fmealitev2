@@ -3,8 +3,13 @@ class EffectsController < ApplicationController
   before_action :set_effect, only: [:update]
 
   def update
+    adjust_confirmed_params
     @effect.update(effect_params)
     @fmea = @effect.failure_mode.function.fmea
+    if params["live"] == "true"
+      redirect_to "/playground"
+      return
+    end
     # redirect to the function where the effect was added
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@effect.failure_mode.function))
   end
@@ -36,6 +41,14 @@ class EffectsController < ApplicationController
   end
 
   def effect_params
-    params.require(:effect).permit(:description, :severity, :failure_mode, :failure_mode_id)
+    params.require(:effect).permit(:description, :severity, :failure_mode, :failure_mode_id, :confirmed)
+  end
+
+  def adjust_confirmed_params
+    if params["effect"]["confirmed"] == "0"
+      params["effect"]["confirmed"] = false
+    elsif params["effect"]["confirmed"] == "1"
+      params["effect"]["confirmed"] = true
+    end
   end
 end
