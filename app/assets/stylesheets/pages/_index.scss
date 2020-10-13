@@ -1,2 +1,8 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "collaboration";
+@import "edit";
+
+body {
+  background-color: rgba($light-blue, 0.1);
+}

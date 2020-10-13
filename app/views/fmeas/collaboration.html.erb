@@ -1,0 +1,93 @@
+<div class="collaboration-page" data-controller="collaboration" data-collaboration-failureMode="<%= @show_failure_mode.id %>"  data-collaboration-function="<%= @show_function.id %>">
+  <!-- Top row containing the function-failure mode selector -->
+  <div class="row d-flex justify-content-center my-4">
+    <div class="selector-container">
+      <div class="function-selector">
+        <div class="chevron left" data-action="click->collaboration#previousFunction">
+          <i class="fas fa-chevron-circle-left"></i>
+        </div>
+        <div class="f-fm-container">
+          <!-- render all function cards in fmea as hidden (except first) -->
+          <% @fmea.functions.each do |function| %>
+            <div class="<%= "hidden" unless function == @show_function %>">
+              <%= render "fmeas/edit_fmea/card_content", element: function %>
+            </div>
+          <% end %>
+          <!-- / finish failure_mode rendering -->
+        </div>
+        <div class="chevron right" data-action="click->collaboration#nextFunction">
+          <i class="fas fa-chevron-circle-right"></i>
+        </div>
+      </div>
+      <div class="fmf-connector">
+      </div>
+      <div class="failure-mode-selector">
+        <div class="chevron left" data-action="click->collaboration#previousFailureMode">
+          <i class="fas fa-chevron-circle-left"></i>
+        </div>
+        <div class="f-fm-container">
+          <!-- render all failure mode cards in fmea as hidden -->
+          <% @fmea.failure_modes.each do |failure_mode| %>
+            <div class="<%= "hidden" unless failure_mode == @show_failure_mode %>">
+              <%= render "fmeas/edit_fmea/card_content", element: failure_mode %>
+            </div>
+          <% end %>
+          <!-- / finish failure_mode rendering -->
+        </div>
+        <div class="chevron right" data-action="click->collaboration#nextFailureMode">
+          <i class="fas fa-chevron-circle-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Second row containing the cause and effect columns -->
+  <div class="row d-flex justify-content-center my-5">
+    <div class="col-5 bg-white mx-2 rounded-15 p-3">
+      <div class="cause-effect-title">
+        <h2>Causes</h2>
+      </div>
+      <div class="cause-effect-grid">
+        <div class="cause-card">
+          dummy_content
+        </div>
+        <div class="cause-card">
+          dummy_content
+        </div>
+        <div class="cause-card">
+          dummy_content
+        </div>
+        <div class="cause-card">
+          dummy_content
+        </div>
+        <div class="add-new cause-card">
+          add_new_dummy_content
+        </div>
+      </div>
+    </div>
+    <div class="col-5 bg-white mx-2 rounded-15 p-3">
+      <div class="cause-effect-title">
+        <h2>Effects</h2>
+      </div>
+      <div class="cause-effect-grid">
+        <div class="effect-card">
+          dummy_content
+        </div>
+        <div class="effect-card">
+          dummy_content
+        </div>
+        <div class="effect-card">
+          dummy_content
+        </div>
+        <div class="effect-card">
+          dummy_content
+        </div>
+        <div class="effect-card">
+          dummy_content
+        </div>
+        <div class="add-new effect-card">
+          add_new_dummy_content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
