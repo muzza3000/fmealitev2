@@ -11,8 +11,13 @@ class CausesController < ApplicationController
 
   def create
     @cause = Cause.new(cause_params)
+    @fmea = @cause.failure_mode.function.fmea
 
     if @cause.save
+      FmeaCollaborationChannel.broadcast_to(
+      @fmea,
+      render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: @cause })
+      )
       # redirect to the function where the cause was added
       redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
     else
