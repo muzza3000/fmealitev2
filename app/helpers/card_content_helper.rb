@@ -55,7 +55,7 @@ module CardContentHelper
       action: "create",
       type: element.class.name.downcase,
       id: element.id,
-      body: render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: element })
+      body: render_to_string(partial: "fmeas/collab_fmea/card_collab", locals: { element: element })
     }
   end
 
@@ -64,7 +64,7 @@ module CardContentHelper
       action: "update",
       type: element.class.name.downcase,
       id: element.id,
-      body: render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: element })
+      body: render_to_string(partial: "fmeas/collab_fmea/card_collab", locals: { element: element })
     }
   end
 

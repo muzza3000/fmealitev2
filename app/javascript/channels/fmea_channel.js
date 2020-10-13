@@ -54,7 +54,7 @@ export const initFmeaCable = () => {
           // if card exists in the dom update HTML
           if (card) {
             const newCard = `<div class="${payload.type}-card">${payload.body}</div>`;
-            card.innerHTML = newCard;
+            card.parentElement.innerHTML = newCard;
           };
         };
       },

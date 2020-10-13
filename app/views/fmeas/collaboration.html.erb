@@ -59,7 +59,9 @@
       <div class="cause-effect-grid" id="cause-grid">
         <% @fmea.failure_modes.each do |fm| %>
           <% fm.causes.each do |cause| %>
-            <%= render "fmeas/collab_fmea/card_collab", element: cause %>
+            <div class="cause-card">
+              <%= render "fmeas/collab_fmea/card_collab", element: cause %>
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -71,7 +73,9 @@
       <div class="cause-effect-grid" id="effect-grid" >
         <% @fmea.failure_modes.each do |fm| %>
           <% fm.effects.each do |effect| %>
-            <%= render "fmeas/collab_fmea/card_collab", element: effect %>
+            <div class="effect-card">
+              <%= render "fmeas/collab_fmea/card_collab", element: effect %>
+            </div>
           <% end %>
         <% end %>
       </div>
