@@ -24,6 +24,7 @@ export default class extends Controller {
 
   log() {
     console.log(this.failure_modeTargets);
+    console.log(this.causeTargets);
   };
 
   nextFunction() {
