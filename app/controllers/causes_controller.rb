@@ -16,11 +16,8 @@ class CausesController < ApplicationController
 
   def create
     @cause = Cause.new(cause_params)
-<<<<<<< HEAD
     @fmea = @cause.failure_mode.function.fmea
 
-=======
->>>>>>> master
     if @cause.save
       FmeaCollaborationChannel.broadcast_to(
       @fmea,
