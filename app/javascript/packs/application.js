@@ -26,12 +26,14 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { initFmeaCable } from '../channels/fmea_channel'
 import { initSelect2 } from '../helpers/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
+  initFmeaCable();
   initSelect2();
 });
+
 
 import "controllers"
