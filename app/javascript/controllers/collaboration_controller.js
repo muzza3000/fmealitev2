@@ -19,7 +19,7 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log("--> collaboration controller connected")
+    console.log("--> collaboration controller connected");
   };
 
   nextFunction() {
@@ -90,9 +90,18 @@ export default class extends Controller {
     this.failureModeId = ids.failureModeId
   };
 
+
+  prepareForm(event) {
+    event.preventDefault();
+    setTimeout(() => {
+     Rails.fire(form, "submit");
+   });
+  }
+
+
   // The submit function submits the live-forms for the causes and effects.
   submit() {
-  event.currentTarget.preventDefault();
+  event.preventDefault();
   const type = event.currentTarget.dataset.type;
   let form = event.currentTarget.parentElement;
 
@@ -105,8 +114,8 @@ export default class extends Controller {
   };
 
   form.method = "post";
-  Rails.fire(form, "submit");
-}
+  prepareForm();
+  }
 
 
   // Getters and setters
