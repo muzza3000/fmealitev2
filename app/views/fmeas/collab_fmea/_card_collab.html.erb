@@ -1,87 +1,38 @@
-<!-- This partial takes in either an effect or a failure mode and returns the card in the collaboration mode for it. -->
-<!-- The syntax to call this partial is: -->
-<!-- render "fmeas/collab_fmea", element: effect  -->
-<!-- <div class="card-collab" data-controller="collab">
-  <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
-    <% if element.class.to_s.downcase == "cause" %>
-      <form action="<%= "/causes?query=collab" %>" class="card-collab-form" method="put"  data-target="collab.form" data-cause-id="<%= element.id %>">
-    <% elsif element.class.to_s.downcase == "effect" %>
-      <form <%= "action=#{link_to effect_path(element)}/?query=collab" %> class="card-collab-form" method="put" data-target="collab.form" dat-effect-id="<%= element.id %>">
-    <% end %>
- -->
-    <!-- Here are the hidden fields -->
-<!--       <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-      <input name="id" value="<%= element.id %>" type="hidden"> -->
-
-
-      <!-- Here comes the basic description of the cause/effect -->
-<!--       <textarea name="description" id="" class="card-collab-description"  data-target="collab.source" data-action="change->collab#submit" data-type="<%= element.class.name.downcase %>" data-id="<%= element.id %>"><%= element.description %></textarea>
- -->      <!--  Here come the right-hand-side actions -->
-<!--       <div class="card-collab-actions">
-        <div class="custom-control custom-checkbox">
-          <label class="checkbox-label">
-            <input type="checkbox" class="card-collab-checkbox" name="confirmed" id="customCheck1" value="<%= element.confirmed %>">
-            <span class="card-collab-custom-checkbox"><i class="fas fa-check"></i></span>
-          </label>
-        </div>
-          <% if element.class.to_s.downcase == "effect" %>
-              <select name="severity" id="">
-                <% (1..rating_scale(element)).to_a.each do |n| %>
-                  <option value="<%= n %>"><%= n %></option>
-                <% end %>
-              </select>
-            <% end %>
-            <% if element.class.to_s.downcase == "cause" %>
-              <select name="occurence" id="" class="card-collab-select-<%= rating_color(element) %>">
-                <% (1..rating_scale(element)).to_a.each do |n| %>
-                  <option value="<%= n %>"><%= n %></option>
-                <% end %>
-              </select>
-            <% end %> -->
-        <!-- </div> -->
-<!--       </div>
-    </form>
-</div> -->
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 <div class="card-collab" data-controller="collab">
   <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
       <%= form_for(element, options = { html: { data: { target: "collab.form" }, class: "card-collab-form"  } , method: "put", remote: true })  do |f| %>
       <!-- Here comes the basic description of the cause/effect -->
-      <%=  f.text_field :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "#{element.class.name.downcase}", id: "#{element.id}" } %>
-      <input type="hidden" value="true" id="live" name="live">
-      <!--  Here come the right-hand-side actions -->
-      <div class="card-collab-actions">
-        <div class="custom-control custom-checkbox">
-          <label class="checkbox-label">
-            <%=  f.check_box :confirmed, class: "card-collab-checkbox", value: element.confirmed %>
-            <span class="card-collab-custom-checkbox"><i class="fas fa-check"></i></span>
-          </label>
+        <%=  f.text_field :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "#{element.class.name.downcase}", id: "#{element.id}", input: "textbox" } %>
+        <input type="hidden" value="true" id="live" name="live">
+        <!--  Here come the right-hand-side actions -->
+        <div class="card-collab-actions">
+          <div class="custom-control custom-checkbox">
+            <label class="checkbox-label">
+              <% if element.confirmed == true %>
+                <% value_checkbox = "checked" %>
+              <% else %>
+                <% value_checkbox = "unchecked" %>
+              <% end %>
+              <%=  f.check_box :confirmed, class: "card-collab-checkbox",
+                  value: value_checkbox,
+                  data: { target: "collab.source", action: "change->collab#submit",
+                    type: "#{element.class.name.downcase}", id: "#{element.id}", input: "checkbox"
+                  } %>
+              <span class="card-collab-custom-checkbox"><i class="fas fa-check"></i></span>
+            </label>
+          </div>
+          <% if element.class.name.downcase == "cause" %>
+            <% occurrences = (1..rating_scale(element)).to_a %>
+            <%= f.select :occurrence, options_for_select(occurrences), {},
+              class: "card-collab-select-#{rating_color(element)}",
+              data: { target: "collab.source", action: "change->collab#submit",
+                type: "#{element.class.name.downcase}", id: "#{element.id}", input: "dropdown"},
+              selected: element.occurrence.to_s  %> <!-- The empty hash needs to stay there! -->
+          <% elsif element.class.name.downcase == "effect"  %>
+            <% severities = (1..rating_scale(element)).to_a %>
+            <%= f.select :severity, options_for_select(severities), {}, class: "card-collab-select-#{rating_color(element)}" %> <!-- The empty hash needs to stay there! -->
+          <% end %>
         </div>
-        <% if element.class.name.downcase == "cause" %>
-          <% occurrences = (1..rating_scale(element)).to_a %>
-          <%= f.select :occurrence, options_for_select(occurrences), {}, class: "card-collab-select-#{rating_color(element)}" %> <!-- The empty hash needs to stay there! -->
-        <% elsif element.class.name.downcase == "effect"  %>
-          <% severities = (1..rating_scale(element)).to_a %>
-          <%= f.select :severity, options_for_select(severities), {}, class: "card-collab-select-#{rating_color(element)}" %> <!-- The empty hash needs to stay there! -->
-        <% end %>
-      </div>
       <% end %>
 </div>
 

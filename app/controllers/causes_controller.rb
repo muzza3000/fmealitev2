@@ -1,20 +1,21 @@
 class CausesController < ApplicationController
   include CardContentHelper
-  before_action :set_cause, only: [:update, :collab_update]
+  before_action :set_cause, only: [:update]
 
   def update
-    raise
+    adjust_confirmed_params
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
     # redirect to the function where the cause was added
+    if params["live"] == "true"
+      redirect_to "/playground"
+      return
+    end
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@cause.failure_mode.function))
   end
 
   def create
-    collab_update if params["query"] == "collab"
-
     @cause = Cause.new(cause_params)
-
     if @cause.save
       # redirect to the function where the cause was added
       redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
@@ -39,13 +40,14 @@ class CausesController < ApplicationController
   end
 
   def cause_params
-      params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id )
+      params.require(:cause).permit(:description, :occurrence, :failure_mode, :failure_mode_id, :confirmed)
   end
 
-  def collab_update
-    @cause = Cause.find(params["id"])
-    collab_params = { description: params["description"], occurrence: params["occurrence"].to_i, confirmed: params["confirmed"]}
-    @cause.update(collab_params)
-    redirect_to "/playground"
+  def adjust_confirmed_params
+    if params["cause"]["confirmed"] == "0"
+      params["cause"]["confirmed"] = false
+    elsif params["cause"]["confirmed"] == "1"
+      params["cause"]["confirmed"] = true
+    end
   end
 end

@@ -1,7 +1,12 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["source", "form"]
+  static targets = ["source", "check", "form"]
+
+  prepareParams(event) {
+    event.preventDefault();
+  }
 
   connect() {
     console.log("--> collab controller connected");
@@ -9,23 +14,23 @@ export default class extends Controller {
   }
 
   submit() {
+    event.preventDefault();
     console.log("#submit was executed");
     const type = event.currentTarget.dataset.type;
     console.log(type);
     let form = event.currentTarget.parentElement;
-    // if (type === "effect") {
-      // forms.forEach((f) => {
-      //   if (f.dataset.effectId === event.currentTarget.dataset.id) {
-      //     form = f;
-      //   };
-      // });
-    // };
 
-    // if (type === "cause") {
-    // };
+    if (event.currentTarget.dataset.input === "checkbox") {
+      form = event.currentTarget.parentElement.parentElement.parentElement.parentElement;
+    };
+
+    if (event.currentTarget.dataset.input === "dropdown") {
+      form = event.currentTarget.parentElement.parentElement;
+    };
+
     console.log(form);
     form.method = "post";
     console.log(form.method);
-    form.submit();
+    Rails.fire(form, "submit");
   }
 }
