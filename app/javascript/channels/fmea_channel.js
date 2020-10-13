@@ -21,7 +21,9 @@ export const initFmeaCable = () => {
         // {
         //   type: cause / effect
         //   action: create / destroy / update
-        //   payload: card_html or Id
+        //   payload: card_html or ""
+        //   id: itemId
+        //   parentid: parentId
         // }
 
         // parse the payload as json
@@ -29,7 +31,13 @@ export const initFmeaCable = () => {
 
         // Create
         if (payload.action === "create") {
-          const newCard = `<div class="${payload.type}-card">${payload.body}</div>`;
+          // read current failure mode id from dom
+          const failureModeId = parseInt(document.getElementById('current-values').dataset.collaborationFailuremode);
+          // if id === parent id of new card
+          // then set state = "" else state = "hidden"
+          const state = (failureModeId === payload.parentid) ? "" : "hidden"
+
+          const newCard = `<div class="${payload.type}-card ${state}">${payload.body}</div>`;
           if (payload.type === "cause") {
             causeGrid.insertAdjacentHTML('beforeend', newCard)
           } else if (payload.type === "effect") {

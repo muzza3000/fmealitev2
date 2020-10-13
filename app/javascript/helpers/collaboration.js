@@ -18,6 +18,16 @@ export const showFailureMode = (id, failureModes) => {
   });
 };
 
+export const showCauseEffect = (parentId, causes) => {
+  causes.forEach((c) => {
+    if (parentId === parseInt(c.dataset.parentId)) {
+      c.parentElement.classList.remove("hidden");
+    } else {
+      c.parentElement.classList.add("hidden");
+    }
+  });
+};
+
 export const calcNextIdsFromFunction = (functionId, failureModeId, tree) => {
   // receive the current functionId and the tree
   // calc which function is next

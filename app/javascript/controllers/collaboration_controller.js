@@ -2,6 +2,7 @@ import { Controller } from "stimulus";
 import {
   showFailureMode,
   showFunction,
+  showCauseEffect,
   createTree,
   calcNextIdsFromFunction,
   calcPreviousIdsFromFunction,
@@ -13,18 +14,13 @@ import Rails from "@rails/ujs";
 
 
 export default class extends Controller {
-  static targets = ["function", "failure_mode", "cause", "source", "check", "form"]
+  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form"]
 
   initialize() {
   };
 
   connect() {
     console.log("--> collaboration controller connected")
-  };
-
-  log() {
-    console.log(this.failure_modeTargets);
-    console.log(this.causeTargets);
   };
 
   nextFunction() {
@@ -37,6 +33,8 @@ export default class extends Controller {
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
     showFailureMode(ids.failureModeId, this.failure_modeTargets)
+    showCauseEffect(ids.failureModeId, this.causeTargets);
+    showCauseEffect(ids.failureModeId, this.effectTargets);
 
     // // set the current ids in the Dom
     this.functionId = ids.functionId
@@ -52,7 +50,9 @@ export default class extends Controller {
 
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
-    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+    showFailureMode(ids.failureModeId, this.failure_modeTargets);
+    showCauseEffect(ids.failureModeId, this.causeTargets);
+    showCauseEffect(ids.failureModeId, this.effectTargets);
 
     // set the current ids in the Dom
     this.functionId = ids.functionId
@@ -70,7 +70,9 @@ export default class extends Controller {
 
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
-    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+    showFailureMode(ids.failureModeId, this.failure_modeTargets);
+    showCauseEffect(ids.failureModeId, this.causeTargets);
+    showCauseEffect(ids.failureModeId, this.effectTargets);
 
     // set the current ids in the Dom
     this.functionId = ids.functionId
@@ -88,7 +90,9 @@ export default class extends Controller {
 
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
-    showFailureMode(ids.failureModeId, this.failure_modeTargets)
+    showFailureMode(ids.failureModeId, this.failure_modeTargets);
+    showCauseEffect(ids.failureModeId, this.causeTargets);
+    showCauseEffect(ids.failureModeId, this.effectTargets);
 
     // set the current ids in the Dom
     this.functionId = ids.functionId
