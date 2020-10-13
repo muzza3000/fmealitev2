@@ -57,4 +57,12 @@ module CardContentHelper
       body: render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: element })
     }
   end
+
+  def destroy_card_broadcast(element)
+    {
+      action: "destroy",
+      type: element.class.name.downcase,
+      body: element.id
+    }
+  end
 end

@@ -1,6 +1,6 @@
 class EffectsController < ApplicationController
   include CardContentHelper
-  before_action :set_effect, only: [:update]
+  before_action :set_effect, only: [:update, :destroy]
 
   def update
     adjust_confirmed_params
@@ -33,9 +33,19 @@ class EffectsController < ApplicationController
   end
 
   def destroy
-    @effect = Effect.find(params['id'])
     @failure_mode = @effect.failure_mode
+    @fmea = @effect.failure_mode.function.fmea
+
+    # form the json for the broadcase
+    payload = destroy_card_broadcast(@effect).to_json
+
+    # destroy the record
     @effect.destroy
+
+    # broadcast the action
+    FmeaCollaborationChannel.broadcast_to(
+    @fmea, payload)
+
     redirect_to edit_fmea_path(@failure_mode.function.fmea, anchor: card_id(@failure_mode.function))
   end
 

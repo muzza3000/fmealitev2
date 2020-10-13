@@ -20,7 +20,7 @@ export const initFmeaCable = () => {
         // if add - append the html
         const payload = JSON.parse(data);
 
-        // create action
+        // Create action
         if (payload.action === "create"){
           const card = `<div class="cause-card">${payload.body}</div>`
           if (payload.type === "cause") {
@@ -30,7 +30,20 @@ export const initFmeaCable = () => {
           }
         }
 
-        
+        // Destroy action
+        if (payload.action === "destroy") {
+          // get card from document
+          const card = document.getElementById(`${payload.type}-${payload.body}`)
+          console.log(card);
+
+          if (card) {
+            card.parentNode.removeChild(card);
+          }
+        }
+
+        // Update action
+
+
 
 
         // const card = `<div class="cause-card">${data}</div>`

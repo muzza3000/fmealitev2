@@ -1,4 +1,4 @@
-<div class="card-collab" data-controller="collaboration">
+<div class="card-collab" data-controller="collaboration" data-target="collaboration.<%= element.model_name.param_key%>" data-card-type="<%= element.class.name.downcase  %>" data-id="<%= element.id %>" data-parent-id="<%= element.parent.id %>" id="<%= card_id(element) %>">
   <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
       <%= form_for(element, options = { html: { data: { target: "collab.form" }, class: "card-collab-form"  } , method: "put", remote: true })  do |f| %>
       <!-- Here comes the basic description of the cause/effect -->
