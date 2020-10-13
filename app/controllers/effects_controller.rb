@@ -10,6 +10,10 @@ class EffectsController < ApplicationController
       redirect_to collaboration_fmea_path(@fmea)
       return
     end
+
+    FmeaCollaborationChannel.broadcast_to(
+    @fmea, update_card_broadcast(@effect).to_json)
+
     # redirect to the function where the effect was added
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@effect.failure_mode.function))
   end
