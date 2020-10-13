@@ -16,8 +16,13 @@ class EffectsController < ApplicationController
 
   def create
     @effect = Effect.new(effect_params)
+    @fmea = @effect.failure_mode.function.fmea
 
     if @effect.save
+      # Broadcast the creation to the collaboration channel
+      FmeaCollaborationChannel.broadcast_to(
+      @fmea, new_card_broadcast(@effect).to_json)
+
       # redirect to the function where the effect was added
       redirect_to edit_fmea_path(@effect.failure_mode.function.fmea, anchor: card_id(@effect.failure_mode.function))
     else

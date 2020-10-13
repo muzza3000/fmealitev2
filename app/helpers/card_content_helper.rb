@@ -49,4 +49,12 @@ module CardContentHelper
       ""
     end
   end
+
+  def new_card_broadcast(element)
+    {
+      action: "create",
+      type: element.class.name.downcase,
+      body: render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: element })
+    }
+  end
 end

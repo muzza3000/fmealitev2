@@ -19,10 +19,10 @@ class CausesController < ApplicationController
     @fmea = @cause.failure_mode.function.fmea
 
     if @cause.save
+      # Broadcast the creation to the collaboration channel
       FmeaCollaborationChannel.broadcast_to(
-      @fmea,
-      render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: @cause })
-      )
+      @fmea, new_card_broadcast(@cause).to_json)
+
       # redirect to the function where the cause was added
       redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
     else
@@ -56,4 +56,5 @@ class CausesController < ApplicationController
       params["cause"]["confirmed"] = true
     end
   end
+
 end

@@ -1,23 +1,41 @@
 import consumer from "./consumer";
 
 export const initFmeaCable = () => {
-  const causeContainer = document.getElementById('cause-grid');
-  if (causeContainer) {
-    const id = causeContainer.dataset.fmeaId;
-    console.log("cable connected");
-    console.log(id);
+  const causeEffectContainer = document.getElementById('cause-effect-collaboration');
+  const causeGrid = document.getElementById('cause-grid');
+  const effectGrid = document.getElementById('effect-grid');
+
+  if ((causeEffectContainer)&&(causeGrid)&&(effectGrid)) {
+    const id = causeEffectContainer.dataset.fmeaId;
+    console.log(`cable connected to FMEA ${id}`);
 
     consumer.subscriptions.create({ channel: "FmeaCollaborationChannel", id: id }, {
       received(data) {
+        // can receive events (create, update, destroy) from cause or effect controller
         // data should be json
         // type: cause / effect
         // action: add/remove
         // payload: (html or ID)
         // if remove - remove element from page
         // if add - append the html
-        const card = `<div class="cause-card">${data}</div>`
-        console.log(card);
-        causeContainer.insertAdjacentHTML('beforeend', card)
+        const payload = JSON.parse(data);
+
+        // create action
+        if (payload.action === "create"){
+          const card = `<div class="cause-card">${payload.body}</div>`
+          if (payload.type === "cause") {
+            causeGrid.insertAdjacentHTML('beforeend', card)
+          } else if (payload.type === "effect") {
+            effectGrid.insertAdjacentHTML('beforeend', card)
+          }
+        }
+
+        
+
+
+        // const card = `<div class="cause-card">${data}</div>`
+
+        // causeContainer.insertAdjacentHTML('beforeend', card)
       },
     });
   }
