@@ -3,12 +3,14 @@ import {
   showFailureMode,
   showFunction,
   showCauseEffect,
-  createTree,
   calcNextIdsFromFunction,
   calcPreviousIdsFromFunction,
   calcNextIdsFromFailureMode,
   calcPreviousIdsFromFailureMode,
-  createMap
+  createMapFM,
+  createMapFunc,
+  functionIds,
+  failureModeIds
 } from "helpers/collaboration";
 import Rails from "@rails/ujs";
 
@@ -24,11 +26,11 @@ export default class extends Controller {
   };
 
   nextFunction() {
-    // build the tree of objects from the DOM elements
-    const tree = createTree(this.functionTargets, this.failure_modeTargets);
+    // build the map of objects from the DOM elements
+    const map = createMapFunc(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
     // calc id's of next objects
-    const ids = calcNextIdsFromFunction(this.functionId, this.failureModeId, tree);
+    const ids = calcNextIdsFromFunction(this.functionId, this.failureModeId, map);
 
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
@@ -42,11 +44,11 @@ export default class extends Controller {
   };
 
   previousFunction() {
-    // build the tree of objects from the DOM elements
-    const tree = createTree(this.functionTargets, this.failure_modeTargets);
+    // build the map of objects from the DOM elements
+    const map = createMapFunc(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
     // calc id's of next objects
-    const ids = calcPreviousIdsFromFunction(this.functionId, this.failureModeId, tree);
+    const ids = calcPreviousIdsFromFunction(this.functionId, this.failureModeId, map);
 
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
@@ -60,13 +62,12 @@ export default class extends Controller {
   };
 
   nextFailureMode() {
-    // build the tree of objects from the DOM elements
-    const tree = createTree(this.functionTargets, this.failure_modeTargets);
     // build the map of the objects for convenient lookup
-    const map = createMap(tree);
+    const map = createMapFM(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
     // calc the id of the next function
     const ids =  calcNextIdsFromFailureMode(this.functionId, this.failureModeId, map);
+
 
     // show next objects
     showFunction(ids.functionId, this.functionTargets);
@@ -80,10 +81,8 @@ export default class extends Controller {
   };
 
   previousFailureMode() {
-    // build the tree of objects from the DOM elements
-    const tree = createTree(this.functionTargets, this.failure_modeTargets);
     // build the map of the objects for convenient lookup
-    const map = createMap(tree);
+    const map = createMapFM(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
     // calc the id of the next function
     const ids =  calcPreviousIdsFromFailureMode(this.functionId, this.failureModeId, map);

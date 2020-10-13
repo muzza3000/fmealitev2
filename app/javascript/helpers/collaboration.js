@@ -28,114 +28,46 @@ export const showCauseEffect = (parentId, causes) => {
   });
 };
 
-export const calcNextIdsFromFunction = (functionId, failureModeId, tree) => {
-  // receive the current functionId and the tree
-  // calc which function is next
-  let nextFunctionId = functionId;
-  let nextFailureModeId = failureModeId;
 
-  tree.children.forEach((func, i, arr) => {
-
-    if ((func.id === functionId) && (i + 1 < arr.length)) {
-
-      nextFunctionId = arr[i + 1].id;
-
-      if (arr[i + 1].hasOwnProperty("children")) {
-        nextFailureModeId = arr[i + 1].children[0].id;
-      } else {
-        nextFailureModeId = null
-      }
-    }
-  });
-  // return object of ids
-  return {
-    functionId: nextFunctionId,
-    failureModeId: nextFailureModeId
-  }
+export const functionIds = (functionTargets) => {
+  return functionTargets.map((func) => (
+    {id: parseInt(func.dataset.id)}
+  ));
 };
 
-export const calcPreviousIdsFromFunction = (functionId, failureModeId, tree) => {
-  // receive the current functionId and the tree
-  // calc which function is next
-  let nextFunctionId = functionId;
-  let nextFailureModeId = failureModeId;
-
-  tree.children.forEach((func, i, arr) => {
-
-    if ((func.id === functionId) && (i - 1 >= 0)) {
-
-      nextFunctionId = arr[i - 1].id;
-
-      if (arr[i - 1].hasOwnProperty("children")) {
-        nextFailureModeId = arr[i - 1].children[0].id;
-      } else {
-        nextFailureModeId = null
-      }
-    }
-  });
-
-  // return object of ids
-  return {
-    functionId: nextFunctionId,
-    failureModeId: nextFailureModeId
-  }
-};
-
-export const createTree = (functionTargets, failure_modeTargets) => {
-  // algorithm obtained here: https://typeofnan.dev/an-easy-way-to-build-a-tree-with-object-references/
-
-  const data = [];
-  // create the {id: X, parentId: Y} object array
-  data.push({ id: 0, parentId: null });
-  functionTargets.forEach((func) => {
-    let key = func.dataset.id;
-    data.push({
-      id: parseInt(func.dataset.id),
-      parentId: 0
-    });
-  })
-  failure_modeTargets.forEach((fm) => {
-    let key = fm.dataset.id;
-    data.push({
+export const failureModeIds = (failure_modeTargets) => {
+  return failure_modeTargets.map((fm) => (
+    {
       id: parseInt(fm.dataset.id),
-      parentId: parseInt(fm.dataset.parentId)
-    });
-  })
-
-  // create a mapping
-  const idMapping = data.reduce((acc, el, i) => {
-    acc[el.id] = i;
-    return acc;
-  }, {});
-
-  // create a tree
-  let root;
-  data.forEach(el => {
-    if (el.parentId === null) {
-      root = el;
-      return;
+      functionid: parseInt(fm.dataset.parentId)
     }
-    const parentEl = data[idMapping[el.parentId]];
-    parentEl.children = [...(parentEl.children || []), el];
-  });
-
-  return root
+  ));
 };
 
-export const createMap = (tree) => {
-  const map = [[],[]];
-
-  tree.children.forEach((func) => {
-    if (func.hasOwnProperty("children")) {
-      func.children.forEach((failureMode) => {
-        map[0].push(func.id)
-        map[1].push(failureMode.id)
-      });
-    };
+export const createMapFM = (functions, failureModes) => {
+  let map = [[],[]]
+  functions.forEach((func) => {
+    failureModes.filter((el) => el.functionid === func.id).forEach((fm) => {
+      map[0].push(func.id);
+      map[1].push(fm.id);
+    });
   });
-
   return map
-};
+}
+
+export const createMapFunc = (functions, failureModes) => {
+  let map = [[],[]]
+  functions.forEach((func) => {
+      if (failureModes.find((el) => el.functionid === func.id)) {
+          map[0].push(func.id);
+          map[1].push(failureModes.find((el) => el.functionid === func.id).id);
+      } else {
+        map[0].push(func.id);
+        map[1].push(null);
+      }
+    });
+  return map
+  };
 
 export const calcNextIdsFromFailureMode = (functionId, failureModeId, map) => {
   let nextFunctionId = functionId;
@@ -166,6 +98,44 @@ export const calcPreviousIdsFromFailureMode = (functionId, failureModeId, map) =
   if (failureModeIndex - 1 >= 0) {
     nextFunctionId = map[0][failureModeIndex - 1]
     nextFailureModeId = map[1][failureModeIndex - 1]
+  }
+
+  // return object of ids
+  return {
+    functionId: nextFunctionId,
+    failureModeId: nextFailureModeId
+  }
+};
+
+export const calcNextIdsFromFunction = (functionId, failureModeId, map) => {
+  let nextFunctionId = functionId;
+  let nextFailureModeId = failureModeId;
+
+  // locate the matching function in the map
+  let functionIndex = map[0].findIndex( (id) => id === functionId )
+
+  if (functionIndex + 1 < map[0].length) {
+    nextFunctionId = map[0][functionIndex + 1]
+    nextFailureModeId = map[1][functionIndex + 1]
+  }
+
+  // return object of ids
+  return {
+    functionId: nextFunctionId,
+    failureModeId: nextFailureModeId
+  }
+};
+
+export const calcPreviousIdsFromFunction = (functionId, failureModeId, map) => {
+  let nextFunctionId = functionId;
+  let nextFailureModeId = failureModeId;
+
+  // locate the matching failure mode in the map
+  let functionIndex = map[0].findIndex( (id) => id === functionId )
+
+  if (functionIndex - 1 >= 0) {
+    nextFunctionId = map[0][functionIndex - 1]
+    nextFailureModeId = map[1][functionIndex - 1]
   }
 
   // return object of ids
