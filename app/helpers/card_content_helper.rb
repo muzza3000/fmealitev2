@@ -49,4 +49,31 @@ module CardContentHelper
       ""
     end
   end
+
+  def new_card_broadcast(element)
+    {
+      action: "create",
+      type: element.class.name.downcase,
+      id: element.id,
+      body: render_to_string(partial: "fmeas/collab_fmea/card_collab", locals: { element: element })
+    }
+  end
+
+  def update_card_broadcast(element)
+    {
+      action: "update",
+      type: element.class.name.downcase,
+      id: element.id,
+      body: render_to_string(partial: "fmeas/collab_fmea/card_collab", locals: { element: element })
+    }
+  end
+
+  def destroy_card_broadcast(element)
+    {
+      action: "destroy",
+      type: element.class.name.downcase,
+      id: element.id,
+      body: ""
+    }
+  end
 end
