@@ -46,12 +46,11 @@
       <div class="cause-effect-title">
         <h2>Causes</h2>
       </div>
-      <div id="cause-grid" data-fmea-id="<%= @fmea.id %>" class="cause-effect-grid">
-        <!-- Render all causes as hidden -->
-        <% @fmea.causes.each do |cause| %>
-          <div class="cause-card <%= "hidden" unless @show_failure_mode.causes.include?(cause) %>">
-            <%= render "fmeas/edit_fmea/card_content", element: cause %>
-          </div>
+      <div class="cause-effect-grid" id="cause-grid" data-fmea-id="<%= @fmea.id %>">
+        <% @fmea.failure_modes.each do |fm| %>
+          <% fm.causes.each do |cause| %>
+            <%= render "fmeas/collab_fmea/card_collab", element: cause %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -59,10 +58,12 @@
       <div class="cause-effect-title">
         <h2>Effects</h2>
       </div>
-      <div id="effect-grid" class="cause-effect-grid">
-        <div class="effect-card">
-          dummy_content
-        </div>
+      <div class="cause-effect-grid" id="effect-grid" >
+        <% @fmea.failure_modes.each do |fm| %>
+          <% fm.effects.each do |effect| %>
+            <%= render "fmeas/collab_fmea/card_collab", element: effect %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

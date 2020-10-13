@@ -8,11 +8,12 @@ import {
   calcNextIdsFromFailureMode,
   calcPreviousIdsFromFailureMode,
   createMap
-} from "helpers/collaboration"
+} from "helpers/collaboration";
+import Rails from "@rails/ujs";
 
 
 export default class extends Controller {
-  static targets = ["function", "failure_mode"]
+  static targets = ["function", "failure_mode", "source", "check", "form"]
 
   initialize() {
   };
@@ -88,6 +89,24 @@ export default class extends Controller {
     this.functionId = ids.functionId
     this.failureModeId = ids.failureModeId
   };
+
+  // The submit function submits the live-forms for the causes and effects.
+  submit() {
+  event.currentTarget.preventDefault();
+  const type = event.currentTarget.dataset.type;
+  let form = event.currentTarget.parentElement;
+
+  if (event.currentTarget.dataset.input === "checkbox") {
+    form = event.currentTarget.parentElement.parentElement.parentElement.parentElement;
+  };
+
+  if (event.currentTarget.dataset.input === "dropdown") {
+    form = event.currentTarget.parentElement.parentElement;
+  };
+
+  form.method = "post";
+  Rails.fire(form, "submit");
+}
 
 
   // Getters and setters
