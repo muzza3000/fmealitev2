@@ -51,17 +51,26 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .rails-default-error-page-container {
+    width: 650px;
+    padding: 28px;
+    border-radius: 20px;
+    border: 1px solid #c3c3c3;
+    margin: 40px auto;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
+    <div class="rails-default-error-page-container">
+      <h1> Error 404. The page you were looking for doesn't exist.</h1>
       <p>You may have mistyped the address or the page may have moved.</p>
+      <br>
+      <a href="/" class="btn btn-success btn-stretch">Go Back to Homepage</a>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
