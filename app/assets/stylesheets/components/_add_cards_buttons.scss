@@ -25,21 +25,25 @@
 // -------- Here come the select-classes for the cards(function, fm, cause, effect)
 
 .selected-function {
+  transition: all .2s ease-in-out;
   border: 2px solid $blue;
   border-radius: 4px;
 }
 
 .selected-failuremode {
+  transition: all .2s ease-in-out;
   border: 2px solid $orange;
   border-radius: 4px;
 }
 
 .selected-cause {
+  transition: all .2s ease-in-out;
   border: 2px solid $red;
   border-radius: 4px;
 }
 
 .selected-effect {
+  transition: all .2s ease-in-out;
   border: 2px solid $green;
   border-radius: 4px;
 }

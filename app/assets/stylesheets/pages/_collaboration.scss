@@ -62,7 +62,7 @@
 .cause-effect-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 12px;
+  grid-gap: 16px;
 }
 
 .effect-card {
@@ -98,12 +98,12 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cause-effect-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1900px) {
   .cause-effect-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
