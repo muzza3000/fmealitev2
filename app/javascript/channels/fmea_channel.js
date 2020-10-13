@@ -11,29 +11,32 @@ export const initFmeaCable = () => {
 
     consumer.subscriptions.create({ channel: "FmeaCollaborationChannel", id: id }, {
       received(data) {
-        // can receive events (create, update, destroy) from cause or effect controller
-        // data should be json
-        // type: cause / effect
-        // action: add/remove
-        // payload: (html or ID)
-        // if remove - remove element from page
-        // if add - append the html
+
+        // expected data should be json
+        // {
+        //   type: cause / effect
+        //   action: create / destroy / update
+        //   payload: card_html or Id
+        // }
+
         const payload = JSON.parse(data);
 
-        // Create action
-        if (payload.action === "create"){
-          const card = `<div class="cause-card">${payload.body}</div>`
+        console.log(payload)
+
+        // Create
+        if (payload.action === "create") {
+          const newCard = `<div class="${payload.type}-card">${payload.body}</div>`
           if (payload.type === "cause") {
-            causeGrid.insertAdjacentHTML('beforeend', card)
+            causeGrid.insertAdjacentHTML('beforeend', newCard)
           } else if (payload.type === "effect") {
-            effectGrid.insertAdjacentHTML('beforeend', card)
+            effectGrid.insertAdjacentHTML('beforeend', newCard)
           }
         }
 
-        // Destroy action
+        // Destroy
         if (payload.action === "destroy") {
           // get card from document
-          const card = document.getElementById(`${payload.type}-${payload.body}`)
+          const card = document.getElementById(`${payload.type}-${payload.id}`)
           console.log(card);
 
           if (card) {
@@ -41,14 +44,24 @@ export const initFmeaCable = () => {
           }
         }
 
-        // Update action
+        // Update
+        if (payload.action === "update") {
+
+          // get card from document
+          let card = document.getElementById(`${payload.type}-${payload.id}`)
 
 
+          // if card exists in the dom
+          if (card) {
+            const newCard = `<div class="${payload.type}-card">${payload.body}</div>`;
+
+            console.log(newCard);
+
+            card.innerHTML = newCard;
+          }
+        }
 
 
-        // const card = `<div class="cause-card">${data}</div>`
-
-        // causeContainer.insertAdjacentHTML('beforeend', card)
       },
     });
   }

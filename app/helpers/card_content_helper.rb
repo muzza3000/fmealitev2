@@ -54,6 +54,16 @@ module CardContentHelper
     {
       action: "create",
       type: element.class.name.downcase,
+      id: element.id,
+      body: render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: element })
+    }
+  end
+
+  def update_card_broadcast(element)
+    {
+      action: "update",
+      type: element.class.name.downcase,
+      id: element.id,
       body: render_to_string(partial: "fmeas/edit_fmea/card_content", locals: { element: element })
     }
   end
@@ -62,7 +72,8 @@ module CardContentHelper
     {
       action: "destroy",
       type: element.class.name.downcase,
-      body: element.id
+      id: element.id,
+      body: ""
     }
   end
 end
