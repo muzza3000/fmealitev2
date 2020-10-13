@@ -34,7 +34,7 @@
               <div style="height: 10px;"></div>
             <% end %>
               <% element = effect %>
-              <div class="card-structure-bottom-right" data-target="edit-fmea.card" data-action="click->edit-fmea#select" data-card-type="<%= element.class.name.downcase %>" data-id="<%= element.id %>" data-parent-id="<%= element.parent.id%>">
+              <div class="card-structure-bottom-right">
                 <%= render "fmeas/edit_fmea/card_content", element: effect  %>
               </div>
           <% end %>
