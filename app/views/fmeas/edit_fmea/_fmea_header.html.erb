@@ -14,22 +14,29 @@
     <p><small><span class="light-blue"><i class="fas fa-th"></i></span>  <%= fmea.risk_matrix.name %></small></p>
     <p><%= simple_format(fmea.description) %></p>
   </div>
-  <div class="fmea-stats">
-    <div class="fmea-stat">
-      <%= image_tag("statistic_icons/function.svg", class: "pr-1") %>
-      <span class="stat-number"><%= fmea.functions.count %></span>
+  <div data-target="product-header.headerRight" class="fmea-header-right ">
+    <div class="header-stats">
+      <div class="fmea-stat">
+        <%= image_tag("statistic_icons/function.svg", class: "pr-1") %>
+        <span class="stat-number"><%= fmea.functions.count %></span>
+      </div>
+      <div class="fmea-stat">
+        <%= image_tag("statistic_icons/failure_mode.svg", class: "pr-1") %>
+        <%= fmea.failure_modes.count %>
+      </div>
+      <div class="fmea-stat">
+        <%= image_tag("statistic_icons/cause.svg", class: "pr-1") %>
+        <%= fmea.causes.count %>
+      </div>
+      <div class="fmea-stat">
+        <%= image_tag("statistic_icons/effect.svg", class: "pr-1") %>
+        <%= fmea.effects.count %>
+      </div>
     </div>
-    <div class="fmea-stat">
-      <%= image_tag("statistic_icons/failure_mode.svg", class: "pr-1") %>
-      <%= fmea.failure_modes.count %>
-    </div>
-    <div class="fmea-stat">
-      <%= image_tag("statistic_icons/cause.svg", class: "pr-1") %>
-      <%= fmea.causes.count %>
-    </div>
-    <div class="fmea-stat">
-      <%= image_tag("statistic_icons/effect.svg", class: "pr-1") %>
-      <%= fmea.effects.count %>
+    <div class="header-collaboration-mode ">
+      <%= link_to(collaboration_fmea_path(fmea), class: "btn btn-secondary btn-collaboration") do %>
+        <i class="fas fa-users"></i> mode
+      <% end %>
     </div>
   </div>
 </div>

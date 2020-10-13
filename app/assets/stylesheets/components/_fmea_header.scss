@@ -64,19 +64,37 @@ $header_height: 200px;
 .light-blue{
   color: $light_blue;
 }
-.fmea-stats {
-  padding: 15px 10px 0 0;
-  align-self: flex-start;
+.fmea-header-right {
+  padding: 10px 10px 10px 0;
   margin-left: auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
+  transition: all .2s ease-in-out;
 
-  .fmea-stat {
-    display: flex;
+  &.collapsed {
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 5px;
   }
 }
 
+.header-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-collaboration {
+  height: 38px;
+  padding: 6px 12px;
+  width: 96px;
+  // margin: 0px 0px -4px 0;
+}
+
+.fmea-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
