@@ -13,13 +13,17 @@ import Rails from "@rails/ujs";
 
 
 export default class extends Controller {
-  static targets = ["function", "failure_mode", "source", "check", "form"]
+  static targets = ["function", "failure_mode", "cause", "source", "check", "form"]
 
   initialize() {
   };
 
   connect() {
     console.log("--> collaboration controller connected")
+  };
+
+  log() {
+    console.log(this.failure_modeTargets);
   };
 
   nextFunction() {

@@ -4,6 +4,7 @@
 
 <div class="collaboration-page" data-controller="collaboration" data-collaboration-failureMode="<%= @show_failure_mode.id %>"  data-collaboration-function="<%= @show_function.id %>">
   <!-- Top row containing the function-failure mode selector -->
+  <div class="square" style="width:30px; height: 30px; background-color: black" data-action="click->collaboration#log"></div>
   <div class="back-to-fmea">
   <%= link_to edit_fmea_path(@fmea), class:"btn btn-ghost" do %>
   <i class="fas fa-arrow-left"></i> FMEA
