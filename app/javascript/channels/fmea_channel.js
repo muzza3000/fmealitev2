@@ -43,7 +43,7 @@ export const initFmeaCable = () => {
           const card = document.getElementById(`${payload.type}-${payload.id}`);
           // if card exists remove from DOM
           if (card) {
-            card.parentNode.removeChild(card);
+            card.parentNode.remove();
           };
         };
 
