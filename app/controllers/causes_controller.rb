@@ -3,6 +3,7 @@ class CausesController < ApplicationController
   before_action :set_cause, only: [:update]
 
   def update
+    raise
     adjust_confirmed_params
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
