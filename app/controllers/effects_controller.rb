@@ -7,7 +7,7 @@ class EffectsController < ApplicationController
     @effect.update(effect_params)
     @fmea = @effect.failure_mode.function.fmea
     if params["live"] == "true"
-      redirect_to "/playground"
+      redirect_to collaboration_fmea_path(@fmea)
       return
     end
     # redirect to the function where the effect was added

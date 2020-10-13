@@ -7,7 +7,7 @@ class CausesController < ApplicationController
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
     if params["live"] == "true"
-      redirect_to "/playground"
+      redirect_to collaboration_fmea_path(@fmea);
       return
     end
     # redirect to the function where the cause was added
