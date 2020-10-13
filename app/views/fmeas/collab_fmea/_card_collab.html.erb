@@ -2,7 +2,7 @@
   <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
       <%= form_for(element, options = { html: { data: { target: "collab.form" }, class: "card-collab-form"  } , method: "put", remote: true })  do |f| %>
       <!-- Here comes the basic description of the cause/effect -->
-        <%=  f.text_field :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "#{element.class.name.downcase}", id: "#{element.id}", input: "textbox" } %>
+        <%=  f.text_area :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "#{element.class.name.downcase}", id: "#{element.id}", input: "textbox" } %>
         <input type="hidden" value="true" id="live" name="live">
         <!--  Here come the right-hand-side actions -->
         <div class="card-collab-actions">
