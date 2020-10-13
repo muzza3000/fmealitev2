@@ -6,11 +6,11 @@ class CausesController < ApplicationController
     adjust_confirmed_params
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
-    # redirect to the function where the cause was added
     if params["live"] == "true"
       redirect_to "/playground"
       return
     end
+    # redirect to the function where the cause was added
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@cause.failure_mode.function))
   end
 
