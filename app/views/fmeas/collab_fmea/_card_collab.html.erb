@@ -1,0 +1,40 @@
+<div class="card-collab" data-controller="collab">
+  <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
+      <%= form_for(element, options = { html: { data: { target: "collab.form" }, class: "card-collab-form"  } , method: "put", remote: true })  do |f| %>
+      <!-- Here comes the basic description of the cause/effect -->
+        <%=  f.text_area :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collab#submit", type: "#{element.class.name.downcase}", id: "#{element.id}", input: "textbox" } %>
+        <input type="hidden" value="true" id="live" name="live">
+        <!--  Here come the right-hand-side actions -->
+        <div class="card-collab-actions">
+          <div class="custom-control custom-checkbox">
+            <label class="checkbox-label">
+              <% if element.confirmed == true %>
+                <% value_checkbox = "checked" %>
+              <% else %>
+                <% value_checkbox = "unchecked" %>
+              <% end %>
+              <%=  f.check_box :confirmed, class: "card-collab-checkbox",
+                  value: value_checkbox,
+                  data: { target: "collab.source", action: "change->collab#submit",
+                    type: "#{element.class.name.downcase}", id: "#{element.id}", input: "checkbox"
+                  } %>
+              <span class="card-collab-custom-checkbox"><i class="fas fa-check"></i></span>
+            </label>
+          </div>
+          <% if element.class.name.downcase == "cause" %>
+            <% occurrences = (1..rating_scale(element)).to_a %>
+            <%= f.select :occurrence, options_for_select(occurrences, element.occurrence), {},
+              class: "card-collab-select-#{rating_color(element)}",
+              data: { target: "collab.source", action: "change->collab#submit",
+                type: "#{element.class.name.downcase}", id: "#{element.id}", input: "dropdown"} %> <!-- The empty hash needs to stay there! -->
+          <% elsif element.class.name.downcase == "effect"  %>
+            <% severities = (1..rating_scale(element)).to_a %>
+            <%= f.select :severity, options_for_select(severities, element.severity), {},
+              class: "card-collab-select-#{rating_color(element)}",
+              data: { target: "collab.source", action: "change->collab#submit",
+              type: "#{element.class.name.downcase}", id: "#{element.id}", input: "dropdown"} %>
+          <% end %>
+        </div>
+      <% end %>
+</div>
+

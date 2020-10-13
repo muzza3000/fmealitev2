@@ -1,0 +1,137 @@
+// Here you'll find the classes for the card in the collaboration mode
+
+.card-collab {
+  box-shadow: 3px 3px 10px rgba(black, 0.2);
+  border-radius: 3px;
+  min-height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.colored-stripe-cause {
+  background-color: $red;
+  width: 12px;
+}
+
+.colored-stripe-effect {
+  background-color: $green;
+  width: 12px;
+}
+
+
+
+
+
+// Here comes all the hacky scss to force the simple form into displaying correctly.
+
+.card-collab-form {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 100%;
+  color: $gray;
+}
+
+.card-collab-description {
+  width: 100%;
+  text-align: left;
+  flex-grow: 1;
+  margin-right: 15px;
+  min-height: 100%;
+  font-size: 0.65rem;
+  resize: none;
+  border: 1px solid #c3c3c3;
+  padding: 10px;
+  border-radius: 3px;
+  color: $gray;
+  overflow: auto;
+}
+
+.card-collab-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+// Here come all the colors for the different ratings
+
+.card-collab-select-rating-green {
+  background-color: #93D0A3;
+  border: 2px solid $green;
+  border-radius: 3px;
+  color: $gray;
+}
+
+.card-collab-select-rating-yellow {
+  background-color: #e0e0e0;
+  border: 2px solid $gray;
+  border-radius: 3px;
+  color: $gray;
+}
+
+.card-collab-select-rating-red {
+  background-color: #F3B0B0;
+  border: 2px solid $red;
+  border-radius: 3px;
+  color: $gray;
+}
+
+// Here comes the chechbox scss
+
+.card-collab-checkbox {
+  min-height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  // background-color: $green;
+  opacity: 0;
+}
+
+.checkbox-label .card-collab-custom-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid #c3c3c3;
+  color: rgba(0,0,0,0);
+  transition: all .2s ease-in-out;
+}
+
+.checkbox-label .card-collab-custom-checkbox::after {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  height: 0;
+  width: 0;
+  border-radius: 50%;
+  border: 1px solid #c3c3c3;
+  opacity: 1;
+  transition: all .2s ease-in-out;
+}
+
+.checkbox-label input:checked ~.card-collab-custom-checkbox {
+  background-color: #93D0A3;
+  border-radius: 50%;
+  border: 1px solid $green;
+  color: rgba(255,255,255,1);
+  padding-left: 3px;
+  transition: all .2s ease-in-out;
+}
+
+.checkbox-label input:checked ~.card-collab-custom-checkbox:after {
+  opacity: 1;
+  left: 8px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: 1px solid $green;
+  background-color: #93D0A3;
+  padding-left: 3px;
+  transition: all .2s ease-in-out;
+}
+
+
+
+
