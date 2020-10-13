@@ -4,7 +4,6 @@
 
 <div id="current-values" class="collaboration-page" data-controller="collaboration" data-collaboration-failureMode="<%= @show_failure_mode.id %>"  data-collaboration-function="<%= @show_function.id %>">
   <!-- Top row containing the function-failure mode selector -->
-  <div class="square" style="width:30px; height: 30px; background-color: black" data-action="click->collaboration#log"></div>
   <div class="back-to-fmea">
   <%= link_to edit_fmea_path(@fmea), class:"btn btn-ghost" do %>
   <i class="fas fa-arrow-left"></i> FMEA
@@ -58,12 +57,10 @@
         <h2>Causes</h2>
       </div>
       <div class="cause-effect-grid" id="cause-grid">
-        <% @fmea.failure_modes.each do |fm| %>
-          <% fm.causes.each do |cause| %>
-            <div class="cause-card">
-              <%= render "fmeas/collab_fmea/card_collab", element: cause %>
-            </div>
-          <% end %>
+        <% @fmea.causes.each do |cause| %>
+          <div class="cause-card <%= "hidden" unless cause.failure_mode == @show_failure_mode %>">
+            <%= render "fmeas/collab_fmea/card_collab", element: cause %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -72,12 +69,10 @@
         <h2>Effects</h2>
       </div>
       <div class="cause-effect-grid" id="effect-grid" >
-        <% @fmea.failure_modes.each do |fm| %>
-          <% fm.effects.each do |effect| %>
-            <div class="effect-card">
-              <%= render "fmeas/collab_fmea/card_collab", element: effect %>
-            </div>
-          <% end %>
+        <% @fmea.effects.each do |effect| %>
+          <div class="effect-card <%= "hidden" unless effect.failure_mode == @show_failure_mode %>">
+            <%= render "fmeas/collab_fmea/card_collab", element: effect %>
+          </div>
         <% end %>
       </div>
     </div>
