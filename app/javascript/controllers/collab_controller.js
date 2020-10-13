@@ -10,26 +10,20 @@ export default class extends Controller {
 
   submit() {
     console.log("#submit was executed");
-    const forms = this.formTargets;
     const type = event.currentTarget.dataset.type;
-    console.log(forms);
     console.log(type);
-    let form = null;
-    if (type === "effect") {
-      forms.forEach((f) => {
-        if (f.dataset.effectId === event.currentTarget.dataset.id) {
-          form = f;
-        };
-      });
-    };
+    let form = event.currentTarget.parentElement;
+    // if (type === "effect") {
+      // forms.forEach((f) => {
+      //   if (f.dataset.effectId === event.currentTarget.dataset.id) {
+      //     form = f;
+      //   };
+      // });
+    // };
 
-    if (type === "cause") {
-      forms.forEach((f) => {
-        if (f.dataset.causeId === event.currentTarget.dataset.id) {
-          form = f;
-        };
-      });
-    };
+    // if (type === "cause") {
+    // };
+    console.log(form);
     form.method = "post";
     console.log(form.method);
     form.submit();
