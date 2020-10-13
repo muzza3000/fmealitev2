@@ -1,13 +1,18 @@
 import consumer from "./consumer";
 
 export const initFmeaCable = () => {
+
+  // search for elements on the page
   const causeEffectContainer = document.getElementById('cause-effect-collaboration');
   const causeGrid = document.getElementById('cause-grid');
   const effectGrid = document.getElementById('effect-grid');
 
-  if ((causeEffectContainer)&&(causeGrid)&&(effectGrid)) {
+  // Only run code if on the collaboration page and containers
+  // are all present
+  if ((causeEffectContainer) && (causeGrid) && (effectGrid)) {
     const id = causeEffectContainer.dataset.fmeaId;
-    console.log(`cable connected to FMEA ${id}`);
+
+    console.log(`--> Channel connected to FMEA ${id}`);
 
     consumer.subscriptions.create({ channel: "FmeaCollaborationChannel", id: id }, {
       received(data) {
@@ -19,49 +24,39 @@ export const initFmeaCable = () => {
         //   payload: card_html or Id
         // }
 
+        // parse the payload as json
         const payload = JSON.parse(data);
-
-        console.log(payload)
 
         // Create
         if (payload.action === "create") {
-          const newCard = `<div class="${payload.type}-card">${payload.body}</div>`
+          const newCard = `<div class="${payload.type}-card">${payload.body}</div>`;
           if (payload.type === "cause") {
             causeGrid.insertAdjacentHTML('beforeend', newCard)
           } else if (payload.type === "effect") {
             effectGrid.insertAdjacentHTML('beforeend', newCard)
-          }
-        }
+          };
+        };
 
         // Destroy
         if (payload.action === "destroy") {
           // get card from document
-          const card = document.getElementById(`${payload.type}-${payload.id}`)
-          console.log(card);
-
+          const card = document.getElementById(`${payload.type}-${payload.id}`);
+          // if card exists remove from DOM
           if (card) {
             card.parentNode.removeChild(card);
-          }
-        }
+          };
+        };
 
         // Update
         if (payload.action === "update") {
-
           // get card from document
-          let card = document.getElementById(`${payload.type}-${payload.id}`)
-
-
-          // if card exists in the dom
+          let card = document.getElementById(`${payload.type}-${payload.id}`);
+          // if card exists in the dom update HTML
           if (card) {
             const newCard = `<div class="${payload.type}-card">${payload.body}</div>`;
-
-            console.log(newCard);
-
             card.innerHTML = newCard;
-          }
-        }
-
-
+          };
+        };
       },
     });
   }
