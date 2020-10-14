@@ -116,8 +116,13 @@ export default class extends Controller {
 
     form.method = "post";
 
+    console.log(form.class)
+
 
     const formData = new URLSearchParams(new FormData(form));
+    console.log(formData);
+    // console.log(new URLSearchParams ())
+    console.log(formData.class);
 
     fetchWithToken( form.action, {
       method: "PUT",
@@ -130,7 +135,8 @@ export default class extends Controller {
   }
 
   newCause() {
-    const causeGrid = this.causeGrid
+    const causeGrid = this.causeGridTarget;
+    console.log(causeGrid);
   }
 
 
