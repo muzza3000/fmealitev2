@@ -58,18 +58,16 @@
     <%# Share Link %>
     <div class="collaboration-top-right">
       <div class="btn btn-ghost share-link" data-controller="clipboard" data-action="click->clipboard#shareCollaborationLink">
-        <span data-target="clipboard.copybutton" >Share direct link <i class="fas fa-share-alt"></i></span>
+        <span data-target="clipboard.copybutton" >Copy direct link <i class="fas fa-share-alt"></i></span>
       </div>
-      <div id="rpn-value">
+      <div id="rpn-value" class="hidden">
         <div id="rpn-label">
           <p><span>R</span>isk</p>
           <p><span>P</span>riority</p>
           <p><span>N</span>umber</p>
         </div>
-        <div id="rpn-score">
-          
+        <div id="rpn-score" data-target="collaboration.rpn">
         </div>
-
       </div>
     </div>
     <%# /Share Link %>

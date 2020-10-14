@@ -17,14 +17,22 @@ import  { fetchWithToken } from "helpers/fetch_with_token" ;
 
 
 export default class extends Controller {
-  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form"]
+  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form", "rpn"]
 
   initialize() {
   };
 
   connect() {
     console.log("--> collaboration controller connected");
+    // setInterval(this.refreshRPN, 2000);
   };
+
+  refreshRPN() {
+    // get all the occurrence scores for the current failure mode
+    // get all the severity scores for the current failure mode
+    // multiply the max of both
+    // populate the RPN score field
+  }
 
   nextFunction() {
     // build the map of objects from the DOM elements
