@@ -22,6 +22,16 @@ export default class extends Controller {
     this.copyToClipBoard(shareUrl);
   }
 
+  shareFmeaLink() {
+    // get the fmea url from the dom
+    const fmeaId = this.copybuttonTarget.dataset.fmeaId
+
+    // formulate shareable link
+    const shareUrl = `${window.location.origin}/fmeas/${fmeaId}/edit`
+
+    this.copyToClipBoard(shareUrl);
+  }
+
   copy() {
     const textToCopy = this.sourceTarget.innerText;
     this.copyToClipBoard(textToCopy);

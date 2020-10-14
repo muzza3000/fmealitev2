@@ -10,8 +10,8 @@
 
 
      <!-- Here comes the 'Create New FMEA' - button which will open the modal-component -->
-  <div class="row mb-4 d-flex align-items-center">
-    <div class="col-6 col-lg-9 p-0">
+  <div class="row mb-4 d-flex align-items-center rounded pb-4 border-bottom">
+    <div class="col p-0">
       <%= simple_form_for :search, url: fmeas_path, method: :get do |f| %>
         <div class="search-form-control form-group m-0">
           <input class="form-control string required" type="text" name="search[query]" id="search_query" value="<%= @query if @query.present? %>" placeholder="Search FMEA title or risk matrix..."/>
@@ -21,11 +21,11 @@
         </div>
       <% end %>
     </div>
-    <div class="col-2 col-lg-1 p-0 text-center">
+    <div class="mx-1">
       <%= link_to('clear', fmeas_path, class: "btn btn-ghost") %>
       </a>
     </div>
-    <div class="col-2 col-lg-2 p-0">
+    <div class="">
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createFmeaModal">
         Create FMEA
       </button>
@@ -39,7 +39,7 @@
           <div></div> <!-- This is where the avatar would go for all the FMEAs. -->
       </div>
       <div class="col-2">
-        <h6 class="text-secondary">Title</h6>
+        <h6 class="text-secondary text-primary">Title</h6>
       </div>
       <div class="col-2">
         <h6 class="text-secondary">Risk Matrix</h6>
@@ -57,12 +57,13 @@
   <% end %>
 
   <!-- Now, we insert all the individual fmeas -->
-  <br>
-  <% @fmeas.each do |fmea| %>
-  <div class="my-auto dashboard-list-item">
-      <%= render "dashboard_list_item", fmea: fmea %>
+  <div class="my-3" >
+    <% @fmeas.each do |fmea| %>
+    <div class="my-auto dashboard-list-item" data-controller="clipboard">
+        <%= render "dashboard_list_item", fmea: fmea %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
 
 
