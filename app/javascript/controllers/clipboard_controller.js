@@ -11,12 +11,28 @@ export default class extends Controller {
     }
   }
 
+  shareCollaborationLink() {
+    // get the failure mode and fmea Id from the DOM
+    const failureModeId = parseInt(document.getElementById('current-values').dataset.collaborationFailuremode);
+    const fmeaId = parseInt(document.getElementById('current-values').dataset.collaborationFmea);
+
+    // formulate shareable link
+    const shareUrl = `${window.location.origin}/fmeas/${fmeaId}/collaboration/?failure_mode_id=${failureModeId}`
+
+    this.copyToClipBoard(shareUrl);
+  }
+
   copy() {
+    const textToCopy = this.sourceTarget.innerText;
+    this.copyToClipBoard(textToCopy);
+  }
+
+  private
+
+  copyToClipBoard(textToCopy) {
     // In order to copy you must select the text, therefore you must
     // use and input element. Therefore this is temporarily created
     // and then removed to perform the copy action.
-    const textToCopy = this.sourceTarget.innerText;
-
     let myTempInputElement = document.createElement("input");
     myTempInputElement.type = "text";
     myTempInputElement.value = textToCopy;
