@@ -175,13 +175,10 @@ export const colorRPN = (scale, rpn, rpnTarget) => {
   let color = "";
   // RPN colour logic
   if (rpn <= 0.4 * scale) {
-    console.log("1")
     color = "green"
   } else if ( rpn <= 0.8 * scale) {
-    console.log("2")
     color = "yellow"
   } else {
-    console.log("3")
     color = "red"
   }
   // remove all old colors
