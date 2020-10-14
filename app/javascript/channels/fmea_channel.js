@@ -40,7 +40,7 @@ export const initFmeaCable = () => {
 
           const newCard = `<div class="${payload.type}-card ${state}">${payload.body}</div>`;
           if (payload.type === "cause") {
-            insertPointCauseGrid.insertAdjacentHTML('afterend', newCard)
+            insertPointCauseGrid.insertAdjacentHTML('beforebegin', newCard)
           } else if (payload.type === "effect") {
             effectGrid.insertAdjacentHTML('beforeend', newCard)
           };
