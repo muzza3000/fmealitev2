@@ -18,7 +18,7 @@ import  { fetchWithToken } from "helpers/fetch_with_token" ;
 
 export default class extends Controller {
 
-  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form", "fakeForm","rpn"]
+  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form", "fakeForm", "fakeFormFailureModeInput", "rpn"]
 
 
   initialize() {
@@ -145,6 +145,7 @@ export default class extends Controller {
   }
 
   newCause() {
+    this.fakeFormFailureModeInput.value = this.failureModeId
     const form = this.fakeFormTarget;
     console.log("clicked");
 

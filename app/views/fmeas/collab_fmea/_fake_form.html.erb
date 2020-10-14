@@ -9,7 +9,7 @@ name: "cause", class: "fake-form"  } , method: "post", remote: true })  do |f| %
     <% elsif element.class.name.downcase == "effect"  %>
       <%= f.number_field :severity, value: 1 %>
     <% end %>
-    <%= f.number_field :failure_mode_id, value: failure_mode.id %>
+    <%= f.number_field :failure_mode_id, value: failure_mode.id, :input_html => { :data => {:target => "collaboration.fakeFormFailureModeInput"} } %>
   </div>
   <div class="fake-form-left">
     <%= f.submit "Add a new cause", class: "fake-form-submit" %>
