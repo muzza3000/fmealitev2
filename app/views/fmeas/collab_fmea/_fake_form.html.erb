@@ -7,7 +7,7 @@ name: "cause", class: "fake-form"  } , method: "post", remote: true })  do |f| %
     <% if element.class.name.downcase == "cause" %>
       <%= f.number_field :occurrence,  value: 1 %>
     <% elsif element.class.name.downcase == "effect"  %>
-      <%= f.integer :severity, value: 1 %>
+      <%= f.number_field :severity, value: 1 %>
     <% end %>
     <%= f.number_field :failure_mode_id, value: failure_mode.id %>
   </div>

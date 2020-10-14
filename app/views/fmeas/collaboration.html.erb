@@ -100,6 +100,10 @@
             <%= render "fmeas/collab_fmea/card_collab", element: effect %>
           </div>
         <% end %>
+        <div id="insert-point-effect-grid">
+          <% new_effect = Effect.new %>
+          <%= render "fmeas/collab_fmea/fake_form", element: new_effect, failure_mode: @show_failure_mode %>
+        </div>
       </div>
     </div>
   </div>
