@@ -1,2 +1,2 @@
-<%= render :file => 'public/500', :status => :not_found, :layout => false %>
-
+Some text
+<%= link_to 'Download spreadsheet', download_fmea_path(Fmea.find(2), format: :xlsx), data: {turbolinks: false} %>

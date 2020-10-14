@@ -1,6 +1,6 @@
 class FmeasController < ApplicationController
   include FmeaHelper
-  before_action :set_fmea, only: [:edit, :update, :collaboration, :destroy]
+  before_action :set_fmea, only: [:edit, :update, :collaboration, :destroy, :download]
 
   def index
     @query = params[:search][:query] if params[:search].present?
@@ -74,6 +74,17 @@ class FmeasController < ApplicationController
     else
       flash[:alert] = "You must have at least 1 failure mode to use the collaboration mode"
       render :edit
+    end
+  end
+
+  def download
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename=FMEA-#{@fmea.title}.xlsx"
+      }
+      format.html { render :index }
     end
   end
 

@@ -1,0 +1,42 @@
+spreadsheet = []
+@fmea.functions.each do |function|
+  function.failure_modes.each do |fm|
+    fm.causes.each_with_index do |cause, i|
+      function_text = function.description
+      fm_text = fm.description
+      cause_text = cause.description
+      cause_occ = cause.occurrence.present? ? cause.occurrence : 0
+      effect_text = fm.effects[i].present?&&fm.effects[i].description.present? ? fm.effects[i].description : ""
+      effect_sev = fm.effects[i].present?&&fm.effects[i].severity.present? ? fm.effects[i].severity : 0
+      rpn = cause_occ.to_i * effect_sev.to_i ? cause_occ * effect_sev : ""
+      actions = ""
+
+      spreadsheet << [function_text, fm_text, effect_text, effect_sev, cause_text, cause_occ, rpn, actions]
+
+    end
+  end
+end
+
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  project_heading = style.add_style(b: true, sz: 14)
+  heading = style.add_style(b: true)
+  col_widths= [30,30,30,10,30,10,10,50]
+  data = style.add_style alignment: {wrap_text: true, horizontal: :left, vertical: :top }
+
+  wb.add_worksheet(name: "FMEA") do |sheet|
+    # time and date the file was exported
+    sheet.add_row ["Downloaded at", Time.now.strftime("%b %-d, %Y")]
+    # Create the header row
+    # blank row
+    sheet.add_row []
+    # header row
+    sheet.add_row ["Function", "Failure Modes", "Effect", "Severity", "Cause", "Occurrence", "RPN", "Actions" ], style: project_heading
+    # Create entries for each item
+    spreadsheet.each do |row|
+      sheet.add_row row, style: data
+    end
+    sheet.column_widths *col_widths
+  end
+end
