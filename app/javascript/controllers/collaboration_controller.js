@@ -17,7 +17,9 @@ import  { fetchWithToken } from "helpers/fetch_with_token" ;
 
 
 export default class extends Controller {
-  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form", "rpn"]
+
+  static targets = ["function", "failure_mode", "cause", "effect", "source", "check", "form", "fakeForm","rpn"]
+
 
   initialize() {
   };
@@ -124,8 +126,13 @@ export default class extends Controller {
 
     form.method = "post";
 
+    console.log(form.class)
+
 
     const formData = new URLSearchParams(new FormData(form));
+    console.log(formData);
+    // console.log(new URLSearchParams ())
+    console.log(formData.class);
 
     fetchWithToken( form.action, {
       method: "PUT",
@@ -138,8 +145,22 @@ export default class extends Controller {
   }
 
   newCause() {
-    const causeGrid = this.causeGrid;
-    console.log(causeGrid);
+    const form = this.fakeFormTarget;
+    console.log("clicked");
+
+    form.method = "post";
+
+    const formData = new URLSearchParams(new FormData(form));
+    console.log(formData);
+
+    fetchWithToken( form.action, {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
+    })
   }
 
 

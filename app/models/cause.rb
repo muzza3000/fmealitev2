@@ -1,7 +1,6 @@
 class Cause < ApplicationRecord
   belongs_to :failure_mode
   has_many :actions, dependent: :destroy
-  validates :description, presence: true
 
   before_validation :set_confirmed
 

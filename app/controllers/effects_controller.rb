@@ -7,7 +7,11 @@ class EffectsController < ApplicationController
     @effect.update(effect_params)
     @fmea = @effect.failure_mode.function.fmea
     if params["live"] == "true"
-      redirect_to collaboration_fmea_path(@fmea)
+      # redirect_to collaboration_fmea_path(@fmea)
+      respond_to do |format|
+        format.html { redirect_to collaboration_fmea_path(@fmea) }
+        format.json { head :no_content }
+      end
       return
     end
 

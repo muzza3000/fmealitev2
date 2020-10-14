@@ -23,6 +23,7 @@ class CausesController < ApplicationController
   end
 
   def create
+    adjust_confirmed_params
     @cause = Cause.new(cause_params)
     @fmea = @cause.failure_mode.function.fmea
 
@@ -30,6 +31,11 @@ class CausesController < ApplicationController
       # Broadcast the creation to the collaboration channel
       FmeaCollaborationChannel.broadcast_to(
       @fmea, new_card_broadcast(@cause).to_json)
+
+      # Add a new card on the collaboration page
+      if params["live"] == "true"
+        return
+      end
 
       # redirect to the function where the cause was added
       redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
