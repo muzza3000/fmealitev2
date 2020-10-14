@@ -6,3 +6,17 @@
 body {
   background-color: rgba($light-blue, 0.1);
 }
+
+// general classes used across app
+.expand {
+  width: 100%;
+  min-height: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.active {
+  display: block;
+}
