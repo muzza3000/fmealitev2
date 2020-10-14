@@ -13,6 +13,7 @@ import {
   failureModeIds
 } from "helpers/collaboration";
 import Rails from "@rails/ujs";
+import  { fetchWithToken } from "helpers/fetch_with_token" ;
 
 
 export default class extends Controller {
@@ -22,7 +23,7 @@ export default class extends Controller {
   };
 
   connect() {
-    console.log("--> collaboration controller connected")
+    console.log("--> collaboration controller connected");
   };
 
   nextFunction() {
@@ -98,23 +99,38 @@ export default class extends Controller {
     this.failureModeId = ids.failureModeId
   };
 
+
   // The submit function submits the live-forms for the causes and effects.
   submit() {
-  event.currentTarget.preventDefault();
-  const type = event.currentTarget.dataset.type;
-  let form = event.currentTarget.parentElement;
+    event.preventDefault();
+    const type = event.currentTarget.dataset.type;
+    let form = event.currentTarget.parentElement;
 
-  if (event.currentTarget.dataset.input === "checkbox") {
-    form = event.currentTarget.parentElement.parentElement.parentElement.parentElement;
-  };
+    if (event.currentTarget.dataset.input === "checkbox") {
+      form = event.currentTarget.parentElement.parentElement.parentElement.parentElement;
+    };
 
-  if (event.currentTarget.dataset.input === "dropdown") {
-    form = event.currentTarget.parentElement.parentElement;
-  };
+    if (event.currentTarget.dataset.input === "dropdown") {
+      form = event.currentTarget.parentElement.parentElement;
+    };
 
-  form.method = "post";
-  Rails.fire(form, "submit");
-}
+    form.method = "post";
+
+
+    const formData = new URLSearchParams(new FormData(form));
+
+    fetchWithToken( form.action, {
+      method: "PUT",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
+    })
+  }
+
+
+
 
 
   // Getters and setters
