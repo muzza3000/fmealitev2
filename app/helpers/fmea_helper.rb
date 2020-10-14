@@ -13,4 +13,12 @@ module FmeaHelper
   def product_images?(fmea)
     fmea.images.length == 0 ? false : true
   end
+
+  def find_first_failure_mode(fmea)
+    fmea.functions.each do |function|
+      if function.failure_modes.present?
+        return function.failure_modes[0]
+      end
+    end
+  end
 end
