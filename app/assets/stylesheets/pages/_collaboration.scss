@@ -1,5 +1,5 @@
 .selector-container {
-  width: 400px;
+  width: 460px;
   min-height: 150px;
   // background-color: $gray-300;
   display: flex;
@@ -24,6 +24,8 @@
   width: 30px;
   display: flex;
   align-items: center;
+  font-size: 32px;
+  color: #c3c3c3;
   cursor: pointer;
   &.right {
     display: flex;
@@ -31,16 +33,16 @@
   }
 }
 
-.hidden {
-  display: none;
-}
-.active {
-  display: block;
-}
-
-.f-fm-container{
+.f-container{
   min-height: 50px;
   width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fm-container{
+  min-height: 50px;
+  width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +50,7 @@
 
 .fmf-connector {
   height: 50px;
-  border-left: 1px solid black;
+  border-left: 2px solid #3c3c3c;
 }
 
 .rounded-15 {
