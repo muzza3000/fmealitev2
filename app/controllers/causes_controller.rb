@@ -6,6 +6,10 @@ class CausesController < ApplicationController
     adjust_confirmed_params
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
+
+    FmeaCollaborationChannel.broadcast_to(
+    @fmea, update_card_broadcast(@cause).to_json)
+
     if params["live"] == "true"
       # redirect_to collaboration_fmea_path(@fmea)
       respond_to do |format|
@@ -14,10 +18,6 @@ class CausesController < ApplicationController
       end
       return
     end
-
-    FmeaCollaborationChannel.broadcast_to(
-    @fmea, update_card_broadcast(@cause).to_json)
-
     # redirect to the function where the cause was added
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@cause.failure_mode.function))
   end

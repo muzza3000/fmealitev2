@@ -6,6 +6,10 @@ class EffectsController < ApplicationController
     adjust_confirmed_params
     @effect.update(effect_params)
     @fmea = @effect.failure_mode.function.fmea
+
+    FmeaCollaborationChannel.broadcast_to(
+    @fmea, update_card_broadcast(@effect).to_json)
+
     if params["live"] == "true"
       # redirect_to collaboration_fmea_path(@fmea)
       respond_to do |format|
@@ -14,9 +18,6 @@ class EffectsController < ApplicationController
       end
       return
     end
-
-    FmeaCollaborationChannel.broadcast_to(
-    @fmea, update_card_broadcast(@effect).to_json)
 
     # redirect to the function where the effect was added
     redirect_to edit_fmea_path(@fmea, anchor: card_id(@effect.failure_mode.function))
