@@ -23,7 +23,6 @@ class FmeasController < ApplicationController
 
   def create
     @fmea = Fmea.new(fmea_params)
-    @fmea.risk_matrix = RiskMatrix.first
     @fmea.fmea_type = "Design"
     if @fmea.save
       redirect_to(edit_fmea_path(@fmea))
@@ -75,6 +74,7 @@ class FmeasController < ApplicationController
   end
 
   def fmea_params
-    params.require(:fmea).permit(:title, :risk_matrix, :description, images: [])
+    params.require(:fmea).permit(:title, :risk_matrix_id, :description, images: [])
   end
+
 end
