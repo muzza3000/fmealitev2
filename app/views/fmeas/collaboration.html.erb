@@ -66,9 +66,10 @@
           </div>
         <% end %>
 
-        <div data-action="click->collaboration#newCause" data-target="collaboration.newButton">
-          <h1>New Button</h1>
-        </div>
+          <% new_cause = Cause.new %>
+<!--           <div data-action="click->collaboration#newCause" data-target="collaboration.newButton">
+ -->            <%= render "fmeas/collab_fmea/fake_form", element: new_cause, failure_mode: @show_failure_mode %>
+          <!-- </div> -->
 
       </div>
     </div>

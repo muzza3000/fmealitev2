@@ -1,0 +1,15 @@
+<%= form_for(element, options = { html: { data: { target: "collaboration.fakeForm" },
+name: "cause", class: "fake-form"  } , method: "post", remote: true })  do |f| %>
+  <div style="display: none;">
+    <input type="hidden" value="true" id="live" name="live">
+    <%= f.text_area :description, value: "Add a new #{element.class}" %>
+    <%= f.check_box :confirmed, value: 0 %>
+    <% if element.class.name.downcase == "cause" %>
+      <%= f.number_field :occurrence,  value: 1 %>
+    <% elsif element.class.name.downcase == "effect"  %>
+      <%= f.integer :severity, value: 1 %>
+    <% end %>
+    <%= f.number_field :failure_mode_id, value: failure_mode.id %>
+  </div>
+    <%= f.submit "Add a new cause", class: "fake-form-submit" %>
+<% end %>

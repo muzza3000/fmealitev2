@@ -23,8 +23,20 @@ class CausesController < ApplicationController
   end
 
   def create
+    adjust_confirmed_params
     @cause = Cause.new(cause_params)
     @fmea = @cause.failure_mode.function.fmea
+
+    if params["live"] == "true" && @cause.save!
+      # redirect_to collaboration_fmea_path(@fmea)
+      # respond_to do |format|
+      #   format.html { redirect_to collaboration_fmea_path(@fmea) }
+      #   format.json { head :no_content }
+      # end
+      FmeaCollaborationChannel.broadcast_to(
+      @fmea, new_card_broadcast(@cause).to_json)
+      return
+    end
 
     if @cause.save
       # Broadcast the creation to the collaboration channel
