@@ -17,38 +17,38 @@
     <div class="selector-container">
       <div class="function-selector">
         <div class="chevron left" data-action="click->collaboration#previousFunction">
-          <i class="fas fa-chevron-circle-left"></i>
+          <i class="fas fa-chevron-left"></i>
         </div>
-        <div class="f-fm-container">
+        <div class="f-container">
           <!-- render all function cards in fmea as hidden (except first) -->
           <% @fmea.functions.each do |function| %>
-            <div class="<%= "hidden" unless function == @show_function %>">
+            <div class="expand <%= "hidden" unless function == @show_function %>">
               <%= render "fmeas/edit_fmea/card_content", element: function %>
             </div>
           <% end %>
           <!-- / finish failure_mode rendering -->
         </div>
         <div class="chevron right" data-action="click->collaboration#nextFunction">
-          <i class="fas fa-chevron-circle-right"></i>
+          <i class="fas fa-chevron-right"></i>
         </div>
       </div>
       <div class="fmf-connector">
       </div>
       <div class="failure-mode-selector">
         <div class="chevron left" data-action="click->collaboration#previousFailureMode">
-          <i class="fas fa-chevron-circle-left"></i>
+          <i class="fas fa-chevron-left"></i>
         </div>
-        <div class="f-fm-container">
+        <div class="fm-container">
           <!-- render all failure mode cards in fmea as hidden -->
           <% @fmea.failure_modes.each do |failure_mode| %>
-            <div class="<%= "hidden" unless failure_mode == @show_failure_mode %>">
+            <div class="expand <%= "hidden" unless failure_mode == @show_failure_mode %>">
               <%= render "fmeas/edit_fmea/card_content", element: failure_mode %>
             </div>
           <% end %>
           <!-- / finish failure_mode rendering -->
         </div>
         <div class="chevron right" data-action="click->collaboration#nextFailureMode">
-          <i class="fas fa-chevron-circle-right"></i>
+          <i class="fas fa-chevron-right"></i>
         </div>
       </div>
     </div>
