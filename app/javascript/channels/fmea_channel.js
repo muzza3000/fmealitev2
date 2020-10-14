@@ -7,6 +7,8 @@ export const initFmeaCable = () => {
   const causeGrid = document.getElementById('cause-grid');
   const insertPointCauseGrid = document.getElementById('insert-point-cause-grid');
   const effectGrid = document.getElementById('effect-grid');
+  const insertPointEffectGrid = document.getElementById('insert-point-effect-grid');
+
 
   // Only run code if on the collaboration page and containers
   // are all present
@@ -40,9 +42,9 @@ export const initFmeaCable = () => {
 
           const newCard = `<div class="${payload.type}-card ${state}">${payload.body}</div>`;
           if (payload.type === "cause") {
-            insertPointCauseGrid.insertAdjacentHTML('afterend', newCard)
+            insertPointCauseGrid.insertAdjacentHTML('beforebegin', newCard)
           } else if (payload.type === "effect") {
-            effectGrid.insertAdjacentHTML('beforeend', newCard)
+            insertPointEffectGrid.insertAdjacentHTML('beforebegin', newCard)
           };
         };
 
