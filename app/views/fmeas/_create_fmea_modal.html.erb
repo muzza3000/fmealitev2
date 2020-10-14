@@ -12,6 +12,7 @@
       <div class="modal-body">
         <%= simple_form_for @fmea, url: url_for(controller: 'fmeas', action: 'create'), method: 'post' do |f| %>
           <%= f.input :title, as: :string %>
+          <%= f.input :risk_matrix_id, as: :radio_buttons, collection: risk_matrix_selection, label_method: :second, value_method: :first %>
           <div class="btn btn-success">
             <%= f.button :submit, class: "btn-clean", data: {dismiss: :dismiss} %>
           </div>
