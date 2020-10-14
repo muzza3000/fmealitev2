@@ -3,12 +3,15 @@ class CausesController < ApplicationController
   before_action :set_cause, only: [:update]
 
   def update
-    raise
     adjust_confirmed_params
     @cause.update(cause_params)
     @fmea = @cause.failure_mode.function.fmea
     if params["live"] == "true"
-      redirect_to collaboration_fmea_path(@fmea)
+      # redirect_to collaboration_fmea_path(@fmea)
+      respond_to do |format|
+        format.html { redirect_to collaboration_fmea_path(@fmea) }
+        format.json { head :no_content }
+      end
       return
     end
     # redirect to the function where the cause was added

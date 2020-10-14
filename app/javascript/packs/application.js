@@ -35,10 +35,8 @@ import { initSelect2 } from '../helpers/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  console.log($(".card-collab-description"));
   initFmeaCable();
   initSelect2();
-  console.log($("#card-form"))
 });
 
 

@@ -92,14 +92,6 @@ export default class extends Controller {
   };
 
 
-  prepareForm(event) {
-    event.preventDefault();
-    setTimeout(() => {
-     Rails.fire(form, "submit");
-   });
-  }
-
-
   // The submit function submits the live-forms for the causes and effects.
   submit() {
     event.preventDefault();
@@ -114,12 +106,10 @@ export default class extends Controller {
       form = event.currentTarget.parentElement.parentElement;
     };
 
-    console.log(new FormData(form));
-
     form.method = "post";
-    console.log(form);
 
-    //Rails.fire(form, "submit");
+
+    const formData = new URLSearchParams(new FormData(form));
 
     fetchWithToken( form.action, {
       method: "PUT",
@@ -127,20 +117,10 @@ export default class extends Controller {
         "Accept": "application/json",
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: new FormData(form)
+      body: formData
     })
-      .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-      // handle JSON response from server
-      });
   }
 
-  // form.method = "post";
-  // console.log(form.attr("action"));
-  // console.log(type.attr("action"));
-  // Rails.fire(form, "submit");
-  // }
 
 
 
