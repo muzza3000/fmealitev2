@@ -1,0 +1,5 @@
+meta_product_name: "FMEA.Lite"
+meta_title: "FMEA.Lite - helping you design better products"
+meta_description: "FMEA.Lite is a tool that helps forsee future design problems using collective past experience"
+meta_image: "FMEA_Product_Image.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
