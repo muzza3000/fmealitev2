@@ -110,8 +110,8 @@
 }
 
 #rpn-score {
-  background-color: #ebebeb;
-  border-radius: 5px;
+  border: 2px solid #c3c3c3;
+  border-radius: 50%;
   width: 75px;
   min-height: 75px;
   display: flex;
@@ -119,6 +119,19 @@
   align-items: center;
   font-size: 32px;
 }
+.rpn-yellow {
+  color: $orange;
+  border: 2px solid $orange !important;
+}
+.rpn-red {
+  color: $red;
+  border: 2px solid $red !important;
+}
+.rpn-green {
+  color: $green;
+  border: 2px solid $green !important;
+}
+
 
 // // Smallest device
 @media (min-width: 100px) and (max-width: 768px) {

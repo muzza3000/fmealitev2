@@ -144,3 +144,50 @@ export const calcPreviousIdsFromFunction = (functionId, failureModeId, map) => {
     failureModeId: nextFailureModeId
   }
 };
+
+export const currentOccurrence = (failureModeId, causes) => {
+  const output = [0];
+  causes.forEach((cause) => {
+    if (parseInt(cause.dataset.parentId) === failureModeId) {
+      output.push(parseInt(cause.querySelector('#cause_occurrence').value))
+    }
+  })
+  return output
+};
+
+export const effectSeverity = (failureModeId, failure_modes) => {
+  const output = [0];
+  failure_modes.forEach((failure_mode) => {
+    if (parseInt(failure_mode.dataset.parentId) === failureModeId) {
+      output.push(parseInt(failure_mode.querySelector('#effect_severity').value))
+    }
+  })
+  return output
+};
+
+export const currentScale = (target) => {
+  let scale = parseInt(target.querySelector('#cause_occurrence').length);
+  scale = scale**2;
+  return scale;
+};
+
+export const colorRPN = (scale, rpn, rpnTarget) => {
+  let color = "";
+  // RPN colour logic
+  if (rpn <= 0.4 * scale) {
+    console.log("1")
+    color = "green"
+  } else if ( rpn <= 0.8 * scale) {
+    console.log("2")
+    color = "yellow"
+  } else {
+    console.log("3")
+    color = "red"
+  }
+  // remove all old colors
+  rpnTarget.classList.remove(`rpn-yellow`)
+  rpnTarget.classList.remove(`rpn-red`)
+  rpnTarget.classList.remove(`rpn-green`)
+  // apply new color
+  rpnTarget.classList.add(`rpn-${color}`)
+};
