@@ -123,7 +123,7 @@ export default class extends Controller {
       form = event.currentTarget.parentElement.parentElement;
     };
 
-    form.method = "post";
+    // form.method = "post";
 
     const formData = new URLSearchParams(new FormData(form));
 

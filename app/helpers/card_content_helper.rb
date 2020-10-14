@@ -66,7 +66,7 @@ module CardContentHelper
       type: element.class.name.downcase,
       id: element.id,
       parentid: element.parent.id,
-      body: render_to_string(partial: "fmeas/collab_fmea/card_collab", locals: { element: element })
+      body: render_to_string(partial: "fmeas/collab_fmea/card_collab", locals: { element: element }, formats: [:html])
     }
   end
 
