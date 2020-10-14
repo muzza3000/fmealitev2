@@ -1,4 +1,5 @@
 class FmeasController < ApplicationController
+  include FmeaHelper
   before_action :set_fmea, only: [:edit, :update, :collaboration, :destroy]
 
   def index
@@ -43,27 +44,36 @@ class FmeasController < ApplicationController
   end
 
   def collaboration
-    # assign @query if query is provided
-    @query = params[:failure_mode_id] if params[:failure_mode_id].present?
+    # check if fmea contains any failure modes
 
-    # Check if the failure_mode sort exists
-    if FailureMode.exists?(@query.to_i)
-      # if yes: assign to failure_mode
-      failure_mode = FailureMode.find(@query.to_i)
-      # now check if failure_mode belongs to fmea
-      if @fmea == failure_mode.function.fmea
-        # if yes: assign show_instances so view renders in correct location
-        @show_failure_mode = failure_mode
-        @show_function = @show_failure_mode.function
+    if @fmea.failure_modes.present?
+
+      # assign @query if query is provided
+      @query = params[:failure_mode_id] if params[:failure_mode_id].present?
+
+      # Check if the failure_mode exists
+      if FailureMode.exists?(@query.to_i)
+        # if yes: assign to failure_mode
+        failure_mode = FailureMode.find(@query.to_i)
+        # now check if failure_mode belongs to fmea
+        if @fmea == failure_mode.function.fmea
+          # if yes: assign show_instances so view renders in correct location
+          @show_failure_mode = failure_mode
+          @show_function = @show_failure_mode.function
+        else
+          # else: render the first function and failure mode
+          @show_failure_mode = find_first_failure_mode(@fmea)
+          @show_function = @show_failure_mode.function
+        end
       else
-        # else: render the first function and failure mode
-        @show_function = @fmea.functions[0]
-        @show_failure_mode = @show_function.failure_modes[0]
+        # render the first function and failure mode
+        @show_failure_mode = find_first_failure_mode(@fmea)
+        @show_function = @show_failure_mode.function
       end
+
     else
-      # render the first function and failure mode
-      @show_function = @fmea.functions[0]
-      @show_failure_mode = @show_function.failure_modes[0]
+      flash[:alert] = "You must have at least 1 failure mode to use the collaboration mode"
+      render :edit
     end
   end
 
