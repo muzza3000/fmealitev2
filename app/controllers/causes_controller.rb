@@ -27,21 +27,15 @@ class CausesController < ApplicationController
     @cause = Cause.new(cause_params)
     @fmea = @cause.failure_mode.function.fmea
 
-    if params["live"] == "true" && @cause.save!
-      # redirect_to collaboration_fmea_path(@fmea)
-      # respond_to do |format|
-      #   format.html { redirect_to collaboration_fmea_path(@fmea) }
-      #   format.json { head :no_content }
-      # end
-      FmeaCollaborationChannel.broadcast_to(
-      @fmea, new_card_broadcast(@cause).to_json)
-      return
-    end
-
     if @cause.save
       # Broadcast the creation to the collaboration channel
       FmeaCollaborationChannel.broadcast_to(
       @fmea, new_card_broadcast(@cause).to_json)
+
+      # Add a new card on the collaboration page
+      if params["live"] == "true"
+        return
+      end
 
       # redirect to the function where the cause was added
       redirect_to edit_fmea_path(@cause.failure_mode.function.fmea, anchor: card_id(@cause.failure_mode.function))
