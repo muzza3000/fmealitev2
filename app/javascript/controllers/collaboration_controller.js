@@ -129,6 +129,11 @@ export default class extends Controller {
     })
   }
 
+  newCause() {
+    const causeGrid = this.causeGrid;
+    console.log(causeGrid);
+  }
+
 
 
 
