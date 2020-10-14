@@ -1,46 +1,27 @@
 .fake-form {
   margin: 0;
   padding: 0;
-  width: 100%;
-  // min-width: 100%;
   display: flex;
-  // flex-direction: column;
   border-left: 5px solid #c3c3c3;
   box-shadow: 3px 3px 10px rgba(black, 0.1);
-  border-radius-right: 3px;
   width: 100%;
-  min-height: 74px;
+  min-height: 82px;
   transition: all .2s ease-in-out;
-}
 
-.fake-form-left {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: 0;
-}
-
-
-.fake-form-submit {
-  border: none;
-  background-color: transparent;
-  color: #c3c3c3;
-  margin: 10px;
-  padding: 10px;
-  padding-right: 0;
-  margin-right: 0;
-  // min-height: 100%;
-  flex-grow: 1;
-  border-radius: 3px;
-  text-align: left;
-  transition: all .2s ease-in-out;
-}
-
-.fake-form-submit:hover {
-  color: #3c3c3c;
+  &:hover .fake-card-text {
+    color: #3c3c3c;
+  }
 }
 
 .fake-form:hover {
   box-shadow: 3px 3px 10px rgba(black, 0.2);
   border-left: 5px solid #3c3c3c;
+  color: #3c3c3c;
+  cursor: pointer;
 }
+
+.fake-card-text {
+  color: #c3c3c3;
+  transition: all .2s ease-in-out;
+}
+

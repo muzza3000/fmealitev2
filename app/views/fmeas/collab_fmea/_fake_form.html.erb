@@ -1,11 +1,16 @@
 <div data-action="click->collaboration#<%=element.class.name.downcase%>Create">
-<%= form_for(element, options = { html: { data: { target: "collaboration.#{element.class.name.downcase}Form" },
-name: "#{element.class.name.downcase}", class: "fake-form"  } , method: "post", remote: true })  do |f| %>
-  <div class="hidden">
-    <input type="hidden" value="true" id="live" name="live">
-    <%= f.text_area :description, value: "" %>
-    <%= f.check_box :confirmed, value: 0 %>
-    <%= f.number_field :failure_mode_id, value: failure_mode.id, 'data-target': "collaboration.#{element.class.name.downcase}FormFailureModeInput" %>
-  </div>
-<% end %>
+  <%= form_for(element, options = { html: { data: { target: "collaboration.#{element.class.name.downcase}Form" },
+  name: "#{element.class.name.downcase}", class: "fake-form"  } , method: "post", remote: true })  do |f| %>
+    <div class="d-flex align-items-center px-3">
+      <div class="hidden">
+        <input type="hidden" value="true" id="live" name="live">
+        <%= f.text_area :description, value: "" %>
+        <%= f.check_box :confirmed, value: 0 %>
+        <%= f.number_field :failure_mode_id, value: failure_mode.id, 'data-target': "collaboration.#{element.class.name.downcase}FormFailureModeInput" %>
+      </div>
+      <div class="fake-card-text">
+        Add a new <%= element.class.name.downcase %>...
+      </div>
+    </div>
+  <% end %>
 </div>
