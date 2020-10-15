@@ -4,7 +4,7 @@ body.landing {
 }
 
 .header-container {
-  height: 500px;
+  height: 470px;
   overflow:hidden;
 }
 
@@ -29,7 +29,7 @@ body.landing {
 
   h2 {
     padding: 100px 0 20px 0;
-    font-size: 24px;
+    font-size: 32px;
   }
 }
 
@@ -42,7 +42,7 @@ body.landing {
 }
 .customer-logo-image {
   height: 100%;
-  max-width: 125px;
+  max-width: 150px;
   padding: 0 10px;
 }
 
@@ -81,8 +81,8 @@ body.landing {
     font-size: small;
   }
 }
-.height-206{
-  min-height: 206px;
+.slide-container{
+  height: 300px;
   border-radius: 8px;
   width:100%;
   display:block;
