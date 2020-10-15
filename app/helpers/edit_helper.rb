@@ -12,8 +12,7 @@ module EditHelper
     if elements[0].respond_to?(:occurrence)
       elements = elements.sort_by { |e| ((-1) * e.occurrence.to_i) }
     elsif elements[0].respond_to?(:severity)
-      elements = elements.sort_by { |e| e.severity }
-      elements = elements.sort_by.reverse
+      elements = elements.sort_by { |e| ((-1) * e.severity.to_i) }
     end
 
     elements.each do |element|

@@ -31,12 +31,13 @@
         </div>
         <div class="effects-bottom-right">
           <% counter = 0 %>
-          <% failure_mode.effects.each do |effect| %>
+          <% effects = failure_mode.effects %>
+          <% effects = order_and_select(effects) %>
+          <% effects.each do |effect| %>
             <% counter += 1 %>
             <% if counter > 1 %>
               <div style="height: 10px;"></div>
             <% end %>
-              <% element = effect %>
               <div class="card-structure-bottom-right">
                 <%= render "fmeas/edit_fmea/card_content", element: effect  %>
               </div>
