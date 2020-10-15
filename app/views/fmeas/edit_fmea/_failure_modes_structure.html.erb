@@ -8,7 +8,9 @@
     <div class="causes-structure">
       <div class="cause-left"></div>
       <div class="cause-right">
-        <% failure_mode.causes.each do |cause| %>
+        <% causes = failure_mode.causes %>
+        <% causes = order_and_select(causes) %>
+        <% causes.each do |cause| %>
           <div class="one-cause">
             <%= render "fmeas/edit_fmea/card_structure", element: cause %>
           </div>
