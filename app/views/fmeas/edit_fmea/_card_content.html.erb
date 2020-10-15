@@ -14,6 +14,8 @@
 
   <div class="<%= "so-rating #{rating_color(element)}" if show_rating(element) %>">
     <%= rating(element) %>
+    <!-- Tooltip -->
+    <%= render "fmeas/edit_fmea/sev_occ_tooltip", element: element %>
   </div>
   <!-- /rating -->
   <div class="edit-card">
@@ -24,3 +26,5 @@
 
 <!-- Edit Modal -->
 <%= render "fmeas/edit_fmea/edit_description_modal", element: element %>
+
+
