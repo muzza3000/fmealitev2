@@ -48,13 +48,19 @@
   min-height: 100%;
   font-size: 1rem;
   resize: none;
-  border: none;
+  border: 1px solid rgba(white, 0);
   border-left: 3px solid $red;
   padding: 10px;
   padding-top: 5px;
   border-radius: 3px;
   color: $gray;
   overflow: auto;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    border: 1px solid #c3c3c3;
+    border-left: 3px solid $red;
+  }
 }
 
 .card-collab-description-effect {
@@ -66,13 +72,20 @@
   min-height: 100%;
   font-size: 1rem;
   resize: none;
-  border: none;
+  border: 1px solid rgba(white, 0);
   border-left: 3px solid $green;
   padding: 10px;
   padding-top: 5px;
   border-radius: 3px;
   color: $gray;
   overflow: auto;
+  border-left: 3px solid $green;
+  transition: all .2s ease-in-out;
+
+    &:hover {
+      border: 1px solid #c3c3c3;
+      border-left: 3px solid $green;
+    }
 }
 
 
