@@ -43,7 +43,7 @@
   flex-grow: 1;
   margin-right: 15px;
   min-height: 100%;
-  font-size: 0.8rem;
+  font-size: 1rem;
   resize: none;
   border: 1px solid #c3c3c3;
   padding: 10px;
@@ -61,24 +61,24 @@
 // Here come all the colors for the different ratings
 
 .card-collab-select-rating-green {
-  background-color: #93D0A3;
+  background-color: $green;
   border: 2px solid $green;
   border-radius: 3px;
   color: $gray;
 }
 
 .card-collab-select-rating-yellow {
-  background-color: #e0e0e0;
-  border: 2px solid $gray;
+  background-color: $orange;
+  border: 2px solid $orange;
   border-radius: 3px;
   color: $gray;
 }
 
 .card-collab-select-rating-red {
-  background-color: #F3B0B0;
+  background-color: $red;
   border: 2px solid $red;
   border-radius: 3px;
-  color: $gray;
+  color: white;
 }
 
 // Here comes the chechbox scss
@@ -117,7 +117,7 @@
 }
 
 .checkbox-label input:checked ~.card-collab-custom-checkbox {
-  background-color: #93D0A3;
+  background-color: $green;
   border-radius: 50%;
   border: 1px solid $green;
   color: rgba(255,255,255,1);
@@ -132,7 +132,7 @@
   width: 6px;
   height: 12px;
   border: 1px solid $green;
-  background-color: #93D0A3;
+  background-color: $green;
   padding-left: 3px;
   transition: all .2s ease-in-out;
 }
