@@ -13,7 +13,7 @@
   <div class="row mb-4 d-flex align-items-center rounded pb-4 border-bottom">
     <div class="col p-0">
       <%= simple_form_for :search, url: fmeas_path, method: :get do |f| %>
-        <div class="search-form-control form-group m-0">
+        <div class="search-form-control form-group m-0 mr-1">
           <input class="form-control string required" type="text" name="search[query]" id="search_query" value="<%= @query if @query.present? %>" placeholder="Search FMEA title or risk matrix..."/>
           <button name="button" type="submit" class="btn btn-flat">
             <i class="fas fa-search"></i> Search
