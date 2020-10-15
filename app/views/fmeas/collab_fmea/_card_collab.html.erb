@@ -1,9 +1,8 @@
 <div class="card-collab" data-target="collaboration.<%= element.model_name.param_key%>" data-card-type="<%= element.class.name.downcase  %>" data-id="<%= element.id %>" data-parent-id="<%= element.parent.id %>" id="<%= card_id(element) %>">
-  <div class="colored-stripe-<%= element.class.name.downcase %>" id="card-form"></div>
       <%= form_for(element, options = { html: { data: { target: "collab.form" },
       name: "cause", class: "card-collab-form"  } , method: "put", remote: true })  do |f| %>
       <!-- Here comes the basic description of the cause/effect -->
-        <%=  f.text_area :description, class: "card-collab-description", value: element.description, data: { target: "collab.source", action: "change->collaboration#submit", type: "#{element.class.name.downcase}", id: "#{element.id}", input: "textbox" } %>
+        <%=  f.text_area :description, class: "card-collab-description-#{element.class.name.downcase}", value: element.description, data: { target: "collab.source", action: "change->collaboration#submit", type: "#{element.class.name.downcase}", id: "#{element.id}", input: "textbox" } %>
         <input type="hidden" value="true" id="live" name="live">
         <!--  Here come the right-hand-side actions -->
         <div class="card-collab-actions">
