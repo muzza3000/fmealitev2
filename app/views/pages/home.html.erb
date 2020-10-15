@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row py-5">
         <div class="col-6">
-          <h2>FMEA.Lite is a tool that helps forsee future design problems using collective past experience</h2>
+          <h2>FMEA.Lite is a tool that helps foresee future design problems using collective past experience</h2>
           <% if user_signed_in? %>
             <%= link_to(fmeas_path) do %>
             <button class="btn btn-success">Get Started <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"/></svg>
@@ -39,7 +39,7 @@
   <div class="container">
     <div class="row my-5">
       <div class="col-6">
-        <%= video_tag("landing_page/product_video.mp4", autoplay: :autoplay,loop: :loop,  preload: 'auto', muted: :muted, class: "product-image" ) %>
+        <%= video_tag("landing_page/product_video2.mp4", autoplay: :autoplay,loop: :loop,  preload: 'auto', muted: :muted, class: "product-image" ) %>
       </div>
       <div class="col-6">
         <p class="text-success"><strong>Many minds are better than one.</strong></p>
@@ -54,7 +54,24 @@
         <p>Turn your analysis into a downloadable report with the click of a button</p>
       </div>
       <div class="col-6">
-        <iframe src="https://muzza3000.github.io/fmea_pitch_2/#/"></iframe>
+        <%= video_tag("landing_page/product_video.mp4", autoplay: :autoplay,loop: :loop,  preload: 'auto', muted: :muted, class: "product-image" ) %>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-6">
+      <div class="slide-deck">
+        <div class="open-new-tab">
+          <a href="https://muzza3000.github.io/fmea_pitch_2/#/" target="_blank" class="stretched-link">
+          </a>
+        </div>
+
+          <iframe class="height-206 " src="https://muzza3000.github.io/fmea_pitch_2/#/" frameborder="0"></iframe>
+      </div>
+      </div>
+      <div class="col-6">
+        <p class="text-success"><strong>Visit our product slidedeck if you want to learn more.</strong></p>
+        <h3>Product summary</h3>
+        <p>If you want to learn more about our product, please visit our slide deck opposite</p>
       </div>
     </div>
   </div>
