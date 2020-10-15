@@ -13,6 +13,11 @@
       <%= link_to edit_fmea_path(@fmea), class:"btn btn-ghost" do %>
         <i class="fas fa-arrow-left"></i> FMEA
       <% end %>
+      <%# Share Link %>
+      <div class="btn btn-ghost share-link" data-controller="clipboard" data-action="click->clipboard#shareCollaborationLink">
+        <span data-target="clipboard.copybutton" >Copy <i class="fas fa-share-alt"></i></span>
+      </div>
+      <%# /Share Link %>
     </div>
     <%# /Back to FMEA button %>
     <%# Function-FM Selector %>
@@ -55,22 +60,19 @@
       </div>
     </div>
     <%# /Function-FM Selector %>
-    <%# Share Link %>
+
     <div class="collaboration-top-right">
-      <div class="btn btn-ghost share-link" data-controller="clipboard" data-action="click->clipboard#shareCollaborationLink">
-        <span data-target="clipboard.copybutton" >Copy direct link <i class="fas fa-share-alt"></i></span>
-      </div>
+
       <div id="rpn-value" class="">
         <div id="rpn-label">
-          <p><span>R</span>isk</p>
-          <p><span>P</span>riority</p>
-          <p><span>N</span>umber</p>
+          <h6 class="RPN-header">RPN</h6>
+          <p class="RPN-body">Risk Priority Number</p>
         </div>
         <div id="rpn-score" data-target="collaboration.rpn">
         </div>
       </div>
     </div>
-    <%# /Share Link %>
+
   </div>
   <!-- Second row containing the cause and effect columns -->
   <div id="cause-effect-collaboration" data-fmea-id="<%= @fmea.id %>" class="row d-flex justify-content-center my-5">
