@@ -149,8 +149,11 @@ export const currentOccurrence = (failureModeId, causes) => {
   const output = [0];
   causes.forEach((cause) => {
     if (parseInt(cause.dataset.parentId) === failureModeId) {
-      output.push(parseInt(cause.querySelector('#cause_occurrence').value))
-    }
+      const occ = cause.querySelector('#cause_occurrence').value;
+      if (!Number.isNaN(occ)) {
+        output.push(occ);
+      };
+    };
   })
   return output
 };
@@ -159,14 +162,17 @@ export const effectSeverity = (failureModeId, failure_modes) => {
   const output = [0];
   failure_modes.forEach((failure_mode) => {
     if (parseInt(failure_mode.dataset.parentId) === failureModeId) {
-      output.push(parseInt(failure_mode.querySelector('#effect_severity').value))
-    }
+      const sev = failure_mode.querySelector('#effect_severity').value;
+      if (!Number.isNaN(sev)) {
+        output.push(sev);
+      };
+    };
   })
   return output
 };
 
 export const currentScale = (target) => {
-  let scale = parseInt(target.querySelector('#cause_occurrence').length);
+  let scale = parseInt(target.querySelector('#cause_occurrence').length) - 1;
   scale = scale**2;
   return scale;
 };
