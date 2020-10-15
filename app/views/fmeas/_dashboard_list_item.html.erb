@@ -44,9 +44,9 @@
   <div class="col-2 my-auto" style="z-index: 1;">
     <div class="buttons-dashboard">
       <div class="button-dashboard">
-        <a href="#">
+        <span data-target="clipboard.copybutton" data-action="click->clipboard#shareFmeaLink" data-fmea-id="<%= fmea.id %>" >
           <i class='fas fa-share-alt icon'></i>
-        </a>
+        </span>
       </div>
       <div class="button-dashboard">
           <%= link_to download_fmea_path(fmea, format: :xlsx), data: {turbolinks: false} do %>

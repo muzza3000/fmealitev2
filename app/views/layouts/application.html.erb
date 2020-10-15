@@ -38,6 +38,7 @@
   <body class="<%= "landing" if action_name == "home" %>">
     <%= render 'shared/navbar'%>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/copy_alerts' %>
 
     <%= yield %>
   </body>
