@@ -12,6 +12,7 @@
   position: relative;
   border: 2px solid rgba(0,0,0,0);
   transition: all .2s ease-in-out;
+  cursor: pointer;
 
   &:hover > .edit-card {
     position: absolute;
