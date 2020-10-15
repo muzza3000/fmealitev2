@@ -2,7 +2,7 @@
 FMEA Description,"X400 is due to go into production in April-2021. 
 The bike is aimed at mid-salary urban commuters, working in large cities like London and Paris. Reliability has a strong focus and is appreciated by our customer base.",,,,
 FMEA _Type,Design,,,,
-Risk Matrix ,Standard Risk Matrix (1-5),,,,
+Risk Matrix ,Bike Risk Matrix (1-5),,,,
 Type,Description,Rating,deadline,status,followup
 function,Must be comfortable for the rider,,,,
 failure_mode,Handlebar to seat spacing causes pain to the riders,,,,
