@@ -7,21 +7,22 @@
   display: flex;
   justify-content: flex-start;
   transition: all .2s ease-in-out;
+  border-radius: 18px;
 }
 
 .card-collab:hover {
   box-shadow: 4px 4px 10px rgba(black, 0.4);
 }
 
-.colored-stripe-cause {
-  background-color: $red;
-  width: 5px;
-}
+// .colored-stripe-cause {
+//   background-color: transparent;
+//   width: 5px;
+// }
 
-.colored-stripe-effect {
-  background-color: $green;
-  width: 5px;
-}
+// .colored-stripe-effect {
+//   background-color: $green;
+//   width: 5px;
+// }
 
 
 
@@ -33,24 +34,47 @@
   display: flex;
   justify-content: flex-start;
   padding: 10px;
+  padding-right: 20px;
   width: 100%;
   color: $gray;
 }
 
-.card-collab-description {
+.card-collab-description-cause {
   width: 100%;
   text-align: left;
   flex-grow: 1;
+  margin-left: 9px;
   margin-right: 15px;
   min-height: 100%;
   font-size: 1rem;
   resize: none;
-  border: 1px solid #c3c3c3;
+  border: none;
+  border-left: 3px solid $red;
   padding: 10px;
+  padding-top: 5px;
   border-radius: 3px;
   color: $gray;
   overflow: auto;
 }
+
+.card-collab-description-effect {
+  width: 100%;
+  text-align: left;
+  flex-grow: 1;
+  margin-left: 9px;
+  margin-right: 15px;
+  min-height: 100%;
+  font-size: 1rem;
+  resize: none;
+  border: none;
+  border-left: 3px solid $green;
+  padding: 10px;
+  padding-top: 5px;
+  border-radius: 3px;
+  color: $gray;
+  overflow: auto;
+}
+
 
 .card-collab-actions {
   display: flex;
