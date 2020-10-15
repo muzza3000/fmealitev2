@@ -18,6 +18,12 @@ export const initFmeaCable = () => {
     console.log(`--> Channel connected to FMEA ${id}`);
 
     consumer.subscriptions.create({ channel: "FmeaCollaborationChannel", id: id }, {
+      connected() {
+        console.log("you're live on the channel");
+      },
+      disconnected() {
+        console.log("you have disconnected from the channel")
+      },
       received(data) {
 
         // expected data should be json
