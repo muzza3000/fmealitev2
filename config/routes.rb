@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :fmeas, only: %i[index edit create update destroy] do
     member do
       get 'collaboration'
+      get 'download'
     end
+    # collection do
+    #   get 'download'
+    # end
   end
   resources :functions, only: %i[update create destroy]
   resources :failure_modes, only: %i[update create destroy]
