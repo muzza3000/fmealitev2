@@ -34,8 +34,11 @@
       </div>
     </div>
     <div class="header-collaboration-mode ">
-      <%= link_to(collaboration_fmea_path(fmea), class: "btn btn-secondary btn-collaboration") do %>
-        <i class="fas fa-users"></i> mode
+      <%= link_to(collaboration_fmea_path(fmea), class: "btn btn-ghost btn-collaboration") do %>
+        <i class="fas fa-users"></i> <span class="hide-small">Collaboration</span>
+      <% end %>
+      <%= link_to(download_fmea_path(fmea, format: :xlsx), data: {turbolinks: false}, class: "btn btn-ghost btn-collaboration") do %>
+        <i class="fas fa-cloud-download-alt"></i> <span class="hide-small">Download</span>
       <% end %>
     </div>
   </div>
