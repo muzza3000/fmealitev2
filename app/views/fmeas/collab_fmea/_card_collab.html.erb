@@ -23,12 +23,14 @@
           </div>
           <% if element.class.name.downcase == "cause" %>
             <% occurrences = (1..rating_scale(element)).to_a %>
+            <% occurrences.prepend(nil) %>
             <%= f.select :occurrence, options_for_select(occurrences, element.occurrence), {},
               class: "card-collab-select-#{rating_color(element)}",
               data: { target: "collab.source", action: "change->collaboration#submit",
                 type: "#{element.class.name.downcase}", id: "#{element.id}", input: "dropdown"} %> <!-- The empty hash needs to stay there! -->
           <% elsif element.class.name.downcase == "effect"  %>
             <% severities = (1..rating_scale(element)).to_a %>
+            <% severities.prepend(nil) %>
             <%= f.select :severity, options_for_select(severities, element.severity), {},
               class: "card-collab-select-#{rating_color(element)}",
               data: { target: "collab.source", action: "change->collaboration#submit",
