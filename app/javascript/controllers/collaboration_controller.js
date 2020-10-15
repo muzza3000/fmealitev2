@@ -10,7 +10,11 @@ import {
   createMapFM,
   createMapFunc,
   functionIds,
-  failureModeIds
+  failureModeIds,
+  currentOccurrence,
+  effectSeverity,
+  currentScale,
+  colorRPN
 } from "helpers/collaboration";
 import Rails from "@rails/ujs";
 import  { fetchWithToken } from "helpers/fetch_with_token" ;
@@ -26,17 +30,26 @@ export default class extends Controller {
 
   connect() {
     console.log("--> collaboration controller connected");
-    // setInterval(this.refreshRPN, 2000);
+    setInterval(() => this.refreshRPN(), 1000);
   };
 
   refreshRPN() {
+    // get rating scale
+    const scale = currentScale(this.causeTarget);
     // get all the occurrence scores for the current failure mode
+    const occ = currentOccurrence(this.failureModeId, this.causeTargets);
     // get all the severity scores for the current failure mode
+    const sev = effectSeverity(this.failureModeId, this.effectTargets);
     // multiply the max of both
+    const rpn = Math.max(...occ) * Math.max(...sev)
     // populate the RPN score field
+    this.rpnTarget.innerText = rpn
+    // apply styles accordingly
+    colorRPN(scale, rpn, this.rpnTarget);
   }
 
   nextFunction() {
+    this.rpnTarget.innerText = ""
     // build the map of objects from the DOM elements
     const map = createMapFunc(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
@@ -55,6 +68,7 @@ export default class extends Controller {
   };
 
   previousFunction() {
+    this.rpnTarget.innerText = ""
     // build the map of objects from the DOM elements
     const map = createMapFunc(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
@@ -73,6 +87,7 @@ export default class extends Controller {
   };
 
   nextFailureMode() {
+    this.rpnTarget.innerText = ""
     // build the map of the objects for convenient lookup
     const map = createMapFM(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
@@ -91,6 +106,7 @@ export default class extends Controller {
   };
 
   previousFailureMode() {
+    this.rpnTarget.innerText = ""
     // build the map of the objects for convenient lookup
     const map = createMapFM(functionIds(this.functionTargets), failureModeIds(this.failure_modeTargets))
 
