@@ -21,7 +21,11 @@
   </div>
   </div>
 
-  <% unless failure_mode.effects.count == 0 %>
+  <% counter = 0 %>
+  <% effects = failure_mode.effects %>
+  <% effects = order_and_select(effects) %>
+
+  <% unless effects.length == 0 %>
     <div class="one-failure-mode-right">
       <div class="effects-top"></div>
       <div class="effects-bottom">
@@ -30,9 +34,6 @@
           <div class="effects-bottom-left-bottom"></div>
         </div>
         <div class="effects-bottom-right">
-          <% counter = 0 %>
-          <% effects = failure_mode.effects %>
-          <% effects = order_and_select(effects) %>
           <% effects.each do |effect| %>
             <% counter += 1 %>
             <% if counter > 1 %>
