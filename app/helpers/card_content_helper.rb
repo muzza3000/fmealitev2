@@ -79,4 +79,15 @@ module CardContentHelper
       body: ""
     }
   end
+
+  def tooltip_text(element)
+    # should be a cause or effect
+    if element.class.name.downcase == "cause"
+      risk_matrix = element.failure_mode.function.fmea.risk_matrix
+      return risk_matrix.send("o#{element.occurrence}")
+    elsif element.class.name.downcase == "effect"
+      risk_matrix = element.failure_mode.function.fmea.risk_matrix
+      return risk_matrix.send("s#{element.severity}")
+    end
+  end
 end
