@@ -88,8 +88,16 @@ $header_height: 200px;
 .btn-collaboration {
   height: 38px;
   padding: 6px 12px;
-  width: 96px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 2px;
+
+  // width: 96px;
   // margin: 0px 0px -4px 0;
+}
+
+.header-collaboration-mode {
+  display: flex;
 }
 
 .fmea-stat {
@@ -97,4 +105,10 @@ $header_height: 200px;
   align-items: center;
   justify-content: space-between;
   padding: 0 5px;
+}
+
+@media (max-width: 1200px) {
+  .hide-small {
+    display: none;
+  }
 }
