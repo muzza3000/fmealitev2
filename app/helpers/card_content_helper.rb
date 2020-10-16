@@ -84,10 +84,14 @@ module CardContentHelper
     # should be a cause or effect
     if element.class.name.downcase == "cause"
       risk_matrix = element.failure_mode.function.fmea.risk_matrix
-      return risk_matrix.send("o#{element.occurrence}")
+      unless element.occurrence == nil
+        return risk_matrix.send("o#{element.occurrence}")
+      end
     elsif element.class.name.downcase == "effect"
       risk_matrix = element.failure_mode.function.fmea.risk_matrix
-      return risk_matrix.send("s#{element.severity}")
+      unless element.severity == nil
+        return risk_matrix.send("s#{element.severity}")
+      end
     end
   end
 end
