@@ -69,3 +69,4 @@ gem 'cloudinary', '~> 1.16.0'
 
 gem 'caxlsx'
 gem 'caxlsx_rails'
+gem 'mimemagic', '~> 0.3.10'
